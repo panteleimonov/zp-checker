@@ -1,0 +1,325 @@
+/* ================= VARIABLES ================= */
+
+:root {
+  /* Base colors */
+  --bg-main: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  --bg-main: #fff;
+  --text-main: #111;
+  --header-bg: linear-gradient(135deg, royalblue, deepskyblue);
+  --caption-bg: linear-gradient(135deg, #eee, #ddd);
+  --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
+  --btn-reset: linear-gradient(180deg, tomato, indianred);
+
+  --general-field-bg: linear-gradient(135deg,
+      rgba(255, 222, 92, 0.15),
+      rgba(255, 191, 0, 0.30));
+  --general-field-border: rgba(255, 191, 0, 0.5);
+  --general-field-input: rgba(255, 191, 0, 0.7);
+  --general-field-focus: rgba(255, 191, 0, 0.8);
+
+  /* Green theme */
+  --green-border: rgba(20, 200, 20, 0.3);
+  --green-inner: rgba(20, 200, 20, 0.2);
+  --green-bg: linear-gradient(135deg,
+      rgba(20, 200, 20, 0.05),
+      rgba(20, 200, 20, 0.15));
+  --green-input: rgba(20, 200, 20, 0.4);
+  --green-focus: rgba(20, 200, 20, 0.6);
+
+  /* Blue theme */
+  --blue-border: rgba(20, 20, 255, 0.3);
+  --blue-inner: rgba(20, 20, 255, 0.2);
+  --blue-bg: linear-gradient(135deg,
+      rgba(20, 20, 255, 0.05),
+      rgba(20, 20, 255, 0.15));
+  --blue-input: rgba(20, 20, 255, 0.4);
+  --blue-focus: rgba(20, 20, 255, 0.6);
+
+  /* Red theme */
+  --red-border: rgba(255, 40, 0, 0.3);
+  --red-inner: rgba(255, 40, 0, 0.2);
+  --red-bg: linear-gradient(135deg,
+      rgba(255, 40, 0, 0.05),
+      rgba(255, 40, 0, 0.15));
+  --red-input: rgba(255, 40, 0, 0.4);
+  --red-focus: rgba(255, 40, 0, 0.6);
+
+  /* Effects */
+  --main-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= BASE ================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: all 200ms;
+  font-family:
+    'Google Sans',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+p {
+  font-size: 1em;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  padding: 1em 1em 0.5em;
+}
+
+.logo-header {
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+  font-size: 1.25em;
+  line-height: 1.5;
+  color: #fff;
+  background: var(--header-bg);
+  border: 1px solid #fff;
+  border-radius: 12px;
+  box-shadow: var(--main-shadow);
+}
+
+/* ================= MAIN ================= */
+
+.main {
+  padding: 0 1em;
+}
+
+.caption-text {
+  padding: 1em;
+  background: var(--caption-bg);
+  border: 4px solid #fff;
+  border-radius: 12px;
+  box-shadow: var(--main-shadow);
+}
+
+/* ================= FORM ================= */
+
+.input-wrapper {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+label {
+  text-align: left;
+  line-height: 1;
+}
+
+label:hover {
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+
+/* ================= INPUTS ================= */
+
+input[type='text'] {
+  width: 5.5em;
+  margin-left: 0.5em;
+  text-align: center;
+  line-height: 1.75;
+  font-family: 'Rubik';
+  border-radius: 6px;
+  border: 1px solid var(--green-input);
+}
+
+.double-inputs input[type='text']:last-child {
+  margin-left: 0;
+}
+
+.double-inputs span {
+  /*color: var(--blue-inner);*/
+  margin: 0.25em;
+}
+
+input.large {
+  width: 5.5em;
+}
+
+input[type='checkbox'] {
+  margin-left: 1em;
+}
+
+/* ================= FIELDSETS ================= */
+
+fieldset {
+  margin: 1em 0;
+  border-radius: 12px;
+  border: 1px solid var(--green-border);
+  background: var(--green-bg);
+  box-shadow: var(--main-shadow);
+}
+
+.general-field {
+  background: var(--general-field-bg);
+  border-color: var(--general-field-border);
+}
+
+.general-field legend h3 {
+  border-color: var(--general-field-border);
+  /* background: #FEF7E0; */
+}
+
+.general-field input[type='text'] {
+  border-color: var(--general-field-input);
+}
+
+.inputs-group:not(:last-child) {
+  margin-bottom: 0.75em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--green-inner);
+}
+
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+legend h3 {
+  margin: 0.75em 0;
+  padding: 0.75em 1em;
+  background: var(--bg-main);
+  border-radius: 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 1px solid var(--green-border);
+  box-shadow: var(--main-shadow);
+  /* background: #EFFAEF; */
+}
+
+/* ================= TAB FIELD (BLUE) ================= */
+
+.tab-field {
+  border-color: var(--blue-border);
+  background: var(--blue-bg);
+}
+
+.tab-field legend h3 {
+  border-color: var(--blue-border);
+  /* background: #EEEEFC; */
+}
+
+.tab-field input[type='text'] {
+  border-color: var(--blue-input);
+}
+
+.tab-field .inputs-group {
+  border-color: var(--blue-inner);
+}
+
+/* ================= RED FIELD ================= */
+
+.red-bg {
+  border-color: var(--red-border);
+  background: var(--red-bg);
+}
+
+.red-bg legend h3 {
+  border-color: var(--red-border);
+  /* background: #FCF0ED; */
+}
+
+.red-bg input[type='text'] {
+  border-color: var(--red-input);
+}
+
+.red-bg .inputs-group {
+  border-color: var(--red-inner);
+}
+
+/* ================= ADVANCED ================= */
+
+.input-wrapper:focus-within label {
+  font-weight: bold;
+  color: var(--green-bg);
+  letter-spacing: -0.5px;
+}
+
+input[type='text']:focus-visible {
+  outline: none;
+  border-color: var(--green-focus);
+  box-shadow: 0 0 0 4px rgba(20, 200, 20, 0.15);
+}
+
+.general-field input[type='text']:focus-visible {
+  border-color: var(--general-field-focus);
+  box-shadow: 0 0 0 4px rgba(255, 191, 0, 0.25);
+}
+
+.tab-field input[type='text']:focus-visible {
+  border-color: var(--blue-focus);
+  box-shadow: 0 0 0 4px rgba(20, 20, 255, 0.15);
+}
+
+.red-bg input[type='text']:focus-visible {
+  border-color: var(--red-focus);
+  box-shadow: 0 0 0 4px rgba(255, 40, 0, 0.15);
+}
+
+.btns-wrapper {
+  margin: 2em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  width: calc(50% - 0.5em);
+  padding: 1em;
+  background-color: rgb(83, 126, 253);
+  border-radius: 12px;
+  font-family: 'Rubik';
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid royalblue;
+  box-shadow: var(--main-shadow);
+}
+
+button:hover,
+button:active {
+  background: royalblue;
+  letter-spacing: 1px;
+}
+
+.reset-btn {
+  background: tomato;
+  border: 1px solid rgb(250, 83, 53);
+}
+
+.reset-btn:hover,
+.reset-btn:active {
+  background: rgb(250, 83, 53);
+}
