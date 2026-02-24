@@ -6,7 +6,7 @@
   --bg-main: #fff;
   --text-main: #111;
   --header-bg: linear-gradient(135deg, royalblue, deepskyblue);
-  --caption-bg: linear-gradient(135deg, #eee, #ddd);
+  --caption-bg: linear-gradient(135deg, #eee, #e7e7e7);
   --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
   --btn-reset: linear-gradient(180deg, tomato, indianred);
 
@@ -54,7 +54,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 200ms;
+  transition: all 300ms linear;
   font-family:
     'Google Sans',
     system-ui,
@@ -114,7 +114,7 @@ input::placeholder {
 .caption-text {
   padding: 1em;
   background: var(--caption-bg);
-  border: 4px solid #fff;
+  border: 1px solid #fff;
   border-radius: 12px;
   box-shadow: var(--main-shadow);
 }
