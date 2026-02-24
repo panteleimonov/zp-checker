@@ -8,11 +8,11 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght,GRAD@17..18,400..700,-50..200&family=Rubik:wght@300..900&display=swap"
 			rel="stylesheet"
 		/>
 
-		<link rel="stylesheet" href="style-ui.css" />
+		<link rel="stylesheet" href="style-beta.css" />
 	</head>
 
 	<body>
@@ -29,9 +29,7 @@
 			<form action="#">
 				<!-- ================= ГОЛОВНЕ ================= -->
 				<fieldset class="general-field">
-					<legend>
-						<h3>📌 Головне</h3>
-					</legend>
+					<legend>📌 Головне</legend>
 
 					<div class="input-wrapper">
 						<label for="oklad">Оклад (поточний) грн.</label>
@@ -72,9 +70,7 @@
 
 				<!-- ================= ТАБЕЛЮВАННЯ ================= -->
 				<fieldset class="tab-field">
-					<legend>
-						<h3>🗓️ Табелювання</h3>
-					</legend>
+					<legend>🗓️ Табелювання</legend>
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
@@ -158,9 +154,7 @@
 
 				<!-- ================= НАРАХУВАННЯ ================= -->
 				<fieldset>
-					<legend>
-						<h3>✅ Нарахування</h3>
-					</legend>
+					<legend>✅ Нарахування</legend>
 					<div class="inputs-group">
 						<div class="input-wrapper">
 							<label for="prem">Премія (за рез. роботи) %</label>
@@ -177,7 +171,6 @@
 						<div class="input-wrapper">
 							<label for="pop-okl">Оклад за попередній місяць</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="pop-okl"
@@ -190,7 +183,6 @@
 						<div class="input-wrapper">
 							<label for="vidp">Відпустка (кількість днів)</label>
 							<input
-								class=""
 								type="text"
 								inputmode="numeric"
 								id="vidp"
@@ -201,7 +193,6 @@
 						<div class="input-wrapper">
 							<label for="komp">Компенсація (кількість днів)</label>
 							<input
-								class=""
 								type="text"
 								inputmode="numeric"
 								id="komp"
@@ -212,7 +203,6 @@
 						<div class="input-wrapper">
 							<label for="mat-d">Матеріальна допомога</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="mat-d"
@@ -225,7 +215,6 @@
 						<div class="input-wrapper">
 							<label for="gram-pod">Премія за грамоту / подяку</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="gram-pod"
@@ -236,7 +225,6 @@
 						<div class="input-wrapper">
 							<label for="pidg-pers">Доплата за підг. персоналу</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="pidg-pers"
@@ -247,7 +235,6 @@
 						<div class="input-wrapper">
 							<label for="others-nar">Інші нарахування (грн.)</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="others-nar"
@@ -259,9 +246,7 @@
 
 				<!-- ================= ВІДРАХУВАННЯ ================= -->
 				<fieldset class="red-bg">
-					<legend>
-						<h3>🔁 Відрахування</h3>
-					</legend>
+					<legend>🔁 Відрахування</legend>
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
@@ -277,9 +262,8 @@
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="medstrah">Поліс мед. страхування</label>
+							<label for="medstrah">Медичне страхування (поліс)</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="medstrah"
@@ -290,7 +274,6 @@
 						<div class="input-wrapper">
 							<label for="others">Інші відрахування (грн.)</label>
 							<input
-								class="large"
 								type="text"
 								inputmode="numeric"
 								id="others"
@@ -307,6 +290,6 @@
 			</form>
 		</section>
 
-		<script src="main.js"></script>
+		<script src="main.js" defer></script>
 	</body>
 </html>

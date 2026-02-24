@@ -54,20 +54,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 300ms linear;
-  font-family:
-    'Google Sans',
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Open Sans',
-    'Helvetica Neue',
-    sans-serif;
+  transition: all 200ms linear;
+  font-family: "Google Sans", sans-serif;
   font-optical-sizing: auto;
+  font-variation-settings: "GRAD" 0;
 }
 
 body {
@@ -138,8 +128,9 @@ label {
 }
 
 label:hover {
-  font-weight: bold;
-  letter-spacing: -0.5px;
+  /* font-weight: bold;
+  letter-spacing: -0.5px; */
+  font-variation-settings: "GRAD" 200;
   cursor: pointer;
 }
 
@@ -150,7 +141,10 @@ input[type='text'] {
   margin-left: 0.5em;
   text-align: center;
   line-height: 1.75;
-  font-family: 'Rubik';
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
   border-radius: 6px;
   border: 1px solid var(--green-input);
 }
@@ -160,7 +154,6 @@ input[type='text'] {
 }
 
 .double-inputs span {
-  /*color: var(--blue-inner);*/
   margin: 0.25em;
 }
 
@@ -187,7 +180,7 @@ fieldset {
   border-color: var(--general-field-border);
 }
 
-.general-field legend h3 {
+.general-field legend {
   border-color: var(--general-field-border);
   /* background: #FEF7E0; */
 }
@@ -203,11 +196,6 @@ fieldset {
 }
 
 legend {
-  margin: 0;
-  padding: 0;
-}
-
-legend h3 {
   margin: 0.75em 0;
   padding: 0.75em 1em;
   background: var(--bg-main);
@@ -217,7 +205,6 @@ legend h3 {
   font-weight: bold;
   border: 1px solid var(--green-border);
   box-shadow: var(--main-shadow);
-  /* background: #EFFAEF; */
 }
 
 /* ================= TAB FIELD (BLUE) ================= */
@@ -227,7 +214,7 @@ legend h3 {
   background: var(--blue-bg);
 }
 
-.tab-field legend h3 {
+.tab-field legend {
   border-color: var(--blue-border);
   /* background: #EEEEFC; */
 }
@@ -247,7 +234,7 @@ legend h3 {
   background: var(--red-bg);
 }
 
-.red-bg legend h3 {
+.red-bg legend {
   border-color: var(--red-border);
   /* background: #FCF0ED; */
 }
@@ -263,9 +250,9 @@ legend h3 {
 /* ================= ADVANCED ================= */
 
 .input-wrapper:focus-within label {
-  font-weight: bold;
-  color: var(--green-bg);
-  letter-spacing: -0.5px;
+  /* font-weight: bold; */
+  /* letter-spacing: -0.5px; */
+  font-variation-settings: "GRAD" 200;
 }
 
 input[type='text']:focus-visible {
@@ -300,10 +287,11 @@ button {
   padding: 1em;
   background-color: rgb(83, 126, 253);
   border-radius: 12px;
-  font-family: 'Rubik';
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
   text-transform: uppercase;
   color: #fff;
-  font-weight: 600;
   border: 1px solid royalblue;
   box-shadow: var(--main-shadow);
 }

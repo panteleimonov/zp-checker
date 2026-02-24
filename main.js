@@ -1,9 +1,40 @@
 console.log('Hello World!')
 
-document.querySelectorAll('input').forEach((input) => {
+document.querySelectorAll('input[inputmode="numeric"]').forEach((input) => {
+	input.addEventListener('input', function () {
+		let val = this.value
+
+		// Залишаємо тільки цифри, крапку та кому
+		val = val.replace(/[^0-9.,]/g, '')
+
+		// Якщо є і крапка, і кома → залишаємо лише перший роздільник
+		const firstDot = val.indexOf('.')
+		const firstComma = val.indexOf(',')
+
+		if (firstDot !== -1 && firstComma !== -1) {
+			// Якщо перша була крапка → видаляємо всі коми
+			if (firstDot < firstComma) {
+				val = val.replace(/,/g, '')
+			} else {
+				// Якщо перша була кома → видаляємо всі крапки
+				val = val.replace(/\./g, '')
+			}
+		}
+
+		// Якщо кілька крапок → залишаємо тільки першу
+		val = val.replace(/(\..*)\./g, '$1')
+		// Якщо кілька ком → залишаємо тільки першу
+		val = val.replace(/(,.*),/g, '$1')
+
+		// Автоматично замінюємо кому на крапку
+		val = val.replace(/,/g, '.')
+
+		this.value = val
+	})
+
+	// Курсор завжди в кінці (твій код)
 	input.addEventListener('focus', function () {
 		const len = this.value.length
-
 		setTimeout(() => {
 			this.setSelectionRange(len, len)
 		}, 0)
@@ -97,72 +128,5 @@ savedInputs.forEach((input) => {
 
 // Завантаження при старті сторінки
 window.addEventListener('DOMContentLoaded', loadMainFieldNumbers)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // +380 67 298 0594
