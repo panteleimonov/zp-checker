@@ -81,16 +81,31 @@ input::placeholder {
 }
 
 .logo-header {
-  display: block;
-  margin: 0;
-  padding: 0.5em;
-  font-size: 1.25em;
-  line-height: 1.5;
+  display: flex;
+  align-items: center;
   color: #fff;
+  padding: 0.5em 0.75em 0.75em;
+  /* +0.25em to bottom - для корекції візуальної ваги лого */
   background: var(--header-bg);
   border: 1px solid #fff;
   border-radius: 12px;
   box-shadow: var(--main-shadow);
+}
+
+.logo-header h1 {
+  margin: 0;
+  margin-left: 0.5em;
+  padding-top: 0.25em;
+  /* padding-top - для вирівнювання по відношенню до візуальної ваги лого */
+  font-size: 1.25em;
+  line-height: 1;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.logo-header .logo {
+  height: 48px;
+  width: auto;
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.30));
 }
 
 /* ================= MAIN ================= */
@@ -112,10 +127,6 @@ input::placeholder {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5em;
-  /* font-family: 'Roboto Condensed', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal; */
 }
 
 label {
