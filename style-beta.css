@@ -4,8 +4,8 @@
   /* Base colors */
   --bg-main: #fff;
   --text-main: #111;
-  --header-bg: linear-gradient(135deg, royalblue, deepskyblue);
-  --caption-bg: linear-gradient(135deg, #eee, #e7e7e7);
+  --header-bg: linear-gradient(180deg, dodgerblue);
+  --caption-bg: #eee;
   --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
   --btn-reset: linear-gradient(180deg, tomato, indianred);
 
@@ -45,6 +45,7 @@
   --red-focus: rgba(255, 40, 0, 0.6);
 
   /* Effects */
+  --main-bradius: 1rem;
   --main-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -77,48 +78,58 @@ input::placeholder {
 
 /* ================= HEADER ================= */
 .header {
-  padding: 1em 1em 0.5em;
+  padding: 1em 0.75em 0;
+  background: linear-gradient(180deg, lightskyblue, #fff);
 }
 
 .logo-header {
   display: flex;
   align-items: center;
   color: #fff;
-  padding: 0.5em 0.75em 0.75em;
+  margin-bottom: 1.5em;
+  padding: 1em;
   /* +0.25em to bottom - для корекції візуальної ваги лого */
   background: var(--header-bg);
-  border: 1px solid #fff;
-  border-radius: 12px;
+  /*border: 1px solid royalblue;*/
+  border-radius: var(--main-bradius);
   box-shadow: var(--main-shadow);
+  text-shadow: 2px 2px 4px rgba(0, 0, 240, 0.2);
 }
 
 .logo-header h1 {
   margin: 0;
-  margin-left: 0.5em;
-  padding-top: 0.25em;
+  margin-left: 0.25em;
+  padding-top: 0em;
   /* padding-top - для вирівнювання по відношенню до візуальної ваги лого */
   font-size: 1.25em;
-  line-height: 1;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+  line-height: 1em;
 }
 
 .logo-header .logo {
-  height: 48px;
+  display: none;
+  position: relative;
+  top: -2px;
+  height: 2.5em;
   width: auto;
   filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.30));
+}
+.logo-header span {
+  font-size: 2em;
+  line-height: 1;
 }
 
 /* ================= MAIN ================= */
 .main {
-  padding: 0 1em;
+  padding: 0 0.75em;
 }
 
 .caption-text {
   padding: 1em;
   background: var(--caption-bg);
-  border: 1px solid #fff;
-  border-radius: 12px;
+  border: 0.25em solid #fff;
+  border-radius: var(--main-bradius);
   box-shadow: var(--main-shadow);
+  margin-bottom: 1.5em;
 }
 
 /* ================= FORM ================= */
@@ -173,22 +184,23 @@ input[type='checkbox'] {
 
 /* ================= FIELDSETS ================= */
 fieldset {
-  margin: 1em 0;
+  margin: 1.25em 0;
+  padding: 1em;
+  padding-bottom: 0.75em;
   border: 1px solid var(--green-border);
-  border-radius: 12px;
+  border-radius: var(--main-bradius);
   background: var(--green-bg);
   box-shadow: var(--main-shadow);
 }
 
 legend {
-  margin: 0.75em 0;
   padding: 0.75em 1em;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
   background: var(--bg-main);
   border: 1px solid var(--green-border);
-  border-radius: 12px;
+  border-radius: var(--main-bradius);
   box-shadow: var(--main-shadow);
 }
 
@@ -292,7 +304,7 @@ button {
   color: #fff;
   background-color: rgb(83, 126, 253);
   border: 1px solid royalblue;
-  border-radius: 12px;
+  border-radius: 100em;
   box-shadow: var(--main-shadow);
 }
 
