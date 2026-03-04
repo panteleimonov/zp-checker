@@ -86,13 +86,13 @@ input::placeholder {
   display: flex;
   align-items: center;
   color: #fff;
-  padding: 1em 0;
+  padding: 0.5em 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo-header h1 {
   margin: 0;
-  margin-left: 2px;
+  margin-left: 0.25em;
   font-size: 1.5em;
   line-height: 1em;
 }
@@ -106,7 +106,7 @@ input::placeholder {
   filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.30));
 }
 
-.logo-header span {
+.emoji-icon {
   font-size: 2em;
   line-height: 1;
 }
