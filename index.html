@@ -29,7 +29,7 @@
 		</header>
 
 		<section class="main">
-			<form action="#">
+			<form id="app-form" action="#">
 				<!-- ================= ГОЛОВНЕ ================= -->
 				<fieldset class="general-field">
 					<legend>📌 Головне</legend>
@@ -41,7 +41,7 @@
 							type="text"
 							inputmode="numeric"
 							id="oklad"
-							required
+							__required
 							placeholder="Сума"
 						/>
 					</div>
@@ -53,19 +53,19 @@
 							type="text"
 							inputmode="numeric"
 							id="shkid"
-							required
+							__required
 							placeholder="Процент"
 						/>
 					</div>
 
 					<div class="input-wrapper">
-						<label for="bonus">Доплата за б/п стаж %</label>
+						<label for="bezper_stag">Доплата за б/п стаж %</label>
 						<input
 							class="tls"
 							type="text"
 							inputmode="numeric"
-							id="bonus"
-							required
+							id="bezper_stag"
+							__required
 							placeholder="Процент"
 						/>
 					</div>
@@ -77,34 +77,34 @@
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="planed-days">Заплановано робочих днів</label>
+							<label for="planed_work_days">Заплановано робочих днів</label>
 							<input
 								type="text"
 								inputmode="numeric"
-								id="planed-days"
-								required
+								id="planed_work_days"
+								__required
 								placeholder="Всього"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="work-days">Відпрацьовано днів / змін</label>
+							<label for="real_work_days">Відпрацьовано днів / змін</label>
 							<input
 								type="text"
 								inputmode="numeric"
-								id="work-days"
-								required
+								id="real_work_days"
+								__required
 								placeholder="Всього"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="days-for-avans">До 15-го числа (включно)</label>
+							<label for="days_for_avans">До 15-го числа (включно)</label>
 							<input
 								type="text"
 								inputmode="numeric"
-								id="days-for-avans"
-								required
+								id="days_for_avans"
+								__required
 								placeholder="Всього"
 							/>
 						</div>
@@ -112,42 +112,42 @@
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="evn-d">Вечірні зміни</label>
+							<label for="evn_d">Вечірні зміни</label>
 							<div class="double-inputs">
 								<input
 									type="text"
 									inputmode="numeric"
-									id="evn-d"
-									required
+									id="evn_d"
+									__required
 									placeholder="Всього"
 								/>
 								<span>або</span>
 								<input
 									type="text"
 									inputmode="numeric"
-									id="evn-h"
-									required
+									id="evn_h"
+									__required
 									placeholder="Години"
 								/>
 							</div>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="night-d">Нічні зміни</label>
+							<label for="night_d">Нічні зміни</label>
 							<div class="double-inputs">
 								<input
 									type="text"
 									inputmode="numeric"
-									id="night-d"
-									required
+									id="night_d"
+									__required
 									placeholder="Всього"
 								/>
 								<span>або</span>
 								<input
 									type="text"
 									inputmode="numeric"
-									id="night-h"
-									required
+									id="night_h"
+									__required
 									placeholder="Години"
 								/>
 							</div>
@@ -166,49 +166,51 @@
 								type="text"
 								inputmode="numeric"
 								id="prem"
-								required
+								__required
 								placeholder="Процент"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="pop-okl">Оклад за попередній місяць</label>
+							<label for="pop_oklad">Оклад за попередній місяць</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="pop-okl"
-								required
+								id="pop_oklad"
+								__required
 								placeholder="Сума"
 							/>
 						</div>
 					</div>
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="vidp">Відпустка (кількість днів)</label>
+							<label for="vidp_days">Відпустка (кількість днів)</label>
 							<input
 								type="text"
 								inputmode="numeric"
-								id="vidp"
+								id="vidp_days"
 								placeholder="Всього"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="komp">Компенсація (кількість днів)</label>
+							<label for="komp_days">Компенсація (кількість днів)</label>
 							<input
 								type="text"
 								inputmode="numeric"
-								id="komp"
+								id="komp_days"
 								placeholder="Всього"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="mat-d">Матеріальна допомога</label>
+							<label for="mater_dop">Матеріальна допомога</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="mat-d"
+								id="mater_dop"
 								placeholder="Сума"
 							/>
 						</div>
@@ -216,31 +218,34 @@
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="gram-pod">Премія за грамоту / подяку</label>
+							<label for="gram_pod">Премія за грамоту / подяку</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="gram-pod"
+								id="gram_pod"
 								placeholder="Сума"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="pidg-pers">Доплата за підг. персоналу</label>
+							<label for="pidg_pers">Доплата за підг. персоналу</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="pidg-pers"
+								id="pidg_pers"
 								placeholder="Сума"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="others-nar">Інші нарахування (грн.)</label>
+							<label for="others_nar">Інші нарахування (грн.)</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="others-nar"
+								id="others_nar"
 								placeholder="Сума"
 							/>
 						</div>
@@ -253,33 +258,35 @@
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="prof">Членство у профспілці (1%)</label>
-							<input type="checkbox" id="prof" name="prof" checked />
+							<label for="member_prof">Членство у профспілці (1%)</label>
+							<input type="checkbox" id="member_prof" name="prof" checked />
 						</div>
 
 						<div class="input-wrapper">
-							<label for="vnes">Благодійні внески (1.5% / 3.5%)</label>
-							<input type="checkbox" id="vnes" name="vnes" checked />
+							<label for="blag_vnes">Благодійні внески (1.5% / 3.5%)</label>
+							<input type="checkbox" id="blag_vnes" name="vnes" checked />
 						</div>
 					</div>
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
-							<label for="medstrah">Медичне страхування (поліс)</label>
+							<label for="med_polis">Медичне страхування (поліс)</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="medstrah"
+								id="med_polis"
 								placeholder="Сума"
 							/>
 						</div>
 
 						<div class="input-wrapper">
-							<label for="others">Інші відрахування (грн.)</label>
+							<label for="others_vidr">Інші відрахування (грн.)</label>
 							<input
+								class="large"
 								type="text"
 								inputmode="numeric"
-								id="others"
+								id="others_vidr"
 								placeholder="Сума"
 							/>
 						</div>
@@ -291,8 +298,10 @@
 					<button class="start-calc" type="submit">Рахувати</button>
 				</div>
 			</form>
+			<div id="result"></div>
 		</section>
 
 		<script src="main.js" defer></script>
+		<script src="app.js" defer></script>
 	</body>
 </html>
