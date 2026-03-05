@@ -86,7 +86,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   color: #fff;
-  padding: 1em 0;
+  padding: 0.5em 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -180,6 +180,26 @@ fieldset {
   background: var(--green-bg);
   box-shadow: var(--main-shadow);
 }
+
+.result-container {
+  margin: 1.25em 0;
+padding: 1em;
+padding-bottom: 0.75em;
+border: 1px solid #888;
+border-radius: var(--main-bradius);
+background: #fff;
+box-shadow: var(--main-shadow);
+}
+.result-container p {
+  line-height: 1.5;
+  margin: 0;
+  padding: 0.25em 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px dotted #ccc;
+}
+
+.result-container p:nth-child(even) {}
 
 legend {
   padding: 0.75em 1em;
@@ -306,4 +326,50 @@ button:active {
 .reset-btn:hover,
 .reset-btn:active {
   background: rgb(250, 83, 53);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+}
+
+/* header */
+thead {
+  background: #f5f7fa;
+}
+
+th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* cells */
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* прибираємо нижній бордер в останньому рядку */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* зебра */
+tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* hover */
+tbody tr:hover {
+  background: #f3f6ff;
+  transition: background 0.15s ease;
 }

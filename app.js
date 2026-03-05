@@ -24,16 +24,20 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			const label = document.querySelector(`label[for="${id}"]`)
 			const labelText = label ? label.textContent : id
 
-			return `<tr><td>${labelText}</td><td>${displayValue}</td></tr>`
+			return `<p><span>${labelText}</span><b>${displayValue}</b></p>`
 		})
 		.join('')
+		
+	const resSalery = {}
+	
 
 	const tableHTML = `
-    <h2>Дані для розрахунку ЗП</h2>
-    <table border="1" cellpadding="6" cellspacing="0">
-      <tr><th>Поле</th><th>Значення</th></tr>
+    <div class="result-container">
+    <h2>⏳ Дані для розрахунку</h2>
       ${rows}
-    </table>
+     <h2>🎯 Результат</h2>
+     ${rows}
+    </div>
   `
 
 	document.querySelector('#result').innerHTML = tableHTML
