@@ -86,7 +86,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   color: #fff;
-  padding: 0.5em 0;
+  padding: 0.75em 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -154,6 +154,10 @@ input[type='text'] {
   border-radius: 6px;
 }
 
+input[type='checkbox'] {
+  margin: 0.5em 1em;
+}
+
 input.large {
   width: 5.5em;
 }
@@ -181,16 +185,22 @@ fieldset {
   box-shadow: var(--main-shadow);
 }
 
-.result-container {
+
+.info-content {
   margin: 1.25em 0;
-padding: 1em;
-padding-bottom: 0.75em;
-border: 1px solid #888;
-border-radius: var(--main-bradius);
-background: #fff;
-box-shadow: var(--main-shadow);
+  padding: 1em;
+  border: 1px solid #888;
+  border-radius: var(--main-bradius);
+  background: #fff;
+  box-shadow: var(--main-shadow);
 }
-.result-container p {
+
+.info-content h2 {
+  line-height: 1;
+  margin: 0.75em 0;
+}
+
+.info-content p {
   line-height: 1.5;
   margin: 0;
   padding: 0.25em 0;
@@ -199,7 +209,9 @@ box-shadow: var(--main-shadow);
   border-bottom: 2px dotted #ccc;
 }
 
-.result-container p:nth-child(even) {}
+.info-content p:last-child {
+  border: none;
+}
 
 legend {
   padding: 0.75em 1em;

@@ -11,12 +11,18 @@ function getFormValues(formId) {
 	return values
 }
 
+function saleryCalc(values) {
+	const saleryResult = {}
+	return saleryResult
+}
+
 document.querySelector('#app-form').addEventListener('submit', (e) => {
 	e.preventDefault()
-	const inpValues = getFormValues('#app-form')
+	const formValues = getFormValues('#app-form')
+	const saleryResult = saleryCalc(formValues)
 
-	// Автоматичне створення рядків таблиці
-	const rows = Object.entries(inpValues)
+	// Автоматичне створення звіту про прочитані з інпутів дані
+	const reportContent = Object.entries(formValues)
 		.map(([id, value]) => {
 			// для чекбоксів показуємо "Так/Ні"
 			const displayValue =
@@ -24,21 +30,20 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			const label = document.querySelector(`label[for="${id}"]`)
 			const labelText = label ? label.textContent : id
 
-			return `<p><span>${labelText}</span><b>${displayValue}</b></p>`
+			return `<p><span>${labelText}</span><mark> ${id} </mark><b>${displayValue}</b></p>`
 		})
 		.join('')
-		
-	const resSalery = {}
-	
 
 	const tableHTML = `
-    <div class="result-container">
-    <h2>⏳ Дані для розрахунку</h2>
-      ${rows}
+    <div class="info-content">
+    <h2>⏳ Для розрахунку</h2>
+      ${reportContent}
+    </div>
+		<div class="info-content">
      <h2>🎯 Результат</h2>
-     ${rows}
+     ${reportContent}
     </div>
   `
 
-	document.querySelector('#result').innerHTML = tableHTML
+	document.querySelector('#report').innerHTML = tableHTML
 })
