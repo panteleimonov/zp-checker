@@ -46,7 +46,7 @@
 
   /* Effects */
   --main-bradius: 1rem;
-  --inner-bradius: 0.75rem;
+  --legend-bradius: 1rem;
   --main-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -227,7 +227,7 @@ legend {
   background: var(--bg-main);
   border: 1px solid var(--green-border);
   border-radius: var(--main-bradius);
-  border-radius: var(--inner-bradius);
+  border-radius: var(--legend-bradius);
   box-shadow: var(--main-shadow);
 }
 
