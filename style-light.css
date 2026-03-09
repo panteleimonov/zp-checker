@@ -46,6 +46,7 @@
 
   /* Effects */
   --main-bradius: 1rem;
+  --inner-bradius: 0.75rem;
   --main-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -63,7 +64,7 @@
 body {
   margin: 0;
   padding: 0;
-  user-select: none;
+  /*user-select: none;*/
   background: var(--bg-main);
   color: var(--text-main);
 }
@@ -176,6 +177,7 @@ input[type='checkbox'] {
 
 /* ================= FIELDSETS ================= */
 fieldset {
+  /*position: relative;*/
   margin: 1.25em 0;
   padding: 1em;
   padding-bottom: 0.75em;
@@ -214,13 +216,18 @@ fieldset {
 }
 
 legend {
-  padding: 0.75em 1em;
+  /*position: absolute;
+  top: 1rem;
+  padding: 11px 1em 10px;*/
+  padding: 12px 1em;
   font-size: 14px;
+  line-height: 1;
   font-weight: bold;
   text-transform: uppercase;
   background: var(--bg-main);
   border: 1px solid var(--green-border);
   border-radius: var(--main-bradius);
+  border-radius: var(--inner-bradius);
   box-shadow: var(--main-shadow);
 }
 
