@@ -34,26 +34,44 @@
 				<fieldset class="general-field">
 					<legend>📌 Головне</legend>
 
-					<div class="input-wrapper">
-						<label for="oklad">Оклад (поточний) грн.</label>
-						<input class="large tls" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" />
+					<div class="input-container">
+						<div class="input-wrapper">
+							<label for="oklad">Оклад (поточний) грн.</label>
+							<input class="large tls" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" />
+						</div>
+						<div class="inp-details">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+							laboriosam at veniam eum excepturi quae odio aspernatur placeat. Dolor dicta delectus recusandae sint
+							officiis!
+						</div>
 					</div>
-
-					<div class="input-wrapper">
-						<label for="shkid">Надбавка за шкідливість %</label>
-						<input class="tls" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" />
+					<div class="input-container">
+						<div class="input-wrapper">
+							<label for="shkid">Надбавка за шкідливість %</label>
+							<input class="tls" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" />
+						</div>
+						<div class="inp-details">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+							laboriosam at veniam eum excepturi quae odio aspernatur placeat. Dolor dicta delectus recusandae sint
+							officiis!
+						</div>
 					</div>
-
-					<div class="input-wrapper">
-						<label for="bezper_stag">Доплата за б/п стаж %</label>
-						<input
-							class="tls"
-							type="text"
-							inputmode="numeric"
-							id="bezper_stag"
-							name="bezper_stag"
-							placeholder="Процент"
-						/>
+					<div class="input-container">
+						<div class="input-wrapper">
+							<label for="bezper_stag">Доплата за б/п стаж %</label>
+							<input
+								class="tls"
+								type="text"
+								inputmode="numeric"
+								id="bezper_stag"
+								name="bezper_stag"
+								placeholder="Процент"
+							/>
+						</div>
+						<div class="inp-details">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+							laboriosam at veniam eum excepturi quae odio.
+						</div>
 					</div>
 				</fieldset>
 
@@ -62,44 +80,83 @@
 					<legend>🗓️ Табелювання</legend>
 
 					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="planed_work_days">Заплановано робочих днів</label>
-							<input
-								type="text"
-								inputmode="numeric"
-								id="planed_work_days"
-								name="planed_work_days"
-								placeholder="Всього"
-							/>
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="planed_work_days">Заплановано робочих днів</label>
+								<input
+									type="text"
+									inputmode="numeric"
+									id="planed_work_days"
+									name="planed_work_days"
+									placeholder="Всього"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="real_work_days">Відпрацьовано днів / змін</label>
-							<input type="text" inputmode="numeric" id="real_work_days" name="real_work_days" placeholder="Всього" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="real_work_days">Відпрацьовано днів / змін</label>
+								<input type="text" inputmode="numeric" id="real_work_days" name="real_work_days" placeholder="Всього" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="days_for_avans">До 15-го числа (включно)</label>
-							<input type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="days_for_avans">До 15-го числа (включно)</label>
+								<input type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 					</div>
 
 					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="evn_d">Вечірні зміни</label>
-							<div class="double-inputs">
-								<input type="text" inputmode="numeric" id="evn_d" name="evn_d" placeholder="Всього" />
-								<span>або</span>
-								<input class="large" type="text" inputmode="numeric" id="evn_h" name="evn_h" placeholder="Години" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="evn_d">Вечірні зміни</label>
+								<div class="double-inputs">
+									<input type="text" inputmode="numeric" id="evn_d" name="evn_d" placeholder="Зміни" />
+									<span class="evn_d-after">або</span>
+									<input class="large" type="text" inputmode="numeric" id="evn_h" name="evn_h" placeholder="Години" />
+									<span class="evn_h-after"></span>
+								</div>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
 							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="night_d">Нічні зміни</label>
-							<div class="double-inputs">
-								<input type="text" inputmode="numeric" id="night_d" name="night_d" placeholder="Всього" />
-								<span>або</span>
-								<input class="large" type="text" inputmode="numeric" id="night_h" name="night_h" placeholder="Години" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="night_d">Нічні зміни</label>
+								<div class="double-inputs">
+									<input type="text" inputmode="numeric" id="night_d" name="night_d" placeholder="Зміни" />
+									<span class="night_d-after">або</span>
+									<input
+										class="large"
+										type="text"
+										inputmode="numeric"
+										id="night_h"
+										name="night_h"
+										placeholder="Години"
+									/>
+									<span class="night_h-after"></span>
+								</div>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
 							</div>
 						</div>
 					</div>
@@ -109,54 +166,124 @@
 				<fieldset>
 					<legend>✅ Нарахування</legend>
 					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="prem">Премія (за рез. роботи) %</label>
-							<input class="tls" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="prem">Премія (за рез. роботи) %</label>
+								<input class="tls" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="pop_oklad">Оклад за попередній місяць</label>
-							<input class="large" type="text" inputmode="numeric" id="pop_oklad" name="pop_oklad" placeholder="Сума" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="pop_oklad">Оклад за попередній місяць</label>
+								<input
+									class="large"
+									type="text"
+									inputmode="numeric"
+									id="pop_oklad"
+									name="pop_oklad"
+									placeholder="Сума"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 					</div>
+
 					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="vidp_days">Відпустка (кількість днів)</label>
-							<input type="text" inputmode="numeric" id="vidp_days" name="vidp_days" placeholder="Всього" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="vidp_days">Відпустка (кількість днів)</label>
+								<input type="text" inputmode="numeric" id="vidp_days" name="vidp_days" placeholder="Всього" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="komp_days">Компенсація (кількість днів)</label>
-							<input type="text" inputmode="numeric" id="komp_days" name="komp_days" placeholder="Всього" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="komp_days">Компенсація (кількість днів)</label>
+								<input type="text" inputmode="numeric" id="komp_days" name="komp_days" placeholder="Всього" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="mater_dop">Матеріальна допомога</label>
-							<input class="large" type="text" inputmode="numeric" id="mater_dop" name="mater_dop" placeholder="Сума" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="mater_dop">Матеріальна допомога</label>
+								<input
+									class="large"
+									type="text"
+									inputmode="numeric"
+									id="mater_dop"
+									name="mater_dop"
+									placeholder="Сума"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 					</div>
 
 					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="gram_pod">Премія за грамоту / подяку</label>
-							<input class="large" type="text" inputmode="numeric" id="gram_pod" name="gram_pod" placeholder="Сума" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="gram_pod">Премія за грамоту / подяку</label>
+								<input class="large" type="text" inputmode="numeric" id="gram_pod" name="gram_pod" placeholder="Сума" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="pidg_pers">Доплата за підг. персоналу</label>
-							<input class="large" type="text" inputmode="numeric" id="pidg_pers" name="pidg_pers" placeholder="Сума" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="pidg_pers">Доплата за підг. персоналу</label>
+								<input
+									class="large"
+									type="text"
+									inputmode="numeric"
+									id="pidg_pers"
+									name="pidg_pers"
+									placeholder="Сума"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="others_nar">Інші нарахування (грн.)</label>
-							<input
-								class="large"
-								type="text"
-								inputmode="numeric"
-								id="others_nar"
-								name="others_nar"
-								placeholder="Сума"
-							/>
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="others_nar">Інші нарахування (грн.)</label>
+								<input
+									class="large"
+									type="text"
+									inputmode="numeric"
+									id="others_nar"
+									name="others_nar"
+									placeholder="Сума"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 					</div>
 				</fieldset>
@@ -164,6 +291,18 @@
 				<!-- ================= ВІДРАХУВАННЯ ================= -->
 				<fieldset class="red-bg">
 					<legend>🔥 Відрахування</legend>
+					<div class="inputs-group">
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="avans">Аванс (якщо вже отримано)</label>
+								<input class="large" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
+						</div>
+					</div>
 
 					<div class="inputs-group">
 						<div class="input-wrapper">
@@ -178,21 +317,40 @@
 					</div>
 
 					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="med_polis">Медичне страхування (поліс)</label>
-							<input class="large" type="text" inputmode="numeric" id="med_polis" name="med_polis" placeholder="Сума" />
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="med_polis">Медичне страхування (поліс)</label>
+								<input
+									class="large"
+									type="text"
+									inputmode="numeric"
+									id="med_polis"
+									name="med_polis"
+									placeholder="Сума"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 
-						<div class="input-wrapper">
-							<label for="others_vidr">Інші відрахування (грн.)</label>
-							<input
-								class="large"
-								type="text"
-								inputmode="numeric"
-								id="others_vidr"
-								name="others_vidr"
-								placeholder="Сума"
-							/>
+						<div class="input-container">
+							<div class="input-wrapper">
+								<label for="others_vidr">Інші відрахування (грн.)</label>
+								<input
+									class="large"
+									type="text"
+									inputmode="numeric"
+									id="others_vidr"
+									name="others_vidr"
+									placeholder="Сума"
+								/>
+							</div>
+							<div class="inp-details">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
+								laboriosam at veniam eum excepturi quae odio.
+							</div>
 						</div>
 					</div>
 				</fieldset>
@@ -204,6 +362,7 @@
 			</form>
 			<div id="salary-report"></div>
 			<div id="salary-results"></div>
+			<div id="salary-resume"></div>
 		</section>
 
 		<script src="main.js" defer></script>

@@ -13,40 +13,49 @@
   --general-field-bg: linear-gradient(135deg,
       rgba(255, 222, 92, 0.15),
       rgba(255, 191, 0, 0.3));
+  --general-details-bg: rgba(255, 191, 0, 0.2);
   --general-field-border: rgba(255, 191, 0, 0.5);
+  --general-field-border: #ccc;
+  --general-field-inner: rgba(255, 191, 0, 0.5);
   --general-field-input: rgba(255, 191, 0, 0.7);
   --general-field-focus: rgba(255, 191, 0, 0.8);
 
   /* Green theme */
   --green-border: rgba(20, 200, 20, 0.3);
-  --green-inner: rgba(20, 200, 20, 0.2);
+  --green-border: #ccc;
+  --green-inner: rgba(20, 200, 20, 0.25);
   --green-bg: linear-gradient(135deg,
       rgba(20, 200, 20, 0.05),
       rgba(20, 200, 20, 0.15));
+  --green-details-bg: rgba(20, 200, 20, 0.15);
   --green-input: rgba(20, 200, 20, 0.4);
   --green-focus: rgba(20, 200, 20, 0.6);
 
   /* Blue theme */
   --blue-border: rgba(20, 20, 255, 0.3);
+  --blue-border: #ccc;
   --blue-inner: rgba(20, 20, 255, 0.2);
   --blue-bg: linear-gradient(135deg,
       rgba(20, 20, 255, 0.05),
       rgba(20, 20, 255, 0.15));
+  --blue-details-bg: rgba(20, 20, 255, 0.15);
   --blue-input: rgba(20, 20, 255, 0.4);
   --blue-focus: rgba(20, 20, 255, 0.6);
 
   /* Red theme */
   --red-border: rgba(255, 40, 0, 0.3);
+  --red-border: #ccc;
   --red-inner: rgba(255, 40, 0, 0.2);
   --red-bg: linear-gradient(135deg,
       rgba(255, 40, 0, 0.05),
       rgba(255, 40, 0, 0.15));
+  --red-details-bg: rgba(255, 40, 0, 0.15);
   --red-input: rgba(255, 40, 0, 0.4);
   --red-focus: rgba(255, 40, 0, 0.6);
 
   /* Effects */
-  --main-bradius: 1rem;
-  --legend-bradius: 1rem;
+  --main-bradius: 1em;
+  --legend-bradius: 1em;
   --main-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -132,6 +141,7 @@ input::placeholder {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5em;
+  padding: 0 1rem;
 }
 
 label {
@@ -153,6 +163,11 @@ input[type='text'] {
   font-family: 'Rubik', sans-serif;
   border: 1px solid var(--green-input);
   border-radius: 6px;
+  transition: width 0ms;
+}
+
+input[type='text'].short {
+  width: 4.25em;
 }
 
 input[type='checkbox'] {
@@ -167,19 +182,20 @@ input[type='checkbox'] {
   margin-left: 1em;
 }
 
-.double-inputs input[type='text']:last-child {
-  margin-left: 0;
+.double-inputs input[type='text']:last-of-type {
+  margin-left: 0.25em;
 }
 
-.double-inputs span {
-  margin: 0.25em;
+.double-inputs span:first-of-type {
+  margin: 0;
+  margin-left: 0.25em;
 }
 
 /* ================= FIELDSETS ================= */
 fieldset {
   /*position: relative;*/
   margin: 1.25em 0;
-  padding: 1em;
+  padding: 1em 0;
   padding-bottom: 0.75em;
   border: 1px solid var(--green-border);
   border-radius: var(--main-bradius);
@@ -191,7 +207,7 @@ fieldset {
 .info-content {
   margin: 1.25em 0;
   padding: 1em;
-  border: 1px solid #888;
+  border: 1px solid #ccc;
   border-radius: var(--main-bradius);
   background: #fff;
   box-shadow: var(--main-shadow);
@@ -215,10 +231,15 @@ fieldset {
   border: none;
 }
 
+#salary-resume .info-content {
+  background: var(--general-field-bg);
+}
+
 legend {
   /*position: absolute;
   top: 1rem;
   padding: 11px 1em 10px;*/
+  margin-left: 1rem;
   padding: 12px 1em;
   font-size: 14px;
   line-height: 1;
@@ -244,6 +265,16 @@ legend {
   border-color: var(--general-field-input);
 }
 
+.general-field .inp-details {
+  /* border-top: 1px solid var(--general-field-inner); */
+  /* border-bottom: 1px solid var(--general-field-inner); */
+  /* background: var(--general-details-bg); */
+}
+
+.general-field .input-container:focus-within {
+  background: var(--general-details-bg);
+}
+
 .inputs-group:not(:last-child) {
   margin-bottom: 0.75em;
   padding-bottom: 0.25em;
@@ -264,6 +295,16 @@ legend {
   border-color: var(--blue-input);
 }
 
+.tab-field .inp-details {
+  /* border-top: 1px solid var(--blue-inner); */
+  /* border-bottom: 1px solid var(--blue-inner); */
+  /* background: var(--blue-details-bg); */
+}
+
+.tab-field .input-container:focus-within {
+  background: var(--blue-details-bg);
+}
+
 .tab-field .inputs-group {
   border-color: var(--blue-inner);
 }
@@ -280,6 +321,16 @@ legend {
 
 .red-bg input[type='text'] {
   border-color: var(--red-input);
+}
+
+.red-bg .inp-details {
+  /* border-top: 1px solid var(--red-inner); */
+  /* border-bottom: 1px solid var(--red-inner); */
+  /* background: var(--red-details-bg); */
+}
+
+.red-bg .input-container:focus-within {
+  background: var(--red-details-bg);
 }
 
 .red-bg .inputs-group {
@@ -347,48 +398,35 @@ button:active {
   background: rgb(250, 83, 53);
 }
 
-table {
+.input-container:focus-within {
+  padding-top: 0.75em;
+  background: var(--green-details-bg);
+}
+
+.inp-details {
+  /* border-top: 1px solid var(--general-field-border); */
+  /* border-bottom: 1px solid var(--general-field-border); */
+  margin: 0;
+  padding: 0 1em;
+  padding-block: 0;
+  /* border-top: 1px solid var(--green-border); */
+  /* border-bottom: 1px solid var(--green-border); */
+  /* background: var(--green-details-bg); */
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  max-height: 0;
   overflow: hidden;
-  font-family: system-ui, sans-serif;
-  font-size: 14px;
+  opacity: 0;
+  transition: all 0.5s;
 }
 
-/* header */
-thead {
-  background: #f5f7fa;
+.inp-details.active {
+  margin-block: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.75em;
+  max-height: 100px;
+  opacity: 1;
 }
 
-th {
-  text-align: left;
-  padding: 12px 16px;
-  font-weight: 600;
-  color: #333;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-/* cells */
-td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* прибираємо нижній бордер в останньому рядку */
-tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* зебра */
-tbody tr:nth-child(even) {
-  background: #fafafa;
-}
-
-/* hover */
-tbody tr:hover {
-  background: #f3f6ff;
-  transition: background 0.15s ease;
+mark {
+  display: none;
 }

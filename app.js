@@ -64,7 +64,7 @@ function salaryCalc(userData) {
 	const deductions = {
 		// Відрахування
 		pdfo: { code: 301, codeName: 'Податок - ПДФО', amount: 0 },
-		fullAvans: { code: 330, codeName: 'Аванс', amount: 0 },
+		avans: { code: 330, codeName: 'Аванс', amount: 0 },
 		profsp: { code: 339, codeName: 'Профспілка', amount: 0 },
 		vZbir: { code: 378, codeName: 'Військовий збір', amount: 0 },
 		vnesGO: { code: 379, codeName: 'Внески ГО', amount: 0 },
@@ -118,7 +118,9 @@ function salaryCalc(userData) {
 	// Розрахунок всіх відрахувань
 	// ===========================
 	// Код - 330
-	deductions.fullAvans.amount = _floor2((userData.days_for_avans * userData.oklad) / userData.planed_work_days)
+	deductions.avans.amount = userData.avans
+		? +userData.avans
+		: _floor2((userData.days_for_avans * userData.oklad) / userData.planed_work_days)
 	// Код - 301
 	deductions.pdfo.amount = _floor2(0.18 * accruals.accrualsSum.amount)
 	// Код - 339
@@ -143,6 +145,8 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 	e.preventDefault()
 	const formValues = getFormValues('#app-form')
 	const salaryRes = salaryCalc(formValues)
+	const fullZP = salaryRes.accrualsSum.amount - salaryRes.deductionsSum.amount
+	const avans = salaryRes.avans.amount
 
 	// Автоматичне створення звіту про прочитані з інпутів дані користувача
 	const salaryReportHTML = Object.entries(formValues)
@@ -178,4 +182,124 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
      ${salaryResultsHTML}
     </div>
   `
+	document.querySelector('#salary-resume').innerHTML = `
+    <div class="info-content">
+     <h2>🎯 Підсумок</h2>
+		 <p><span>Аванс</span><mark>${avans}</mark><b>${_formatMoney(avans)}</b></p>
+		 <p><span>Зарплата</span><mark>${fullZP}</mark><b>${_formatMoney(fullZP)}</b></p>
+		 <p><span><b>Разом</b></span><mark>${fullZP + avans}</mark><b>${_formatMoney(fullZP + avans)}</b></p>
+    </div>
+  `
+})
+
+const inputs = document.querySelectorAll('input[type="text"]')
+
+inputs.forEach((input) => {
+	input.addEventListener('focus', () => {
+		//window.scrollTo(input, 200)
+		const details = input.closest('.input-wrapper').nextElementSibling
+		if (details && details.classList.contains('inp-details')) {
+			setTimeout(() => details.classList.add('active'), 0)
+		}
+	})
+
+	input.addEventListener('blur', () => {
+		const details = input.closest('.input-wrapper').nextElementSibling
+		if (details && details.classList.contains('inp-details')) {
+			setTimeout(() => details.classList.remove('active'), 0)
+		}
+	})
+})
+
+// Автоматичний розрахунок вечірніх / нічних годин
+// ============================================================================
+
+const evnDays_input = document.querySelector('#evn_d')
+const evnHours_input = document.querySelector('#evn_h')
+const nightDays_input = document.querySelector('#night_d')
+const nightHours_input = document.querySelector('#night_h')
+const evn_h_after_span = document.querySelector('.evn_h-after')
+const evn_d_after_span = document.querySelector('.evn_d-after')
+const night_h_after_span = document.querySelector('.night_h-after')
+const night_d_after_span = document.querySelector('.night_d-after')
+
+function evnDaysToHourse_UI_effect() {
+	evnDays_input.classList.add('short')
+	evnHours_input.classList.add('short')
+	evn_d_after_span.innerHTML = '='
+	evn_h_after_span.innerHTML = '&nbsp;годин'
+}
+
+function evnDaysToHourse_UI_reset() {
+	evnDays_input.classList.remove('short')
+	evnHours_input.classList.remove('short')
+	evn_h_after_span.innerHTML = ''
+	evn_d_after_span.innerHTML = 'або'
+}
+
+function nightDaysToHourse_UI_effect() {
+	nightDays_input.classList.add('short')
+	nightHours_input.classList.add('short')
+	night_d_after_span.innerHTML = '='
+	night_h_after_span.innerHTML = '&nbsp;годин'
+}
+
+function nightDaysToHourse_UI_reset() {
+	nightDays_input.classList.remove('short')
+	nightHours_input.classList.remove('short')
+	night_h_after_span.innerHTML = ''
+	night_d_after_span.innerHTML = 'або'
+}
+
+evnDays_input.addEventListener('blur', (e) => {
+	if (e.target.value > 20 || e.target.value === '') {
+		e.target.value = evnHours_input.value = ''
+		evnDaysToHourse_UI_reset()
+	} else {
+		evnHours_input.value = 8.25 * e.target.value
+		evnDaysToHourse_UI_effect()
+	}
+})
+
+evnHours_input.addEventListener('blur', (e) => {
+	if (e.target.value > 200 || e.target.value === '') {
+		e.target.value = evnDays_input.value = ''
+		evnDaysToHourse_UI_reset()
+	} else {
+		evnDays_input.value = Math.round(e.target.value / 8.25)
+		evnDaysToHourse_UI_effect()
+	}
+})
+
+nightDays_input.addEventListener('blur', (e) => {
+	if (e.target.value > 20 || e.target.value === '') {
+		e.target.value = nightHours_input.value = ''
+		nightDaysToHourse_UI_reset()
+	} else {
+		nightHours_input.value = 8.25 * e.target.value
+		nightDaysToHourse_UI_effect()
+	}
+})
+
+nightHours_input.addEventListener('blur', (e) => {
+	if (e.target.value > 200 || e.target.value === '') {
+		e.target.value = nightDays_input.value = ''
+		nightDaysToHourse_UI_reset()
+	} else {
+		nightDays_input.value = Math.round(e.target.value / 8.25)
+		nightDaysToHourse_UI_effect()
+	}
+})
+
+// ****************************************************************************
+
+// Автозаповнення: оклад --> оклад за поп. мисяць (для зручност користувача)
+// ============================================================================
+
+setTimeout(() => {
+	document.querySelector('#pop_oklad').value = document.querySelector('#oklad').value
+}, 0)
+
+document.querySelector('#oklad').addEventListener('change', () => {
+	document.querySelector('#pop_oklad').value = document.querySelector('#oklad').value
 })
