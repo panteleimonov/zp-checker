@@ -16,353 +16,590 @@
 	</head>
 
 	<body>
-		<header class="header">
-			<div class="logo-header">
-				<img src="./assets/logo_money-96.png" alt="Logo" class="logo" />
-				<span class="emoji-icon">💸</span>
-				<h1>ZP Checker</h1>
-			</div>
-			<p class="caption-text">
-				Наближений розрахунок заробітної плати. Введіть свої дані щоб побачити зарплату за місяць. Окремі поля форм
-				заповнюються лише в разі потреби.
-			</p>
-		</header>
-
 		<section class="main">
-			<form id="app-form" action="#">
-				<!-- ================= ГОЛОВНЕ ================= -->
-				<fieldset class="general-field">
-					<legend>📌 Головне</legend>
+			<div class="header-container">
+				<header class="header">
+					<div class="logo-header">
+						<img src="./assets/logo_money-96.png" alt="Logo" class="logo" />
+						<span class="emoji-icon">💸</span>
+						<h1>ZP Checker</h1>
+					</div>
+					<p class="caption-text">
+						Наближений розрахунок заробітної плати. Введіть свої дані щоб побачити зарплату за місяць. Окремі поля
+						<span class="start-visible">форм</span> заповнюються лише в разі потреби.
+					</p>
+				</header>
+			</div>
 
-					<div class="input-container">
-						<div class="input-wrapper">
-							<label for="oklad">Оклад (поточний) грн.</label>
-							<input class="large tls" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" />
+			<div class="form">
+				<form id="app-form" action="#">
+					<div class="flex-container">
+						<div class="flex-block">
+							<!-- ================= ГОЛОВНЕ ================= -->
+							<fieldset class="general-field">
+								<legend>📌 Головне</legend>
+
+								<div class="input-container">
+									<div class="input-wrapper">
+										<label for="oklad">Оклад (поточний) грн.</label>
+										<input
+											class="large tls"
+											type="text"
+											inputmode="numeric"
+											id="oklad"
+											name="oklad"
+											placeholder="Сума"
+										/>
+									</div>
+									<div class="inp-details">
+										<p class="details-text">
+											Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+											за попередній місяць.
+										</p>
+										<hr />
+										<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+									</div>
+								</div>
+								<div class="input-container">
+									<div class="input-wrapper">
+										<label for="shkid">Надбавка за шкідливість %</label>
+										<input class="tls" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" />
+									</div>
+									<div class="inp-details">
+										<p class="details-text">
+											Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+											за попередній місяць.
+										</p>
+										<hr />
+										<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+									</div>
+								</div>
+								<div class="input-container">
+									<div class="input-wrapper">
+										<label for="bezper_stag">Доплата за б/п стаж %</label>
+										<input
+											class="tls"
+											type="text"
+											inputmode="numeric"
+											id="bezper_stag"
+											name="bezper_stag"
+											placeholder="Процент"
+										/>
+									</div>
+									<div class="inp-details">
+										<p class="details-text">
+											Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+											за попередній місяць.
+										</p>
+										<hr />
+										<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+									</div>
+								</div>
+							</fieldset>
+
+							<!-- ================= ТАБЕЛЮВАННЯ ================= -->
+							<fieldset class="timesheet-field">
+								<legend>🗓️ Табелювання</legend>
+
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="planed_work_days">Заплановано робочих днів</label>
+											<input
+												type="text"
+												inputmode="numeric"
+												id="planed_work_days"
+												name="planed_work_days"
+												placeholder="Всього"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="real_work_days">Відпрацьовано днів / змін</label>
+											<input
+												type="text"
+												inputmode="numeric"
+												id="real_work_days"
+												name="real_work_days"
+												placeholder="Всього"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="days_for_avans">До 15-го числа (включно)</label>
+											<input
+												type="text"
+												inputmode="numeric"
+												id="days_for_avans"
+												name="days_for_avans"
+												placeholder="Всього"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="evn_d">Вечірні зміни</label>
+											<div class="double-inputs">
+												<input type="text" inputmode="numeric" id="evn_d" name="evn_d" placeholder="Всього" />
+												<span class="evn_d-after">або</span>
+												<input
+													class="large"
+													type="text"
+													inputmode="numeric"
+													id="evn_h"
+													name="evn_h"
+													placeholder="Години"
+												/>
+												<span class="evn_h-after"></span>
+											</div>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="night_d">Нічні зміни</label>
+											<div class="double-inputs">
+												<input type="text" inputmode="numeric" id="night_d" name="night_d" placeholder="Всього" />
+												<span class="night_d-after">або</span>
+												<input
+													class="large"
+													type="text"
+													inputmode="numeric"
+													id="night_h"
+													name="night_h"
+													placeholder="Години"
+												/>
+												<span class="night_h-after"></span>
+											</div>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
 						</div>
-						<div class="inp-details">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-							laboriosam at veniam eum excepturi quae odio aspernatur placeat. Dolor dicta delectus recusandae sint
-							officiis!
+
+						<div class="flex-block">
+							<!-- ================= НАРАХУВАННЯ ================= -->
+							<fieldset class="accruals-field">
+								<legend>✅ Нарахування</legend>
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="prem">Премія (за рез. роботи) %</label>
+											<input class="tls" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Розмір премії за результатами роботи (у вiдсотках). Важливо: премiю завжди нараховують за
+												попереднiй мiсяць (наприклад, разом із зарплатою за березень виплачується премiя за лютий).
+											</p>
+											<hr />
+											<span class="code-details">Шифр 157 в розрахунковому листку.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="pop_oklad">Оклад за попередній місяць</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="pop_oklad"
+												name="pop_oklad"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="vidp_days">Відпустка (кількість днів)</label>
+											<input type="text" inputmode="numeric" id="vidp_days" name="vidp_days" placeholder="Всього" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="komp_days">Компенсація (кількість днів)</label>
+											<input type="text" inputmode="numeric" id="komp_days" name="komp_days" placeholder="Всього" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="mater_dop">Матеріальна допомога</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="mater_dop"
+												name="mater_dop"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="prem_13">Премія рез. за рiк (13-та)</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="prem_13"
+												name="prem_13"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="prem_others">Премія iншi досягнення</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="prem_others"
+												name="prem_others"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="gram_pod">Премія за грамоту / подяку</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="gram_pod"
+												name="gram_pod"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="pidg_pers">Доплата за підг. кадрiв</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="pidg_pers"
+												name="pidg_pers"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="others_nar">Інші нарахування (грн.)</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="others_nar"
+												name="others_nar"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="flex-block">
+							<!-- ================= ВІДРАХУВАННЯ ================= -->
+							<fieldset class="deductions-field">
+								<legend>🔥 Відрахування</legend>
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="avans">Аванс (якщо вже отримано)</label>
+											<input class="large" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="inputs-group">
+									<div class="input-wrapper">
+										<label for="pdfo">Податок - ПДФО (18%)</label>
+										<input type="checkbox" id="pdfo" name="pdfo" checked disabled />
+									</div>
+
+									<div class="input-wrapper">
+										<label for="zsu">Військовий збір (5%)</label>
+										<input type="checkbox" id="zsu" name="zsu" checked disabled />
+									</div>
+
+									<div class="input-wrapper">
+										<label for="member_prof">Членство у профспілці (1%)</label>
+										<input type="checkbox" id="member_prof" name="member_prof" checked />
+									</div>
+
+									<!-- <div class="input-wrapper">
+									<label for="blag_vnes">Благодійні внески (1.5% / 3.5%)</label>
+									<input type="checkbox" id="blag_vnes" name="blag_vnes" checked />
+								</div> -->
+								</div>
+								<div class="inputs-group">
+									<div class="input-wrapper">
+										<label for="blag_vnes_ZSU">Благодійні внески (ЗСУ) %</label>
+										<input
+											class="large"
+											type="text"
+											inputmode="numeric"
+											id="blag_vnes_ZSU"
+											name="blag_vnes_ZSU"
+											placeholder="Процент"
+											value="3.5"
+										/>
+									</div>
+
+									<div class="input-wrapper">
+										<label for="blag_vnes_GO">Благодійні внески (ГО) %</label>
+										<input
+											class="large"
+											type="text"
+											inputmode="numeric"
+											id="blag_vnes_GO"
+											name="blag_vnes_GO"
+											placeholder="Процент"
+											value="1.5"
+										/>
+									</div>
+									<div class="input-wrapper">
+										<label for="blag_vnes_13">Благодійні внески (13-та) %</label>
+										<input
+											class="large"
+											type="text"
+											inputmode="numeric"
+											id="blag_vnes_13"
+											name="blag_vnes_13"
+											placeholder="Процент"
+										/>
+									</div>
+								</div>
+
+								<div class="inputs-group">
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="med_polis">Медичне страхування (поліс)</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="med_polis"
+												name="med_polis"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="others_vidr">Інші відрахування (грн.)</label>
+											<input
+												class="large"
+												type="text"
+												inputmode="numeric"
+												id="others_vidr"
+												name="others_vidr"
+												placeholder="Сума"
+											/>
+										</div>
+										<div class="inp-details">
+											<p class="details-text">
+												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
+												за попередній місяць.
+											</p>
+											<hr />
+											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
 						</div>
 					</div>
-					<div class="input-container">
-						<div class="input-wrapper">
-							<label for="shkid">Надбавка за шкідливість %</label>
-							<input class="tls" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" />
-						</div>
-						<div class="inp-details">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-							laboriosam at veniam eum excepturi quae odio aspernatur placeat. Dolor dicta delectus recusandae sint
-							officiis!
-						</div>
-					</div>
-					<div class="input-container">
-						<div class="input-wrapper">
-							<label for="bezper_stag">Доплата за б/п стаж %</label>
-							<input
-								class="tls"
-								type="text"
-								inputmode="numeric"
-								id="bezper_stag"
-								name="bezper_stag"
-								placeholder="Процент"
-							/>
-						</div>
-						<div class="inp-details">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-							laboriosam at veniam eum excepturi quae odio.
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- ================= ТАБЕЛЮВАННЯ ================= -->
-				<fieldset class="tab-field">
-					<legend>🗓️ Табелювання</legend>
-
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="planed_work_days">Заплановано робочих днів</label>
-								<input
-									type="text"
-									inputmode="numeric"
-									id="planed_work_days"
-									name="planed_work_days"
-									placeholder="Всього"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="real_work_days">Відпрацьовано днів / змін</label>
-								<input type="text" inputmode="numeric" id="real_work_days" name="real_work_days" placeholder="Всього" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="days_for_avans">До 15-го числа (включно)</label>
-								<input type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-					</div>
-
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="evn_d">Вечірні зміни</label>
-								<div class="double-inputs">
-									<input type="text" inputmode="numeric" id="evn_d" name="evn_d" placeholder="Зміни" />
-									<span class="evn_d-after">або</span>
-									<input class="large" type="text" inputmode="numeric" id="evn_h" name="evn_h" placeholder="Години" />
-									<span class="evn_h-after"></span>
+					<div class="form-footer">
+						<div class="footer-details">
+							<div class="footer-details_inner">
+								<h3 class="header-footer-details">Iнформацiя (деталі)</h3>
+								<div class="footer-details_content">
+									<span class="code-footer-details">Кожний пункт розрахункового листка має свій унікальний шифр</span>
+									<hr />
+									<p class="text-footer-details">
+										Тут відображаються пояснення для обраного пункта розрахункового листка. Поставте курсор у поле для
+										вводу даних або просто натисніть на назву відповідного пункта.
+									</p>
 								</div>
 							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
 						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="night_d">Нічні зміни</label>
-								<div class="double-inputs">
-									<input type="text" inputmode="numeric" id="night_d" name="night_d" placeholder="Зміни" />
-									<span class="night_d-after">або</span>
-									<input
-										class="large"
-										type="text"
-										inputmode="numeric"
-										id="night_h"
-										name="night_h"
-										placeholder="Години"
-									/>
-									<span class="night_h-after"></span>
-								</div>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
+						<div class="btns-wrap">
+							<button class="reset-btn" type="reset">Очистити</button>
+							<button class="start-calc" type="submit">Рахувати</button>
 						</div>
 					</div>
-				</fieldset>
-
-				<!-- ================= НАРАХУВАННЯ ================= -->
-				<fieldset>
-					<legend>✅ Нарахування</legend>
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="prem">Премія (за рез. роботи) %</label>
-								<input class="tls" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="pop_oklad">Оклад за попередній місяць</label>
-								<input
-									class="large"
-									type="text"
-									inputmode="numeric"
-									id="pop_oklad"
-									name="pop_oklad"
-									placeholder="Сума"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
+				</form>
+			</div>
+		</section>
+		<section class="results-section">
+			<div class="results">
+				<div class="results-top-panel">
+					<div class="logo-header">
+						<img src="./assets/logo_money-96.png" alt="Logo" class="logo" />
+						<span class="emoji-icon">💸</span>
+						<h2>ZP Checker</h2>
 					</div>
-
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="vidp_days">Відпустка (кількість днів)</label>
-								<input type="text" inputmode="numeric" id="vidp_days" name="vidp_days" placeholder="Всього" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="komp_days">Компенсація (кількість днів)</label>
-								<input type="text" inputmode="numeric" id="komp_days" name="komp_days" placeholder="Всього" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="mater_dop">Матеріальна допомога</label>
-								<input
-									class="large"
-									type="text"
-									inputmode="numeric"
-									id="mater_dop"
-									name="mater_dop"
-									placeholder="Сума"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-					</div>
-
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="gram_pod">Премія за грамоту / подяку</label>
-								<input class="large" type="text" inputmode="numeric" id="gram_pod" name="gram_pod" placeholder="Сума" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="pidg_pers">Доплата за підг. персоналу</label>
-								<input
-									class="large"
-									type="text"
-									inputmode="numeric"
-									id="pidg_pers"
-									name="pidg_pers"
-									placeholder="Сума"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="others_nar">Інші нарахування (грн.)</label>
-								<input
-									class="large"
-									type="text"
-									inputmode="numeric"
-									id="others_nar"
-									name="others_nar"
-									placeholder="Сума"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- ================= ВІДРАХУВАННЯ ================= -->
-				<fieldset class="red-bg">
-					<legend>🔥 Відрахування</legend>
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="avans">Аванс (якщо вже отримано)</label>
-								<input class="large" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-					</div>
-
-					<div class="inputs-group">
-						<div class="input-wrapper">
-							<label for="member_prof">Членство у профспілці (1%)</label>
-							<input type="checkbox" id="member_prof" name="member_prof" checked />
-						</div>
-
-						<div class="input-wrapper">
-							<label for="blag_vnes">Благодійні внески (1.5% / 3.5%)</label>
-							<input type="checkbox" id="blag_vnes" name="blag_vnes" checked />
-						</div>
-					</div>
-
-					<div class="inputs-group">
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="med_polis">Медичне страхування (поліс)</label>
-								<input
-									class="large"
-									type="text"
-									inputmode="numeric"
-									id="med_polis"
-									name="med_polis"
-									placeholder="Сума"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-
-						<div class="input-container">
-							<div class="input-wrapper">
-								<label for="others_vidr">Інші відрахування (грн.)</label>
-								<input
-									class="large"
-									type="text"
-									inputmode="numeric"
-									id="others_vidr"
-									name="others_vidr"
-									placeholder="Сума"
-								/>
-							</div>
-							<div class="inp-details">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, facilis modi quam eius aliquam adipisci
-								laboriosam at veniam eum excepturi quae odio.
-							</div>
-						</div>
-					</div>
-				</fieldset>
-
-				<div class="btns-wrapper">
-					<button class="reset-btn" type="reset">Очистити</button>
-					<button class="start-calc" type="submit">Рахувати</button>
+					<button class="results-close-btn" type="button">Esc | Закрити</button>
 				</div>
-			</form>
-			<div id="salary-report"></div>
-			<div id="salary-results"></div>
-			<div id="salary-resume"></div>
+				<div class="flex-container">
+					<div id="salary-report" class="flex-block"></div>
+					<div id="salary-results" class="flex-block"></div>
+					<div id="salary-resume" class="flex-block"></div>
+				</div>
+			</div>
 		</section>
 
 		<script src="main.js" defer></script>

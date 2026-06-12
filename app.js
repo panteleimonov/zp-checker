@@ -30,6 +30,15 @@ function _formatMoney(num, currency = 'UAH') {
 	}).format(num)
 }
 
+function _getCleanText(elem) {
+	return elem.textContent
+		.replace(/\s+/g, ' ') // замінює всі пробільні символи (включно з \n) на один пробіл
+		.trim() // прибирає пробіли на початку та в кінці
+}
+// Використання:
+// const text = getCleanText('.details-text');
+// console.log(text);
+
 function salaryCalc(userData) {
 	// Коефіціенти
 	const PDFO_VZ_PROF = (100 - 18 - 5 - (userData.member_prof ? 1 : 0)) / 100
@@ -121,6 +130,7 @@ function salaryCalc(userData) {
 	deductions.avans.amount = userData.avans
 		? +userData.avans
 		: _floor2((userData.days_for_avans * userData.oklad) / userData.planed_work_days)
+	deductions.avans.codeName = userData.avans ? 'Аванс (вже отримано)' : 'Аванс (наближено)'
 	// Код - 301
 	deductions.pdfo.amount = _floor2(0.18 * accruals.accrualsSum.amount)
 	// Код - 339
@@ -153,8 +163,15 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 		.map(([id, value]) => {
 			// для чекбоксів показуємо "Так/Ні"
 			const displayValue = typeof value === 'boolean' ? (value ? 'Так' : 'Ні') : value
+			if (!displayValue) return
+
 			const label = document.querySelector(`label[for="${id}"]`)
-			const labelText = label ? label.textContent : id
+			let labelText = label ? label.textContent : id
+			if (labelText === 'evn_h') {
+				labelText = 'Вечірні години'
+			} else if (labelText === 'night_h') {
+				labelText = 'Нічні години'
+			}
 
 			return `<p><span>${labelText}</span><mark> ${id} </mark><b>${displayValue}</b></p>`
 		})
@@ -163,8 +180,10 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 	// Автоматичне створення звіту про результати розрахунку ЗП
 	const salaryResultsHTML = Object.entries(salaryRes)
 		.map(([key, val]) => {
-			console.log(key, val)
-			return `
+			console.log(key, val.amount)
+			return !val.amount
+				? ''
+				: `
 			<p><span>${val.codeName}</span><mark>${val.amount}</mark><b>${_formatMoney(val.amount)}</b></p>
 			`
 		})
@@ -185,28 +204,60 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 	document.querySelector('#salary-resume').innerHTML = `
     <div class="info-content">
      <h2>🎯 Підсумок</h2>
-		 <p><span>Аванс</span><mark>${avans}</mark><b>${_formatMoney(avans)}</b></p>
+		 <p><span>${salaryRes.avans.codeName}</span><b>${_formatMoney(salaryRes.avans.amount)}</b></p>
 		 <p><span>Зарплата</span><mark>${fullZP}</mark><b>${_formatMoney(fullZP)}</b></p>
 		 <p><span><b>Разом</b></span><mark>${fullZP + avans}</mark><b>${_formatMoney(fullZP + avans)}</b></p>
     </div>
   `
+	document.querySelector('.results-section').classList.add('active')
+	document.querySelector('.main').classList.add('hidden')
 })
 
 const inputs = document.querySelectorAll('input[type="text"]')
+const footerDetails = document.querySelector('.footer-details')
+const footerDetailsHeader = footerDetails.querySelector('.header-footer-details')
+const footerDetailsText = footerDetails.querySelector('.text-footer-details')
+const footerDetailsCode = footerDetails.querySelector('.code-footer-details')
+const footerDetailsHeader_defaultText = footerDetailsHeader.innerText
+const footerDetailsText_defaultText = footerDetailsText.innerText
+const footerDetailsCode_defaultText = footerDetailsCode.innerText
 
 inputs.forEach((input) => {
 	input.addEventListener('focus', () => {
-		//window.scrollTo(input, 200)
-		const details = input.closest('.input-wrapper').nextElementSibling
-		if (details && details.classList.contains('inp-details')) {
-			setTimeout(() => details.classList.add('active'), 0)
+		const inpDetails = input.closest('.input-wrapper').nextElementSibling
+		if (inpDetails && inpDetails.classList.contains('inp-details')) {
+			if (window.getComputedStyle(footerDetails).display !== 'none') {
+				const inpLabel = _getCleanText(input.closest('.input-wrapper').querySelector('label'))
+				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
+				const inpDetailsCode = _getCleanText(inpDetails.querySelector('.code-details'))
+				footerDetails.classList.add('hidden-content')
+				setTimeout(() => {
+					footerDetailsHeader.innerText = inpLabel
+					footerDetailsText.innerText = inpDetailsText
+					footerDetailsCode.innerText = inpDetailsCode
+					footerDetails.classList.remove('hidden-content')
+				}, 300) // CSS --> transition: all 300ms
+			} else setTimeout(() => inpDetails.classList.add('active'), 0)
 		}
 	})
 
 	input.addEventListener('blur', () => {
-		const details = input.closest('.input-wrapper').nextElementSibling
-		if (details && details.classList.contains('inp-details')) {
-			setTimeout(() => details.classList.remove('active'), 0)
+		const inpDetails = input.closest('.input-wrapper').nextElementSibling
+		if (inpDetails && inpDetails.classList.contains('inp-details')) {
+			if (window.getComputedStyle(footerDetails).display !== 'none') {
+				footerDetails.classList.add('hidden-content')
+				setTimeout(() => {
+					if (document.querySelector(':focus') instanceof HTMLInputElement === false) {
+						// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
+						// Інакше ігноруємо скидання тексту на дефолтний (щоб не заважати обробці focus).
+						// ! Припускаємо, що фокус може бути не на input - в такому разі скидаємо текст.
+						footerDetailsHeader.innerText = footerDetailsHeader_defaultText
+						footerDetailsText.innerText = footerDetailsText_defaultText
+						footerDetailsCode.innerText = footerDetailsCode_defaultText
+						footerDetails.classList.remove('hidden-content')
+					}
+				}, 300) // CSS --> transition: all 300ms
+			} else setTimeout(() => inpDetails.classList.remove('active'), 0)
 		}
 	})
 })
@@ -291,6 +342,11 @@ nightHours_input.addEventListener('blur', (e) => {
 	}
 })
 
+document.getElementById('app-form').addEventListener('reset', () => {
+	evnDaysToHourse_UI_reset()
+	nightDaysToHourse_UI_reset()
+})
+
 // ****************************************************************************
 
 // Автозаповнення: оклад --> оклад за поп. мисяць (для зручност користувача)
@@ -302,4 +358,9 @@ setTimeout(() => {
 
 document.querySelector('#oklad').addEventListener('change', () => {
 	document.querySelector('#pop_oklad').value = document.querySelector('#oklad').value
+})
+
+document.querySelector('.results-close-btn').addEventListener('click', () => {
+	document.querySelector('.results-section').classList.remove('active')
+	document.querySelector('.main').classList.remove('hidden')
 })

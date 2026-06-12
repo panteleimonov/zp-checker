@@ -32,7 +32,7 @@ document.querySelectorAll('input[inputmode="numeric"]').forEach((input) => {
 		this.value = val
 	})
 
-	// Курсор завжди в кінці (твій код)
+	// Курсор завжди в кінці
 	input.addEventListener('focus', function () {
 		const len = this.value.length
 		setTimeout(() => {
