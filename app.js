@@ -23,7 +23,8 @@ function _floor2(num) {
 // "minimumFractionDigits" і "maximumFractionDigits" гарантують два знаки після крапки.
 function _formatMoney(num, currency = 'UAH') {
 	return new Intl.NumberFormat('uk-UA', {
-		style: 'currency',
+		// style: 'currency',
+		style: undefined,
 		currency: currency,
 		minimumFractionDigits: 2,
 		maximumFractionDigits: 2,
@@ -31,9 +32,14 @@ function _formatMoney(num, currency = 'UAH') {
 }
 
 function _getCleanText(elem) {
-	return elem.textContent
-		.replace(/\s+/g, ' ') // замінює всі пробільні символи (включно з \n) на один пробіл
-		.trim() // прибирає пробіли на початку та в кінці
+	return (
+		elem.textContent
+			// видаляємо емодзі та інші символи поза базовим діапазоном
+			.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, '')
+			// нормалізуємо пробіли
+			.replace(/\s+/g, ' ')
+			.trim()
+	)
 }
 // Використання:
 // const text = getCleanText('.details-text');
@@ -41,47 +47,48 @@ function _getCleanText(elem) {
 
 function salaryCalc(userData) {
 	// Коефіціенти
-	const PDFO_VZ_PROF = (100 - 18 - 5 - (userData.member_prof ? 1 : 0)) / 100
-	const VIDP_1DAY_COEF = 0.1
-	const COMP_1DAY_COEF = 0.1
+	const PDFO_VZ_PROF__GO_ZSU = (100 - 23 - userData.blag_vnes_GO - userData.blag_vnes_ZSU - (userData.member_prof ? 1 : 0)) / 100
 
 	// Години
 	const _planedHours = userData.planed_work_days * 8.25
 	const _realHours = userData.real_work_days * 8.25
+	const _calendarHoursesNorm = userData.calendar_hourses_norm
 	const _evnHours = userData.evn_h
 	const _nightHours = userData.night_h
 
 	const accruals = {
 		// Нарахування
-		zpOklad: { code: 2, codeName: 'Оклад', amount: 0 },
-		dopShkid: { code: 32, codeName: 'Доплата шкідливість', amount: 0 },
-		dopBezpSt: { code: 150, codeName: 'Доплата б/п стаж', amount: 0 },
-		premium: { code: 157, codeName: 'Премія', amount: 0 },
-		dopEvenings: { code: 10, codeName: 'Доплата вечірні', amount: 0 },
-		dopNights: { code: 11, codeName: 'Доплата нічні', amount: 0 },
-		vidpOplata: { code: 0, codeName: 'Відпускні', amount: 0 },
-		vidpMatDop: { code: 0, codeName: 'Мат. допомога (відпустка)', amount: 0 },
-		mStrahMatDop: { code: 0, codeName: 'Мат. допомога (страховка)', amount: 0 },
-		vidpKomp: { code: 0, codeName: 'Компенсація', amount: 0 },
-		bonusGramPodjaka: { code: 0, codeName: 'Подяка / Грамота', amount: 0 },
-		bonusTeaching: { code: 0, codeName: 'Підг. персоналу', amount: 0 },
-		othersAccruals: { code: 0, codeName: 'Інші нарахування', amount: 0 },
+		zpOklad: { type: 'accruals', code: 2, codeName: 'Оклад', amount: 0 },
+		dopShkid: { type: 'accruals', code: 32, codeName: 'Доплата шкідливість', amount: 0 },
+		dopBezpSt: { type: 'accruals', code: 150, codeName: 'Доплата б/п стаж', amount: 0 },
+		premium: { type: 'accruals', code: 157, codeName: 'Премія', amount: 0 },
+		dopEvenings: { type: 'accruals', code: 10, codeName: 'Доплата вечірні', amount: 0 },
+		dopNights: { type: 'accruals', code: 11, codeName: 'Доплата нічні', amount: 0 },
+		vidpOplata: { type: 'accruals', code: 0, codeName: 'Відпускні', amount: 0 },
+		vidpMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. відпустка', amount: 0 },
+		mStrahMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. страховка', amount: 0 },
+		vidpKomp: { type: 'accruals', code: 0, codeName: 'Компенсація', amount: 0 },
+		bonusGramPodjaka: { type: 'accruals', code: 0, codeName: 'Подяка / Грамота', amount: 0 },
+		bonusTeaching: { type: 'accruals', code: 0, codeName: 'Підг. персоналу', amount: 0 },
+		indexation: { type: 'accruals', code: 0, codeName: 'Iндексацiя', amount: 0 },
+		othersAccruals: { type: 'accruals', code: 0, codeName: 'Інші нарахування', amount: 0 },
 		// Сума всіх нарахувань
-		accrualsSum: { codeName: '<b>Всього нараховано</b>', amount: 0 },
+		accrualsSum: { type: 'accruals', codeName: '<b>Всього нараховано</b>', amount: 0 },
 	}
 
 	const deductions = {
 		// Відрахування
-		pdfo: { code: 301, codeName: 'Податок - ПДФО', amount: 0 },
-		avans: { code: 330, codeName: 'Аванс', amount: 0 },
-		profsp: { code: 339, codeName: 'Профспілка', amount: 0 },
-		vZbir: { code: 378, codeName: 'Військовий збір', amount: 0 },
-		vnesGO: { code: 379, codeName: 'Внески ГО', amount: 0 },
-		vnesZSU: { code: 380, codeName: 'Внески ЗСУ', amount: 0 },
-		medicsStrah: { code: 0, codeName: 'Медична страховка', amount: 0 },
-		othersVidr: { code: 0, codeName: 'Інші відрахування', amount: 0 },
+		pdfo: { type: 'deductions', code: 301, codeName: 'Податок - ПДФО', amount: 0 },
+		avans: { type: 'deductions', code: 330, codeName: 'Аванс', amount: 0 },
+		vidp: { type: 'deductions', code: 359, codeName: 'Ощ/к відпускні', plusMinus: true, amount: 0 },
+		profsp: { type: 'deductions', code: 339, codeName: 'Профспілка', amount: 0 },
+		vZbir: { type: 'deductions', code: 378, codeName: 'Військовий збір', amount: 0 },
+		vnesGO: { type: 'deductions', code: 379, codeName: 'Внески ГО', amount: 0 },
+		vnesZSU: { type: 'deductions', code: 380, codeName: 'Внески ЗСУ', amount: 0 },
+		medicsStrah: { type: 'deductions', code: 0, codeName: 'Медична страховка', amount: 0 },
+		othersVidr: { type: 'deductions', code: 0, codeName: 'Інші відрахування', amount: 0 },
 		// Сума всіх відрахувань
-		deductionsSum: { codeName: '<b>Всього утримано</b>', amount: 0 },
+		deductionsSum: { type: 'deductions', codeName: '<b>Всього утримано</b>', amount: 0 },
 	}
 
 	function sumObjValues(object, valueName) {
@@ -102,23 +109,27 @@ function salaryCalc(userData) {
 	// Код - 150
 	accruals.dopBezpSt.amount = _floor2((accruals.zpOklad.amount * userData.bezper_stag) / 100)
 	// Код - 10
-	accruals.dopEvenings.amount = _floor2((accruals.zpOklad.amount / _realHours) * _evnHours * 0.2)
+	accruals.dopEvenings.amount = _floor2((userData.oklad / _calendarHoursesNorm) * _evnHours * 0.2)
 	// Код - 11
-	accruals.dopNights.amount = _floor2((accruals.zpOklad.amount / _realHours) * _nightHours * 0.4)
+	accruals.dopNights.amount = _floor2((userData.oklad / _calendarHoursesNorm) * _nightHours * 0.4)
 	// Код - 157
 	accruals.premium.amount = _floor2((userData.pop_oklad * userData.prem) / 100)
 	// Код - ***
-	accruals.vidpOplata.amount = _floor2(userData.vidp_days * VIDP_1DAY_COEF * accruals.zpOklad.amount)
+	// accruals.vidpOplata.amount = _floor2(userData.vidp_days * VIDP_1DAY_COEF * userData.oklad)
+	accruals.vidpOplata.amount = _floor2(userData.vidp_oplata)
 	// Код - ***
 	accruals.vidpMatDop.amount = _floor2(userData.mater_dop)
 	// Код - ***
 	accruals.mStrahMatDop.amount = _floor2(userData.med_polis)
 	// Код - ***
-	accruals.vidpKomp.amount = _floor2(userData.komp_days * COMP_1DAY_COEF * accruals.zpOklad.amount)
+	// accruals.vidpKomp.amount = _floor2(userData.komp_days * COMP_1DAY_COEF * userData.oklad)
+	accruals.vidpKomp.amount = _floor2(userData.vidp_komp)
 	// Код - ***
 	accruals.bonusGramPodjaka.amount = _floor2(userData.gram_pod)
 	// Код - ***
 	accruals.bonusTeaching.amount = _floor2(userData.pidg_pers)
+	// Код - ***
+	accruals.indexation.amount = _floor2(userData.indexation)
 	// Код - ***
 	accruals.othersAccruals.amount = _floor2(userData.others_nar)
 	// Сума всіх нарахувань
@@ -127,20 +138,21 @@ function salaryCalc(userData) {
 	// Розрахунок всіх відрахувань
 	// ===========================
 	// Код - 330
-	deductions.avans.amount = userData.avans
-		? +userData.avans
-		: _floor2((userData.days_for_avans * userData.oklad) / userData.planed_work_days)
-	deductions.avans.codeName = userData.avans ? 'Аванс (вже отримано)' : 'Аванс (наближено)'
+	deductions.avans.amount = userData.avans ? +userData.avans : PDFO_VZ_PROF__GO_ZSU * _floor2((userData.days_for_avans * userData.oklad) / userData.planed_work_days)
+	deductions.avans.codeName = userData.avans ? 'Аванс (отримано)' : 'Аванс (можливий)'
+	deductions.avans.plusMinus = userData.avans ? false : true
 	// Код - 301
 	deductions.pdfo.amount = _floor2(0.18 * accruals.accrualsSum.amount)
+	// Код - 359
+	deductions.vidp.amount = _floor2(accruals.vidpOplata.amount + accruals.vidpMatDop.amount) * PDFO_VZ_PROF__GO_ZSU
 	// Код - 339
 	deductions.profsp.amount = _floor2(userData.member_prof ? 0.01 * accruals.accrualsSum.amount : 0)
 	// Код - 378
 	deductions.vZbir.amount = _floor2(0.05 * accruals.accrualsSum.amount)
 	// Код - 379
-	deductions.vnesGO.amount = _floor2(0.035 * accruals.accrualsSum.amount)
+	deductions.vnesGO.amount = _floor2((userData.blag_vnes_GO / 100) * accruals.accrualsSum.amount)
 	// Код - 380
-	deductions.vnesZSU.amount = _floor2(0.015 * accruals.accrualsSum.amount)
+	deductions.vnesZSU.amount = _floor2((userData.blag_vnes_ZSU / 100) * accruals.accrualsSum.amount)
 	// Код - ***
 	deductions.medicsStrah.amount = _floor2(+userData.med_polis)
 	// Код - Інше
@@ -184,7 +196,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			return !val.amount
 				? ''
 				: `
-			<p><span>${val.codeName}</span><mark>${val.amount}</mark><b>${_formatMoney(val.amount)}</b></p>
+			<p><span>${val.type === 'accruals' ? '🟢' : '🔴'} ${val.codeName}${val.code ? ' - <span class="hidemobile">код </span>' + val.code : ''}</span><b>${val.plusMinus ? '+/- ' + _formatMoney(val.amount) : _formatMoney(val.amount)}</b></p>
 			`
 		})
 		.join('')
@@ -203,14 +215,18 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
   `
 	document.querySelector('#salary-resume').innerHTML = `
     <div class="info-content">
-     <h2>🎯 Підсумок</h2>
-		 <p><span>${salaryRes.avans.codeName}</span><b>${_formatMoney(salaryRes.avans.amount)}</b></p>
-		 <p><span>Зарплата</span><mark>${fullZP}</mark><b>${_formatMoney(fullZP)}</b></p>
+     <h2>😎 Підсумок</h2>
+		 <p><span>${salaryRes.avans.codeName}</span><b>${salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(salaryRes.avans.amount) : _formatMoney(salaryRes.avans.amount)}</b></p>
+		 <p><span>Зарплата (до видачi)</span><mark>${fullZP}</mark><b>${_formatMoney(fullZP)}</b></p>
 		 <p><span><b>Разом</b></span><mark>${fullZP + avans}</mark><b>${_formatMoney(fullZP + avans)}</b></p>
     </div>
   `
-	document.querySelector('.results-section').classList.add('active')
 	document.querySelector('.main').classList.add('hidden')
+	setTimeout(() => {
+		document.querySelector('.main').classList.add('mxh_100vh')
+		document.querySelector('.results-section').classList.add('active')
+		document.querySelector('body').classList.add('not-overflow')
+	}, 300)
 })
 
 const inputs = document.querySelectorAll('input[type="text"]')
@@ -237,7 +253,11 @@ inputs.forEach((input) => {
 					footerDetailsCode.innerText = inpDetailsCode
 					footerDetails.classList.remove('hidden-content')
 				}, 300) // CSS --> transition: all 300ms
-			} else setTimeout(() => inpDetails.classList.add('active'), 0)
+			} else
+				setTimeout(() => {
+					inpDetails.classList.add('active')
+					inpDetails.style.maxHeight = `calc(1em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+				}, 0)
 		}
 	})
 
@@ -247,7 +267,7 @@ inputs.forEach((input) => {
 			if (window.getComputedStyle(footerDetails).display !== 'none') {
 				footerDetails.classList.add('hidden-content')
 				setTimeout(() => {
-					if (document.querySelector(':focus') instanceof HTMLInputElement === false) {
+					if (!(document.activeElement instanceof HTMLInputElement && document.activeElement.type === 'text')) {
 						// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
 						// Інакше ігноруємо скидання тексту на дефолтний (щоб не заважати обробці focus).
 						// ! Припускаємо, що фокус може бути не на input - в такому разі скидаємо текст.
@@ -257,7 +277,11 @@ inputs.forEach((input) => {
 						footerDetails.classList.remove('hidden-content')
 					}
 				}, 300) // CSS --> transition: all 300ms
-			} else setTimeout(() => inpDetails.classList.remove('active'), 0)
+			} else
+				setTimeout(() => {
+					inpDetails.classList.remove('active')
+					inpDetails.style.maxHeight = null
+				}, 0)
 		}
 	})
 })
@@ -360,7 +384,17 @@ document.querySelector('#oklad').addEventListener('change', () => {
 	document.querySelector('#pop_oklad').value = document.querySelector('#oklad').value
 })
 
-document.querySelector('.results-close-btn').addEventListener('click', () => {
+function closeResults() {
 	document.querySelector('.results-section').classList.remove('active')
-	document.querySelector('.main').classList.remove('hidden')
+	document.querySelector('body').classList.remove('not-overflow')
+	setTimeout(() => {
+		document.querySelector('.main').classList.remove('mxh_100vh')
+		document.querySelector('.main').classList.remove('hidden')
+	}, 300)
+}
+document.querySelector('.results-close-btn').addEventListener('click', closeResults)
+document.addEventListener('keydown', function (event) {
+	if (event.key === 'Escape') {
+		closeResults()
+	}
 })

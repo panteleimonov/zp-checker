@@ -7,10 +7,10 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght,GRAD@17..18,400..700,-50..200&family=Rubik:wght@300..900&display=swap"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght,GRAD@17..18,400..700,-50..200&family=Rubik:wght@300..900&display=swap" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet" />
 
 		<link rel="stylesheet" href="style-light.css" />
 	</head>
@@ -24,10 +24,7 @@
 						<span class="emoji-icon">💸</span>
 						<h1>ZP Checker</h1>
 					</div>
-					<p class="caption-text">
-						Наближений розрахунок заробітної плати. Введіть свої дані щоб побачити зарплату за місяць. Окремі поля
-						<span class="start-visible">форм</span> заповнюються лише в разі потреби.
-					</p>
+					<p class="caption-text">Наближений розрахунок заробітної плати. Введіть свої дані щоб побачити прогноз по зарплаті. Окремі поля <span class="start-visible">форм</span> заповнюються лише в разі потреби.</p>
 				</header>
 			</div>
 
@@ -42,22 +39,12 @@
 								<div class="input-container">
 									<div class="input-wrapper">
 										<label for="oklad">Оклад (поточний) грн.</label>
-										<input
-											class="large tls"
-											type="text"
-											inputmode="numeric"
-											id="oklad"
-											name="oklad"
-											placeholder="Сума"
-										/>
+										<input class="large tls" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" />
 									</div>
 									<div class="inp-details">
-										<p class="details-text">
-											Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-											за попередній місяць.
-										</p>
+										<p class="details-text">Ваш поточний оклад (станом на зараз). Впливає майже на всі нарахування у зарплаті працівника (премія, різні доплати, тощо).</p>
 										<hr />
-										<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										<span class="code-details"><span class="details-icon">🟠</span> Вказано в персональному кабiнетi</span>
 									</div>
 								</div>
 								<div class="input-container">
@@ -66,33 +53,20 @@
 										<input class="tls" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" />
 									</div>
 									<div class="inp-details">
-										<p class="details-text">
-											Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-											за попередній місяць.
-										</p>
+										<p class="details-text">Компенсація за шкідливі умови праці (так званий "список"). Визначається як процентна надбавка від розміру окладу, в залежності від умов праці працівника.</p>
 										<hr />
-										<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										<span class="code-details"><span class="details-icon">🟠</span> Код 32 в розрахунковому листку</span>
 									</div>
 								</div>
 								<div class="input-container">
 									<div class="input-wrapper">
 										<label for="bezper_stag">Доплата за б/п стаж %</label>
-										<input
-											class="tls"
-											type="text"
-											inputmode="numeric"
-											id="bezper_stag"
-											name="bezper_stag"
-											placeholder="Процент"
-										/>
+										<input class="tls" type="text" inputmode="numeric" id="bezper_stag" name="bezper_stag" placeholder="Процент" />
 									</div>
 									<div class="inp-details">
-										<p class="details-text">
-											Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-											за попередній місяць.
-										</p>
+										<p class="details-text">Доплата за "безперервний" стаж в енергетиці. Визначається як процентна надбавка від розміру окладу, в залежності від тривалості роботи в енергетичній галузі.</p>
 										<hr />
-										<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+										<span class="code-details"><span class="details-icon">🟠</span> Код 150 в розрахунковому листку</span>
 									</div>
 								</div>
 							</fieldset>
@@ -105,63 +79,48 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="planed_work_days">Заплановано робочих днів</label>
-											<input
-												type="text"
-												inputmode="numeric"
-												id="planed_work_days"
-												name="planed_work_days"
-												placeholder="Всього"
-											/>
+											<input type="text" inputmode="numeric" id="planed_work_days" name="planed_work_days" placeholder="Всього" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Запланована норма днів за графіком. Це така кількість робочих днів, яка передбачається на місяць (з урахуванням робочого графіка). Є нормою щоб "заробити" 100% окладу.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі (облік робочого часу)</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="real_work_days">Відпрацьовано днів / змін</label>
-											<input
-												type="text"
-												inputmode="numeric"
-												id="real_work_days"
-												name="real_work_days"
-												placeholder="Всього"
-											/>
+											<input type="text" inputmode="numeric" id="real_work_days" name="real_work_days" placeholder="Всього" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Загальна кількість фактично відпрацьованих днів (разом з доробками та навчанням). Визначає розмір окладу (неповний чи весь), який працівник "заробив" за місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі / розрахунковому листку</span>
 										</div>
 									</div>
 
-									<div class="input-container">
+									<!-- <div class="input-container">
 										<div class="input-wrapper">
 											<label for="days_for_avans">До 15-го числа (включно)</label>
-											<input
-												type="text"
-												inputmode="numeric"
-												id="days_for_avans"
-												name="days_for_avans"
-												placeholder="Всього"
-											/>
+											<input type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Тільки для наближеного розрахунку авансу. Як правило, аванс є оплатою за фактично відпрацьовані дні до 15-го числа включно. Однак, цей орієнтир не точний, адже розмір авансових виплат може коригуватися з різних причин.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі (облік робочого часу)</span>
+										</div>
+									</div> -->
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="calendar_hourses_norm">Норма годин календарна</label>
+											<input class="large" type="text" inputmode="numeric" id="calendar_hourses_norm" name="calendar_hourses_norm" placeholder="Всього" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Норма годин на календарний мiсяць (iнша назва - кiлькiсть годин по нормi). Впливає на розрахунок вартостi години працi та розмiрiв доплат за вечiрнi та нiчнi години.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі (облік робочого часу)</span>
 										</div>
 									</div>
 								</div>
@@ -173,24 +132,14 @@
 											<div class="double-inputs">
 												<input type="text" inputmode="numeric" id="evn_d" name="evn_d" placeholder="Всього" />
 												<span class="evn_d-after">або</span>
-												<input
-													class="large"
-													type="text"
-													inputmode="numeric"
-													id="evn_h"
-													name="evn_h"
-													placeholder="Години"
-												/>
+												<input class="large" type="text" inputmode="numeric" id="evn_h" name="evn_h" placeholder="Години" />
 												<span class="evn_h-after"></span>
 											</div>
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть кількість вечірніх змін або кількість вечірніх годин. Важливо: завжди перевіряйте правильність вечірніх або нічних годин відповідно до фактичної кількості відповідних змін. Тривалість зміни становить 8.25 год.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі / розрахунковому листку</span>
 										</div>
 									</div>
 
@@ -200,24 +149,14 @@
 											<div class="double-inputs">
 												<input type="text" inputmode="numeric" id="night_d" name="night_d" placeholder="Всього" />
 												<span class="night_d-after">або</span>
-												<input
-													class="large"
-													type="text"
-													inputmode="numeric"
-													id="night_h"
-													name="night_h"
-													placeholder="Години"
-												/>
+												<input class="large" type="text" inputmode="numeric" id="night_h" name="night_h" placeholder="Години" />
 												<span class="night_h-after"></span>
 											</div>
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть кількість нічних змін або кількість нічних годин. Важливо: якщо нічна зміна припадає на перше число, то 1.25 годин оплачується в попередньому місяці.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі / розрахунковому листку</span>
 										</div>
 									</div>
 								</div>
@@ -235,34 +174,21 @@
 											<input class="tls" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Розмір премії за результатами роботи (у вiдсотках). Важливо: премiю завжди нараховують за
-												попереднiй мiсяць (наприклад, разом із зарплатою за березень виплачується премiя за лютий).
-											</p>
+											<p class="details-text">Розмір премії за результатами роботи. Може змінюватися за рішенням роботодавця. Важливо: премiю нараховують за попереднiй мiсяць (наприклад, разом із зарплатою за березень виплачується премiя за лютий).</p>
 											<hr />
-											<span class="code-details">Шифр 157 в розрахунковому листку.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в персональному кабiнетi</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="pop_oklad">Оклад за попередній місяць</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="pop_oklad"
-												name="pop_oklad"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="pop_oklad" name="pop_oklad" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в розр. листку за попередній місяць</span>
 										</div>
 									</div>
 								</div>
@@ -270,53 +196,37 @@
 								<div class="inputs-group">
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="vidp_days">Відпустка (кількість днів)</label>
-											<input type="text" inputmode="numeric" id="vidp_days" name="vidp_days" placeholder="Всього" />
+											<label for="vidp_oplata">Відпускні (отримано)</label>
+											<input class="large" type="text" inputmode="numeric" id="vidp_oplata" name="vidp_oplata" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть розмір відпускних нарахувань (або їх суму), які зазначено в розрахунковому листку.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 11 та/або 13 в розрахунковому листку</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="komp_days">Компенсація (кількість днів)</label>
-											<input type="text" inputmode="numeric" id="komp_days" name="komp_days" placeholder="Всього" />
+											<label for="vidp_komp">Компенсація (отримано)</label>
+											<input class="large" type="text" inputmode="numeric" id="vidp_komp" name="vidp_komp" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть розмір компенсації, який зазначено в нарахуваннях розрахункового листка.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код ** в розрахунковому листку</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="mater_dop">Матеріальна допомога</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="mater_dop"
-												name="mater_dop"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="mater_dop" name="mater_dop" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть розмір мат. допомоги, зазначений в нарахуваннях. Розмір мат. допомоги дорівнює окладу на початок поточного року.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 201 в розрахунковому листку</span>
 										</div>
 									</div>
 								</div>
@@ -325,109 +235,71 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="prem_13">Премія рез. за рiк (13-та)</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="prem_13"
-												name="prem_13"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="prem_13" name="prem_13" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть розмір річної премії (так званої тринадцятої), який зазначено в нарахуваннях розрахункового листка.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 155 в розрахунковому листку</span>
 										</div>
 									</div>
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="prem_others">Премія iншi досягнення</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="prem_others"
-												name="prem_others"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="prem_others" name="prem_others" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть розмір премії за інші досягнення (якщо було нараховано). Успішні результати вашої праці або відданість спільній меті не залишаються без уваги.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 158 в розрахунковому листку</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="gram_pod">Премія за грамоту / подяку</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="gram_pod"
-												name="gram_pod"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="gram_pod" name="gram_pod" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Вкажіть розмір виплати до подяки / грамоти.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="pidg_pers">Доплата за підг. кадрiв</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="pidg_pers"
-												name="pidg_pers"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="pidg_pers" name="pidg_pers" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="indexation">Індексація (грн.)</label>
+											<input class="large" type="text" inputmode="numeric" id="indexation" name="indexation" placeholder="Сума" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="others_nar">Інші нарахування (грн.)</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="others_nar"
-												name="others_nar"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="others_nar" name="others_nar" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
 										</div>
 									</div>
 								</div>
@@ -435,21 +307,30 @@
 						</div>
 						<div class="flex-block">
 							<!-- ================= ВІДРАХУВАННЯ ================= -->
+
 							<fieldset class="deductions-field">
 								<legend>🔥 Відрахування</legend>
 								<div class="inputs-group">
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="avans">Аванс (якщо вже отримано)</label>
+											<label for="avans">Аванс (якщо було отримано)</label>
 											<input class="large" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
+										</div>
+									</div>
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="days_for_avans">Аванс (днів до 15-го числа)</label>
+											<input class="large" type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Наближений (грубий) розрахунок авансу! Введiть кiлькiсть вiдпрацьованих днiв до 15-го числа (включно). Як правило, аванс є оплатою за фактично відпрацьовані дні до 15-го числа. Однак, розміри авансових виплат можуть коригуватися з різних причин.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠</span> Вказано в табелі (облік робочого часу)</span>
 										</div>
 									</div>
 								</div>
@@ -476,41 +357,39 @@
 								</div> -->
 								</div>
 								<div class="inputs-group">
-									<div class="input-wrapper">
-										<label for="blag_vnes_ZSU">Благодійні внески (ЗСУ) %</label>
-										<input
-											class="large"
-											type="text"
-											inputmode="numeric"
-											id="blag_vnes_ZSU"
-											name="blag_vnes_ZSU"
-											placeholder="Процент"
-											value="3.5"
-										/>
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="blag_vnes_ZSU">Благодійні внески (ЗСУ) %</label>
+											<input class="large" type="text" inputmode="numeric" id="blag_vnes_ZSU" name="blag_vnes_ZSU" placeholder="Процент" value="3.5" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
+										</div>
 									</div>
 
-									<div class="input-wrapper">
-										<label for="blag_vnes_GO">Благодійні внески (ГО) %</label>
-										<input
-											class="large"
-											type="text"
-											inputmode="numeric"
-											id="blag_vnes_GO"
-											name="blag_vnes_GO"
-											placeholder="Процент"
-											value="1.5"
-										/>
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="blag_vnes_GO">Благодійні внески (ГО) %</label>
+											<input class="large" type="text" inputmode="numeric" id="blag_vnes_GO" name="blag_vnes_GO" placeholder="Процент" value="1.5" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
+										</div>
 									</div>
-									<div class="input-wrapper">
-										<label for="blag_vnes_13">Благодійні внески (13-та) %</label>
-										<input
-											class="large"
-											type="text"
-											inputmode="numeric"
-											id="blag_vnes_13"
-											name="blag_vnes_13"
-											placeholder="Процент"
-										/>
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="blag_vnes_13">Благодійні внески (13-та) %</label>
+											<input class="large" type="text" inputmode="numeric" id="blag_vnes_13" name="blag_vnes_13" placeholder="Процент" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць.</span>
+										</div>
 									</div>
 								</div>
 
@@ -518,44 +397,24 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="med_polis">Медичне страхування (поліс)</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="med_polis"
-												name="med_polis"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="med_polis" name="med_polis" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць</span>
 										</div>
 									</div>
 
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="others_vidr">Інші відрахування (грн.)</label>
-											<input
-												class="large"
-												type="text"
-												inputmode="numeric"
-												id="others_vidr"
-												name="others_vidr"
-												placeholder="Сума"
-											/>
+											<input class="large" type="text" inputmode="numeric" id="others_vidr" name="others_vidr" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">
-												Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії
-												за попередній місяць.
-											</p>
+											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
 											<hr />
-											<span class="code-details">Шифр 2 в листку за попередній місяць.</span>
+											<span class="code-details"><span class="details-icon">🟠</span> Код 2 в листку за попередній місяць</span>
 										</div>
 									</div>
 								</div>
@@ -567,12 +426,9 @@
 							<div class="footer-details_inner">
 								<h3 class="header-footer-details">Iнформацiя (деталі)</h3>
 								<div class="footer-details_content">
-									<span class="code-footer-details">Кожний пункт розрахункового листка має свій унікальний шифр</span>
+									<span class="code-footer-details">Кожний пункт розрахункового листка має свій унікальний код</span>
 									<hr />
-									<p class="text-footer-details">
-										Тут відображаються пояснення для обраного пункта розрахункового листка. Поставте курсор у поле для
-										вводу даних або просто натисніть на назву відповідного пункта.
-									</p>
+									<p class="text-footer-details">Тут відображаються пояснення для обраного пункта розрахункового листка. Поставте курсор у поле для вводу даних або просто натисніть на назву відповідного пункта.</p>
 								</div>
 							</div>
 						</div>
