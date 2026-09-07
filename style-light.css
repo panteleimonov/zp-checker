@@ -2,7 +2,7 @@
 
 :root {
   /* Base colors */
-  --bg-main: #f4f4f4;
+  --bg-main: #fafafa;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
