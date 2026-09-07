@@ -64,7 +64,7 @@ function salaryCalc(userData) {
 		premium: { type: 'accruals', code: 157, codeName: 'Премія', amount: 0 },
 		dopEvenings: { type: 'accruals', code: 10, codeName: 'Доплата вечірні', amount: 0 },
 		dopNights: { type: 'accruals', code: 11, codeName: 'Доплата нічні', amount: 0 },
-		vidpOplata: { type: 'accruals', code: 0, codeName: 'Відпускні', amount: 0 },
+		vidpNarah: { type: 'accruals', code: 0, codeName: 'Відпускні (нарах)', amount: 0 },
 		vidpMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. відпустка', amount: 0 },
 		mStrahMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. страховка', amount: 0 },
 		vidpKomp: { type: 'accruals', code: 0, codeName: 'Компенсація', amount: 0 },
@@ -79,8 +79,8 @@ function salaryCalc(userData) {
 	const deductions = {
 		// Відрахування
 		pdfo: { type: 'deductions', code: 301, codeName: 'Податок - ПДФО', amount: 0 },
-		avans: { type: 'deductions', code: 330, codeName: 'Аванс', amount: 0 },
-		vidp: { type: 'deductions', code: 359, codeName: 'Ощ/к відпускні', plusMinus: true, amount: 0 },
+		avans: { type: 'deductions', code: null, codeName: 'Аванс', amount: 0, plusMinus: null },
+		vidp: { type: 'deductions', code: 359, codeName: 'Ощ/к відпускні', amount: 0 },
 		profsp: { type: 'deductions', code: 339, codeName: 'Профспілка', amount: 0 },
 		vZbir: { type: 'deductions', code: 378, codeName: 'Військовий збір', amount: 0 },
 		vnesGO: { type: 'deductions', code: 379, codeName: 'Внески ГО', amount: 0 },
@@ -115,14 +115,12 @@ function salaryCalc(userData) {
 	// Код - 157
 	accruals.premium.amount = _floor2((userData.pop_oklad * userData.prem) / 100)
 	// Код - ***
-	// accruals.vidpOplata.amount = _floor2(userData.vidp_days * VIDP_1DAY_COEF * userData.oklad)
-	accruals.vidpOplata.amount = _floor2(userData.vidp_oplata)
+	accruals.vidpNarah.amount = _floor2(userData.vidp_narah)
 	// Код - ***
 	accruals.vidpMatDop.amount = _floor2(userData.mater_dop)
 	// Код - ***
 	accruals.mStrahMatDop.amount = _floor2(userData.med_polis)
 	// Код - ***
-	// accruals.vidpKomp.amount = _floor2(userData.komp_days * COMP_1DAY_COEF * userData.oklad)
 	accruals.vidpKomp.amount = _floor2(userData.vidp_komp)
 	// Код - ***
 	accruals.bonusGramPodjaka.amount = _floor2(userData.gram_pod)
@@ -141,10 +139,12 @@ function salaryCalc(userData) {
 	deductions.avans.amount = userData.avans ? +userData.avans : PDFO_VZ_PROF__GO_ZSU * _floor2((userData.days_for_avans * userData.oklad) / userData.planed_work_days)
 	deductions.avans.codeName = userData.avans ? 'Аванс (отримано)' : 'Аванс (можливий)'
 	deductions.avans.plusMinus = userData.avans ? false : true
+	deductions.avans.code = userData.avans ? 330 : null
 	// Код - 301
 	deductions.pdfo.amount = _floor2(0.18 * accruals.accrualsSum.amount)
 	// Код - 359
-	deductions.vidp.amount = _floor2(accruals.vidpOplata.amount + accruals.vidpMatDop.amount) * PDFO_VZ_PROF__GO_ZSU
+	// deductions.vidp.amount = _floor2(accruals.vidpNarah.amount + accruals.vidpMatDop.amount) * PDFO_VZ_PROF__GO_ZSU
+	deductions.vidp.amount = _floor2(userData.vidp_oplata)
 	// Код - 339
 	deductions.profsp.amount = _floor2(userData.member_prof ? 0.01 * accruals.accrualsSum.amount : 0)
 	// Код - 378
@@ -216,9 +216,9 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 	document.querySelector('#salary-resume').innerHTML = `
     <div class="info-content">
      <h2>😎 Підсумок</h2>
-		 <p><span>${salaryRes.avans.codeName}</span><b>${salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(salaryRes.avans.amount) : _formatMoney(salaryRes.avans.amount)}</b></p>
-		 <p><span>Зарплата (до видачi)</span><mark>${fullZP}</mark><b>${_formatMoney(fullZP)}</b></p>
-		 <p><span><b>Разом</b></span><mark>${fullZP + avans}</mark><b>${_formatMoney(fullZP + avans)}</b></p>
+		 <p><span>${salaryRes.avans.codeName}</span><b>${avans ? (salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(avans) : _formatMoney(avans)) : 'Без авансу'}</b></p>
+		 <p><span>Зарплата (до видачi)</span><b>${avans && salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(fullZP) : _formatMoney(fullZP)}</b></p>
+		 <p><span><b>Разом</b></span><b>${_formatMoney(fullZP + avans)}</b></p>
     </div>
   `
 	document.querySelector('.main').classList.add('hidden')
@@ -245,7 +245,7 @@ inputs.forEach((input) => {
 			if (window.getComputedStyle(footerDetails).display !== 'none') {
 				const inpLabel = _getCleanText(input.closest('.input-wrapper').querySelector('label'))
 				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
-				const inpDetailsCode = _getCleanText(inpDetails.querySelector('.code-details'))
+				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
 				footerDetails.classList.add('hidden-content')
 				setTimeout(() => {
 					footerDetailsHeader.innerText = inpLabel
@@ -266,6 +266,10 @@ inputs.forEach((input) => {
 		if (inpDetails && inpDetails.classList.contains('inp-details')) {
 			if (window.getComputedStyle(footerDetails).display !== 'none') {
 				footerDetails.classList.add('hidden-content')
+				setTimeout(() => {
+					// костиль, щоб при клiку за межi браузера поле footerDetails не пропадало
+					footerDetails.classList.remove('hidden-content')
+				}, 400)
 				setTimeout(() => {
 					if (!(document.activeElement instanceof HTMLInputElement && document.activeElement.type === 'text')) {
 						// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
@@ -398,3 +402,30 @@ document.addEventListener('keydown', function (event) {
 		closeResults()
 	}
 })
+
+// Вiдключення неактуального поля для авансу (вже отримано чи +/- прогнозований)
+// =============================================================================
+
+const avansField = document.querySelector('#avans')
+const daysForAvansField = document.querySelector('#days_for_avans')
+
+function disableDaysForAvans(e) {
+	if (e.target.value !== '') {
+		daysForAvansField.setAttribute('disabled', true)
+	} else {
+		daysForAvansField.removeAttribute('disabled')
+	}
+}
+
+function disableAvans(e) {
+	if (e.target.value !== '') {
+		avansField.setAttribute('disabled', true)
+	} else {
+		avansField.removeAttribute('disabled')
+	}
+}
+
+avansField.addEventListener('input', disableDaysForAvans)
+daysForAvansField.addEventListener('input', disableAvans)
+
+// *****************************************************************************

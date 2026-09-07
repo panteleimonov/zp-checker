@@ -44,7 +44,7 @@ document.querySelectorAll('input[inputmode="numeric"]').forEach((input) => {
 // ===================
 // Поля з класом .main-field для localStorage
 // ===================
-const savedInputs = document.querySelectorAll('input[type="text"].tls')
+const savedInputs = document.querySelectorAll('input[type="text"].toLocalStorege')
 
 // ===================
 // Всі текстові input для перевірки на коректні числа
