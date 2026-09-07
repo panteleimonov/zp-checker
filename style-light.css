@@ -587,7 +587,7 @@ button:active {
   padding: 0 1em;
   font-size: 14px;
   /* font-family: 'Roboto Condensed'; */
-  text-align: justify;
+  /* text-align: justify; */
   max-height: 0;
   overflow: hidden;
   opacity: 0;
