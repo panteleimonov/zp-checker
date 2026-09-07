@@ -584,10 +584,10 @@ button:active {
 
 .inp-details {
   margin: 0;
-  padding: 0 1.5em 0 1.25em;
+  padding: 0 1em;
   font-size: 14px;
   /* font-family: 'Roboto Condensed'; */
-  /* text-align: justify; */
+  text-align: justify;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
