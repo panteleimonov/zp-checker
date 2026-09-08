@@ -66,8 +66,6 @@
 *::after {
   box-sizing: border-box;
   transition: all 300ms;
-  /* transition-timing-function: linear; */
-
   font-optical-sizing: auto;
   font-variation-settings: 'GRAD' 0;
 }
@@ -584,9 +582,8 @@ button:active {
 
 .inp-details {
   margin: 0;
-  padding: 0 1em;
+  padding: 0 1.25em;
   font-size: 14px;
-  /* font-family: 'Roboto Condensed'; */
   text-align: justify;
   max-height: 0;
   overflow: hidden;
@@ -608,15 +605,6 @@ button:active {
   border-top: 2px dashed rgba(0, 0, 0, 0.15);
 }
 
-/* 
-.inp-details .code-details {
-  overflow: hidden;
-  margin-left: 2em;
-}
-
-.inp-details.active .code-details {
-  margin-left: 0;
-} */
 
 .details-icon {
   margin-left: -3px;
@@ -653,7 +641,6 @@ button:active {
   text-align: right;
   padding-bottom: 1.75em;
   margin: 0.5em 0;
-  /* margin-top: 1em; */
   border-bottom: 1px solid var(--main-border-color);
 }
 
@@ -676,6 +663,11 @@ p.deductions {
   color: darkred
 }
 
+.input-container,
+.checkbox-container {
+  position: relative;
+}
+
 
 /* MEDIA */
 
@@ -685,7 +677,6 @@ p.deductions {
   .form,
   .results,
   .header {
-    /* background: violet; */
     padding-inline: 1.5em;
   }
 
@@ -701,7 +692,6 @@ p.deductions {
   .form,
   .results,
   .header {
-    /* background: gold; */
     padding-inline: 1em;
   }
 
@@ -729,9 +719,49 @@ p.deductions {
   .form,
   .results,
   .header {
-    /* background: rgb(0, 156, 55); */
     width: 100%;
     padding-inline: 20vw;
+  }
+
+
+  .inputs-group:not(:last-child) {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .input-container::after,
+  .checkbox-container::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+  }
+
+  .input-container.last-in-field::after {
+    display: none;
+  }
+
+  .general-field .input-container::after,
+  .general-field .checkbox-container::after {
+    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--general-input-border), var(--general-input-border), rgba(256, 256, 256, 0.0))
+  }
+
+  .timesheet-field .input-container::after,
+  .timesheet-field .checkbox-container::after {
+    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--timesheet-inputs-group-border), var(--timesheet-inputs-group-border), rgba(256, 256, 256, 0.0))
+  }
+
+  .accruals-field .input-container::after,
+  .accruals-field .checkbox-container::after {
+    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--accruals-inputs-group-border), var(--accruals-inputs-group-border), rgba(256, 256, 256, 0.0))
+  }
+
+  .deductions-field .input-container::after,
+  .deductions-field .checkbox-container::after {
+    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--deductions-inputs-group-border), var(--deductions-inputs-group-border), rgba(256, 256, 256, 0.0))
   }
 
   .results {
@@ -745,7 +775,6 @@ p.deductions {
     justify-content: center;
     padding-top: 1.25em;
     border-bottom: none;
-    /* border-top: 1px solid var(--main-border-color); */
   }
 
   .results .logo-header {
@@ -764,16 +793,8 @@ p.deductions {
     color: #fff;
     border-radius: 10em;
     box-shadow: var(--main-shadow);
-    /* text-shadow: 2px 2px 0.5em rgba(0, 0, 0, 0.2); */
     cursor: pointer;
-    /* background: tomato;
-    border: 1px solid rgb(250, 83, 53); */
   }
-
-  /* .results-close-btn:hover,
-  .results-close-btn:active {
-    background: rgb(250, 83, 53);
-  } */
 
 
   .flex-container {
@@ -805,7 +826,6 @@ p.deductions {
   .form,
   .results,
   .header {
-    /* background: rgb(94, 242, 45); */
     padding-inline: 15vw;
   }
 
@@ -816,7 +836,6 @@ p.deductions {
   .form,
   .results,
   .header {
-    /* background: rgb(177, 246, 201); */
     padding-inline: 10vw;
   }
 
@@ -832,7 +851,6 @@ p.deductions {
   .form,
   .results,
   .header {
-    /* background: rgb(240, 251, 244); */
     padding-inline: 0.5em;
   }
 
