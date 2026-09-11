@@ -281,11 +281,10 @@ inputs.forEach((input) => {
 						footerDetails.classList.remove('hidden-content')
 					}
 				}, 300) // CSS --> transition: all 300ms
-			} else
-				setTimeout(() => {
-					inpDetails.classList.remove('active')
-					inpDetails.style.maxHeight = null
-				}, 0)
+			} else {
+				inpDetails.classList.remove('active')
+				inpDetails.style.maxHeight = null
+			}
 		}
 	})
 })
