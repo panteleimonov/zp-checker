@@ -242,50 +242,20 @@ inputs.forEach((input) => {
 	input.addEventListener('focus', () => {
 		const inpDetails = input.closest('.input-wrapper').nextElementSibling
 		if (inpDetails && inpDetails.classList.contains('inp-details')) {
-			if (window.getComputedStyle(footerDetails).display !== 'none') {
-				const inpLabel = _getCleanText(input.closest('.input-wrapper').querySelector('label'))
-				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
-				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
-				footerDetails.classList.add('hidden-content')
-				setTimeout(() => {
-					footerDetailsHeader.innerText = inpLabel
-					footerDetailsText.innerText = inpDetailsText
-					footerDetailsCode.innerText = inpDetailsCode
-					footerDetails.classList.remove('hidden-content')
-				}, 300) // CSS --> transition: all 300ms
-			} else
-				setTimeout(() => {
-					inpDetails.classList.add('active')
-					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-				}, 400)
+			setTimeout(() => {
+				inpDetails.classList.add('active')
+				inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+			}, 400)
 		}
 	})
 
 	input.addEventListener('blur', () => {
 		const inpDetails = input.closest('.input-wrapper').nextElementSibling
 		if (inpDetails && inpDetails.classList.contains('inp-details')) {
-			if (window.getComputedStyle(footerDetails).display !== 'none') {
-				footerDetails.classList.add('hidden-content')
-				setTimeout(() => {
-					// костиль, щоб при клiку за межi браузера поле footerDetails не пропадало
-					footerDetails.classList.remove('hidden-content')
-				}, 400)
-				setTimeout(() => {
-					if (!(document.activeElement instanceof HTMLInputElement && document.activeElement.type === 'text')) {
-						// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
-						// Інакше ігноруємо скидання тексту на дефолтний (щоб не заважати обробці focus).
-						// ! Припускаємо, що фокус може бути не на input - в такому разі скидаємо текст.
-						footerDetailsHeader.innerText = footerDetailsHeader_defaultText
-						footerDetailsText.innerText = footerDetailsText_defaultText
-						footerDetailsCode.innerText = footerDetailsCode_defaultText
-						footerDetails.classList.remove('hidden-content')
-					}
-				}, 300) // CSS --> transition: all 300ms
-			} else
-				setTimeout(() => {
-					inpDetails.classList.remove('active')
-					inpDetails.style.maxHeight = null
-				}, 100)
+			setTimeout(() => {
+				inpDetails.classList.remove('active')
+				inpDetails.style.maxHeight = null
+			}, 0)
 		}
 	})
 })
