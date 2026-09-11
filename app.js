@@ -253,10 +253,11 @@ inputs.forEach((input) => {
 					footerDetailsCode.innerText = inpDetailsCode
 					footerDetails.classList.remove('hidden-content')
 				}, 300) // CSS --> transition: all 300ms
-			} else {
-				inpDetails.classList.add('active')
-				inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-			}
+			} else
+				setTimeout(() => {
+					inpDetails.classList.add('active')
+					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+				}, 0)
 		}
 	})
 
@@ -280,10 +281,11 @@ inputs.forEach((input) => {
 						footerDetails.classList.remove('hidden-content')
 					}
 				}, 300) // CSS --> transition: all 300ms
-			} else {
-				inpDetails.classList.remove('active')
-				inpDetails.style.maxHeight = null
-			}
+			} else
+				setTimeout(() => {
+					inpDetails.classList.remove('active')
+					inpDetails.style.maxHeight = null
+				}, 0)
 		}
 	})
 })
