@@ -265,7 +265,7 @@ inputs.forEach((input) => {
 
 				requestAnimationFrame(() => {
 					inpDetails.classList.add('active')
-					inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px)`
+					inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px`
 				})
 
 				// Прибираємо will-change після завершення transition
@@ -308,22 +308,19 @@ inputs.forEach((input) => {
 				// }, 0)
 				console.log('start blur')
 
-				// Додаємо will-change перед анімацією
-				inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-
-				requestAnimationFrame(() => {
+				setTimeout(() => {
+					inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
 					inpDetails.classList.remove('active')
-					inpDetails.style.maxHeight = 0
-				})
+					inpDetails.style.maxHeight = '0'
 
-				// Прибираємо will-change після завершення transition
-				inpDetails.addEventListener(
-					'transitionend',
-					() => {
-						inpDetails.style.willChange = 'auto'
-					},
-					{ once: true },
-				)
+					inpDetails.addEventListener(
+						'transitionend',
+						() => {
+							inpDetails.style.willChange = 'auto'
+						},
+						{ once: true },
+					)
+				}, 100)
 				console.log('finish blur')
 			}
 		}
