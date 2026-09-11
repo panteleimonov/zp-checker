@@ -257,7 +257,7 @@ inputs.forEach((input) => {
 				setTimeout(() => {
 					inpDetails.classList.add('active')
 					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-				}, 0)
+				}, 400)
 		}
 	})
 
@@ -285,7 +285,7 @@ inputs.forEach((input) => {
 				setTimeout(() => {
 					inpDetails.classList.remove('active')
 					inpDetails.style.maxHeight = null
-				}, 0)
+				}, 100)
 		}
 	})
 })
