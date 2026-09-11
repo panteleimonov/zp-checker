@@ -2,7 +2,7 @@
 
 :root {
   /* Base colors */
-  --bg-main: #fafafa;
+  --bg-main: #fcfcfc;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
@@ -53,9 +53,9 @@
   --deductions-details-bg: rgba(255, 40, 0, 0.15);
 
   /* Effects */
-  --main-bradius: 1em;
+  --main-bradius: 1.25em;
   --legend-bradius: 100em;
-  --main-border-color: #ccc;
+  --main-border-color: #ddd;
   --main-shadow: 0 4px 0.5em rgba(0, 0, 0, 0.1);
   --main-shadow_hover: 0 4px 1em rgba(0, 0, 0, 0.25);
 }
@@ -65,7 +65,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 300ms;
+  transition: all 300ms ease-in-out;
   font-optical-sizing: auto;
   font-variation-settings: 'GRAD' 0;
 }
@@ -224,7 +224,6 @@ input::placeholder {
 }
 
 label {
-  text-align: left;
   line-height: 1;
 }
 
@@ -236,14 +235,14 @@ label:hover {
 /* ================= INPUTS ================= */
 input[type='text'] {
   background-color: var(--bg-main);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   width: 5.5em;
   margin-left: 0.5em;
   text-align: center;
   line-height: 1.75;
   font-family: 'Rubik', sans-serif;
   border: 1px solid var(--accruals-input-border);
-  border-radius: 6px;
+  border-radius: 0.5em;
   transition: width 0ms;
 }
 
@@ -281,12 +280,14 @@ fieldset {
   /*position: relative;*/
   margin: 1.5em 0 0 0;
   padding: 1em 0;
-  padding-bottom: 0.75em;
+  padding-bottom: 14px;
+  border: 1px solid var(--accruals-inputs-group-border);
   border: 1px solid var(--main-border-color);
   border-radius: var(--main-bradius);
   background-color: #fff;
   background-image: var(--accruals-field-bg);
   box-shadow: var(--main-shadow);
+  overflow: hidden;
 }
 
 .info-content {
@@ -327,20 +328,41 @@ legend {
   line-height: 1;
   font-weight: bold;
   text-transform: uppercase;
-  background: var(--bg-main);
-  background: white;
+  /*background-image: linear-gradient(180deg, rgba(0, 0, 0, .0),rgba(0, 0, 0, .0), rgba(0, 0, 0, .1));
+  background-color: var(--bg-main);*/
+  background-color: white;
   border: 1px solid var(--main-border-color);
   border-radius: var(--legend-bradius);
   box-shadow: var(--main-shadow);
 }
 
+legend.lqdglass {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.1));
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 -2px 2px rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  border-radius: 160px;
+}
+
 .general-field {
   border-color: var(--main-border-color);
+  /* border-color: var(--general-input-border); */
   background-image: var(--general-field-bg);
 }
 
 .general-field legend {
+  /*
   border-color: var(--main-border-color);
+*/
 }
 
 .general-field input[type='text'] {
@@ -364,11 +386,14 @@ legend {
 /* ================= TAB FIELD (BLUE) ================= */
 .timesheet-field {
   border-color: var(--main-border-color);
+  /* border-color: var(--timesheet-inputs-group-border); */
   background-image: var(--timesheet-bg);
 }
 
 .timesheet-field legend {
+  /*
   border-color: var(--main-border-color);
+*/
 }
 
 .timesheet-field input[type='text'] {
@@ -389,12 +414,14 @@ legend {
 
 /* ================= RED FIELD ================= */
 .deductions-field {
-  border-color: var(--main-border-color);
+  /* border-color: var(--deductions-inputs-group-border); */
   background-image: var(--deductions-bg);
 }
 
 .deductions-field legend {
+  /*
   border-color: var(--main-border-color);
+*/
 }
 
 .deductions-field input[type='text'] {
@@ -529,7 +556,7 @@ button {
   font-weight: 500;
   text-transform: uppercase;
   color: #fff;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, .0), rgba(0, 0, 0, .15));
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, .0), rgba(0, 0, 0, .0), rgba(0, 0, 0, .2));
   background-color: dodgerblue;
   border: 1px solid dodgerblue;
   border-radius: 10em;
@@ -584,7 +611,9 @@ button:active {
   margin: 0;
   padding: 0 1.25em;
   font-size: 14px;
-  text-align: justify;
+  /*text-align: justify;*/
+  hyphens: auto;
+  overflow-wrap: break-word;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -593,7 +622,7 @@ button:active {
 }
 
 .inp-details.active {
-  margin-block: 0.5em;
+  padding-top: 0.5em;
   padding-bottom: 1em;
   /* max-height: inpDetails.style.maxHeight = `calc(1em + ${inpDetails.scrollHeight}px)` */
   opacity: 1;
@@ -716,6 +745,10 @@ p.deductions {
     display: inline;
   }
 
+  .logo-header {
+    padding: 4vh 0;
+  }
+
   .form,
   .results,
   .header {
@@ -802,7 +835,7 @@ p.deductions {
   }
 
   .input-container:focus-within {
-    padding-top: 0.75em;
+    /*padding-top: 0.75em;*/
   }
 
   .flex-block {
@@ -814,8 +847,13 @@ p.deductions {
     display: none;
   }
 
+  .form-footer {
+    margin-top: 2em;
+  }
+
   .btns-wrap {
-    margin-bottom: 1.5em;
+    padding: 1.5em;
+    margin-bottom: 1.25em;
   }
 
 }
