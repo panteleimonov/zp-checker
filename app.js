@@ -253,11 +253,10 @@ inputs.forEach((input) => {
 					footerDetailsCode.innerText = inpDetailsCode
 					footerDetails.classList.remove('hidden-content')
 				}, 300) // CSS --> transition: all 300ms
-			} else
-				setTimeout(() => {
-					inpDetails.classList.add('active')
-					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-				}, 400)
+			} else {
+				inpDetails.classList.add('active')
+				inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+			}
 		}
 	})
 
