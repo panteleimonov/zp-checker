@@ -265,7 +265,7 @@ inputs.forEach((input) => {
 
 				requestAnimationFrame(() => {
 					inpDetails.classList.add('active')
-					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)`
+					inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px)`
 				})
 
 				// Прибираємо will-change після завершення transition
