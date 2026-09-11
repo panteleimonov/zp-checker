@@ -608,23 +608,26 @@ button:active {
 }
 
 .inp-details {
+  max-height: 0;
   margin: 0;
   padding: 0 1.25em;
+  border-left: 4px solid var(--accruals-field-border);
   font-size: 14px;
-  /*text-align: justify;*/
   hyphens: auto;
   overflow-wrap: break-word;
-  max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 300ms ease-in-out;
-  border-left: 4px solid var(--accruals-field-border);
+  transition:
+    max-height 300ms ease-in-out,
+    padding-top 300ms ease-in-out,
+    padding-bottom 300ms ease-in-out,
+    opacity 300ms ease-in-out;
 }
 
 .inp-details.active {
   padding-top: 0.5em;
   padding-bottom: 1em;
-  /* max-height: inpDetails.style.maxHeight = `calc(1em + ${inpDetails.scrollHeight}px)` */
+  /* max-height: inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` */
   opacity: 1;
 }
 
