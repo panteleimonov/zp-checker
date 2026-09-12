@@ -71,11 +71,6 @@
   font-variation-settings: 'GRAD' 0;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-}
-
 html {
   font-family: 'Google Sans', sans-serif;
   /* Старий спосіб: завжди показувати скролбар */
