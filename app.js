@@ -265,24 +265,22 @@ inputs.forEach((input) => {
 				}
 				inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
 
-				setTimeout((activeDetails) => {
+				setTimeout(() => {
 					if (activeDetails) {
 						activeDetails.classList.remove('active')
-						activeDetails.style.maxHeight = null
+						activeDetails.style.maxHeight = ''
 					}
 					inpDetails.classList.add('active')
 					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-					setTimeout(() => {
-						// Прибираємо will-change після завершення transition
-						inpDetails.addEventListener(
-							'transitionend',
-							() => {
-								inpDetails.style.willChange = 'auto'
-							},
-							{ once: true },
-						)
-						console.log('clear style.willChange after focus', inpDetails)
-					}, 500)
+					// Прибираємо will-change після завершення transition
+					inpDetails.addEventListener(
+						'transitionend',
+						() => {
+							inpDetails.style.willChange = 'auto'
+							console.log('clear style.willChange after focus', inpDetails)
+						},
+						{ once: true },
+					)
 					console.log('finish focus', inpDetails)
 				}, 400)
 				// requestAnimationFrame(() => {
@@ -321,18 +319,16 @@ inputs.forEach((input) => {
 				setTimeout(() => {
 					if (document.activeElement.closest('.input-container') !== input.closest('.input-container')) {
 						inpDetails.classList.remove('active')
-						inpDetails.style.maxHeight = null
-						setTimeout(() => {
-							// Прибираємо will-change після завершення transition
-							inpDetails.addEventListener(
-								'transitionend',
-								() => {
-									inpDetails.style.willChange = 'auto'
-								},
-								{ once: true },
-							)
-							console.log('clear style.willChange after blur', inpDetails)
-						}, 500)
+						inpDetails.style.maxHeight = ''
+						// Прибираємо will-change після завершення transition
+						inpDetails.addEventListener(
+							'transitionend',
+							() => {
+								inpDetails.style.willChange = 'auto'
+								console.log('clear style.willChange after blur', inpDetails)
+							},
+							{ once: true },
+						)
 					}
 					console.log('finish blur', inpDetails)
 				}, 0)
