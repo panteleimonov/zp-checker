@@ -1,3 +1,4 @@
+/* ZP Checker Styles -- 12.09.2026 */
 /* ================= VARIABLES ================= */
 
 :root {
@@ -224,6 +225,7 @@ input::placeholder {
 }
 
 label {
+  text-align: left;
   line-height: 1;
 }
 
@@ -281,7 +283,7 @@ fieldset {
   margin: 1.5em 0 0 0;
   padding: 1em 0;
   padding-bottom: 14px;
-  border: 1px solid var(--accruals-inputs-group-border);
+  /* border: 1px solid var(--accruals-inputs-group-border); */
   border: 1px solid var(--main-border-color);
   border-radius: var(--main-bradius);
   background-color: #fff;
@@ -359,11 +361,6 @@ legend.lqdglass {
   background-image: var(--general-field-bg);
 }
 
-.general-field legend {
-  /*
-  border-color: var(--main-border-color);
-*/
-}
 
 .general-field input[type='text'] {
   border-color: var(--general-input-border);
@@ -390,11 +387,6 @@ legend.lqdglass {
   background-image: var(--timesheet-bg);
 }
 
-.timesheet-field legend {
-  /*
-  border-color: var(--main-border-color);
-*/
-}
 
 .timesheet-field input[type='text'] {
   border-color: var(--timesheet-input-border);
@@ -418,11 +410,6 @@ legend.lqdglass {
   background-image: var(--deductions-bg);
 }
 
-.deductions-field legend {
-  /*
-  border-color: var(--main-border-color);
-*/
-}
 
 .deductions-field input[type='text'] {
   border-color: var(--deductions-input-border);
@@ -477,14 +464,11 @@ input[type='text']:focus-visible {
 
 .footer-details {
   border: 4px solid #fff;
-  /* display: flex; */
   min-width: 80%;
   background-color: #fff;
-  /* background-image: linear-gradient(180deg, #fff, #fff, #eee); */
   padding: 1em;
   box-shadow: var(--main-shadow);
   border-radius: var(--main-bradius);
-  /* transition: all 300ms; */
 }
 
 
@@ -521,7 +505,6 @@ input[type='text']:focus-visible {
 
 .footer-details hr {
   margin: 1em 0 0.5em 0;
-  /* transition: all 300ms; */
 }
 
 .text-footer-details {
@@ -622,12 +605,13 @@ button:active {
     padding-top 300ms ease-in-out,
     padding-bottom 300ms ease-in-out,
     opacity 300ms ease-in-out;
+  /* text-align: justify; */
 }
 
 .inp-details.active {
   padding-top: 0.5em;
   padding-bottom: 1em;
-  /* max-height: inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` */
+  /* max-height: inpDetails.style.maxHeight = `calc(1em + ${inpDetails.scrollHeight}px)` */
   opacity: 1;
 }
 
@@ -655,7 +639,6 @@ button:active {
   display: none;
   justify-content: space-between;
   align-items: center;
-  /* transition: all 300ms; */
   position: absolute;
   min-height: 100vh;
   opacity: 0;
@@ -697,6 +680,8 @@ p.deductions {
 
 .input-container,
 .checkbox-container {
+  overflow: hidden;
+  padding: 0 0.5em;
   position: relative;
 }
 
@@ -744,12 +729,20 @@ p.deductions {
 
 @media (max-width: 1152px) {
 
-  .header span.start-visible {
-    display: inline;
+  .logo-header {
+    padding: 2em 0;
   }
 
-  .logo-header {
-    padding: 4vh 0;
+  .logo-header h1 {
+    font-size: 1.5em;
+  }
+
+  .emoji-icon {
+    font-size: 1.75em;
+  }
+
+  .header span.start-visible {
+    display: inline;
   }
 
   .form,
@@ -759,11 +752,20 @@ p.deductions {
     padding-inline: 20vw;
   }
 
+  fieldset {
+    padding: 1em 0;
+  }
 
   .inputs-group:not(:last-child) {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
+  }
+
+  .input-container,
+  .checkbox-container {
+    border-radius: 1em;
+    padding: 0;
   }
 
   .input-container::after,
@@ -798,6 +800,10 @@ p.deductions {
   .deductions-field .input-container::after,
   .deductions-field .checkbox-container::after {
     background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--deductions-inputs-group-border), var(--deductions-inputs-group-border), rgba(256, 256, 256, 0.0))
+  }
+
+  .form-footer {
+    margin-top: 2em;
   }
 
   .results {
@@ -848,10 +854,6 @@ p.deductions {
 
   .footer-details {
     display: none;
-  }
-
-  .form-footer {
-    margin-top: 2em;
   }
 
   .btns-wrap {
