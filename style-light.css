@@ -72,6 +72,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   font-family: 'Google Sans', sans-serif;
   /* Старий спосіб: завжди показувати скролбар */
   overflow-y: scroll;
