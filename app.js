@@ -271,7 +271,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 200)
+					}, 0)
 				}
 				// // Додаємо will-change перед анімацією
 				// const activeDetails = document.querySelector('.inp-details.active')
@@ -336,7 +336,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 200)
+					}, 0)
 				}
 			}
 			__log(input, 'input --> blur - end!')
