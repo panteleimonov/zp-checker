@@ -238,6 +238,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 document._myLastActiveInput = null
 const inputs = document.querySelectorAll('input[type="text"]')
 const footerDetails = document.querySelector('.footer-details')
+const _isMobileMode = window.getComputedStyle(footerDetails).display === 'none'
 const footerDetailsHeader = footerDetails.querySelector('.header-footer-details')
 const footerDetailsText = footerDetails.querySelector('.text-footer-details')
 const footerDetailsCode = footerDetails.querySelector('.code-footer-details')
@@ -250,7 +251,7 @@ inputs.forEach((input) => {
 		document._myLastActiveInput = input
 		const inpDetails = input.closest('.input-wrapper').nextElementSibling
 		if (inpDetails && inpDetails.classList.contains('inp-details')) {
-			if (window.getComputedStyle(footerDetails).display !== 'none') {
+			if (!_isMobileMode) {
 				const inpLabel = _getCleanText(input.closest('.input-wrapper').querySelector('label'))
 				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
 				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
@@ -262,11 +263,15 @@ inputs.forEach((input) => {
 					footerDetails.classList.remove('hidden-content')
 				}, 300) // CSS --> transition: all 300ms
 			} else {
-				__log(input, 'event focus - start!')
+				// ====== Mobile mode ============================================================
+				__log(input, 'input --> focus - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
-				if (activeDetails) {
-					inpDetails.classList.remove('active')
-					inpDetails.style.maxHeight = ''
+				console.log(activeDetails)
+				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
+					setTimeout(() => {
+						activeDetails.classList.remove('active')
+						activeDetails.style.maxHeight = ''
+					}, 0)
 				}
 				// // Додаємо will-change перед анімацією
 				// const activeDetails = document.querySelector('.inp-details.active')
@@ -297,7 +302,7 @@ inputs.forEach((input) => {
 				// // 	inpDetails.classList.add('active')
 				// // 	inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px`
 				// // })
-				__log(input, 'event focus - end!')
+				__log(input, 'input --> focus - end!')
 			}
 		}
 	})
@@ -323,36 +328,18 @@ inputs.forEach((input) => {
 					}
 				}, 300) // CSS --> transition: all 300ms
 			} else {
-				console.log('start blur', input)
+				// ====== Mobile mode ============================================================
+				__log(input, 'input --> blur - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
 
-				if (activeDetails) {
-					if (activeDetails.closest('.input-container') === e.target.closest('.input-container')) {
-						e.target.focus()
-					} else {
-						const handleTransitionEnd = (event) => {
-							// Чекаємо завершення анімації потрібної властивості
-							if (event.target !== activeDetails) return
-							if (event.propertyName !== 'max-height') return
-
-							// Прибираємо will-change після завершення transition
-							activeDetails.style.willChange = ''
-
-							// Видаляємо обробник
-							activeDetails.removeEventListener('transitionend', handleTransitionEnd)
-						}
-
-						activeDetails.addEventListener('transitionend', handleTransitionEnd)
-
-						setTimeout(() => {
-							activeDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-
-							activeDetails.classList.remove('active')
-							activeDetails.style.maxHeight = ''
-						}, 300)
-					}
+				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
+					setTimeout(() => {
+						activeDetails.classList.remove('active')
+						activeDetails.style.maxHeight = ''
+					}, 0)
 				}
 			}
+			__log(input, 'input --> blur - end!')
 			// // Додаємо will-change перед анімацією
 			// inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
 
@@ -386,54 +373,70 @@ inputs.forEach((input) => {
 // 		}
 // 	})
 // })
-document.querySelectorAll('label').forEach((inputLabel) => {
-	inputLabel.setAttribute('for', '')
-})
-document.querySelectorAll('.input-container').forEach((inputLabel) => {
-	inputLabel.addEventListener('click', (e) => {
-		console.log('.input-container --> click', e.target)
+
+// =============================================
+// Видаляємо дефолтне спрацювання для label щоб змінити логіку фокусування на інпути
+// для мобільної версії => фокусування тільки після безпосереднього кліку на інпут
+// =====
+if (_isMobileMode) {
+	document.querySelectorAll('label').forEach((inputLabel) => {
+		inputLabel.setAttribute('for', '')
+	})
+}
+
+// =============================================
+// '.input-container' Event Listener for 'click'
+// =====
+document.querySelectorAll('.input-container').forEach((inputContainer) => {
+	inputContainer.addEventListener('click', (e) => {
+		if (!_isMobileMode) return
 		if (e.target instanceof HTMLInputElement && e.target.type === 'text') return
+		console.log('.input-container --> click', e.target)
 		if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
 			document._myLastActiveInput.focus()
 		} else {
 			document._myLastActiveInput = null
 		}
-		const inpDetails = e.target.closest('.input-container').querySelector('.inp-details')
-		// Додаємо will-change перед анімацією
 		const activeDetails = document.querySelector('.inp-details.active')
-		if (activeDetails) {
-			activeDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-		}
-		inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
+		const inpDetails = e.target.closest('.input-container').querySelector('.inp-details')
 
 		setTimeout(() => {
-			if (activeDetails) {
+			if (activeDetails && activeDetails !== inpDetails) {
 				activeDetails.classList.remove('active')
 				activeDetails.style.maxHeight = ''
 			}
 			inpDetails.classList.add('active')
 			inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-			// Прибираємо will-change після завершення transition
-			inpDetails.addEventListener(
-				'transitionend',
-				() => {
-					inpDetails.style.willChange = 'auto'
-					console.log('clear style.willChange after focus', inpDetails)
-				},
-				{ once: true },
-			)
-			console.log('finish animate', inpDetails)
 		}, 0)
 	})
 })
+// *****
+// Event Listener 'click' for all '.input-container'
+// *************************************************
 
+// =============================================
+// Слухаємо BODY на 'click' щоб закрити інпут-деталі та обнулити збережений
+// активний інпут (щоб не було небажаних фокусів при кліках на інпут-деталі)
+// =====
 document.body.addEventListener('click', (e) => {
-	if (!(e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container'))) {
+	if (!e.target.closest('.input-container')) {
 		document._myLastActiveInput = null
+		const activeDetails = document.querySelector('.inp-details.active')
+		if (activeDetails) {
+			setTimeout(() => {
+				activeDetails.classList.remove('active')
+				activeDetails.style.maxHeight = ''
+			}, 0)
+		}
 	}
 })
-// Автоматичний розрахунок вечірніх / нічних годин
+// *****
+// Event Listener 'click' for all '.input-container'
+// *************************************************
+
 // ============================================================================
+// Автоматичний розрахунок вечірніх / нічних годин
+// =====
 
 const evnDays_input = document.querySelector('#evn_d')
 const evnHours_input = document.querySelector('#evn_h')
