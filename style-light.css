@@ -422,7 +422,8 @@ legend.lqdglass {
   border-left-color: var(--deductions-field-border);
 }
 
-.deductions-field .input-container:focus-within .deductions-field .input-container:has(.inp-details.active) {
+.deductions-field .input-container:focus-within,
+.deductions-field .input-container:has(.inp-details.active) {
   background: var(--deductions-details-bg);
 }
 
