@@ -132,7 +132,6 @@ input::placeholder {
   margin: 0;
   margin-left: 0.25em;
   font-size: 1.75em;
-  /*font-size: 2em;*/
   line-height: 1;
 }
 
@@ -171,7 +170,6 @@ input::placeholder {
 }
 
 .main.hidden {
-  /* max-height: 100vh; */
   opacity: 0;
 }
 
@@ -220,8 +218,6 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 0.25em;
-  margin-top: 0.25em; */
   padding: 0.25em 1em 0.25em 0.75em;
 }
 
@@ -623,7 +619,7 @@ button:active {
 .inp-details {
   max-height: 0;
   margin: 0;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem;
   /* border-left: 4px solid var(--accruals-field-border); */
   font-size: 14px;
   hyphens: auto;
@@ -650,7 +646,6 @@ button:active {
   border: none;
   border-top: 2px dashed rgba(0, 0, 0, 0.15);
 }
-
 
 .details-icon {
   margin-left: -3px;
@@ -689,7 +684,6 @@ button:active {
   border-bottom: 1px solid var(--main-border-color);
 }
 
-
 .results-section.active {
   display: flex;
   top: 0;
@@ -709,7 +703,6 @@ p.deductions {
 }
 
 /* MEDIA */
-
 
 @media (max-width: 1260px) {
 
@@ -745,7 +738,6 @@ p.deductions {
   .header span.start-visible {
     display: none;
   }
-
 
 }
 
@@ -881,7 +873,6 @@ p.deductions {
 
 }
 
-
 @media (max-width: 800px) {
 
   .form,
@@ -901,7 +892,6 @@ p.deductions {
   }
 
 }
-
 
 @media (max-width: 550px) {
 

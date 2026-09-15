@@ -183,7 +183,8 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			const displayValue = typeof value === 'boolean' ? (value ? 'Так' : 'Ні') : value
 			if (!displayValue) return
 
-			const label = document.querySelector(`label[for="${id}"]`)
+			// const label = document.querySelector(`label[for="${id}"]`)
+			const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('label')
 			let labelText = label ? label.textContent : id
 			if (labelText === 'evn_h') {
 				labelText = 'Вечірні години'
@@ -384,8 +385,8 @@ if (_isMobileMode) {
 	})
 }
 
-// =============================================
-// '.input-container' Event Listener for 'click'
+// =================================================
+// Event Listener 'click' for all '.input-container'
 // =====
 document.querySelectorAll('.input-container').forEach((inputContainer) => {
 	inputContainer.addEventListener('click', (e) => {
@@ -431,7 +432,7 @@ document.body.addEventListener('click', (e) => {
 	}
 })
 // *****
-// Event Listener 'click' for all '.input-container'
+// Слухаємо BODY на 'click' щоб закрити інпут-деталі
 // *************************************************
 
 // ============================================================================
@@ -520,6 +521,8 @@ document.getElementById('app-form').addEventListener('reset', () => {
 	nightDaysToHourse_UI_reset()
 })
 
+// *****
+// Автоматичний розрахунок вечірніх / нічних годин
 // ****************************************************************************
 
 // Автозаповнення: оклад --> оклад за поп. мисяць (для зручност користувача)
