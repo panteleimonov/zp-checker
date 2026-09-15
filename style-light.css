@@ -61,7 +61,7 @@
   --main-shadow_hover: 0 4px 1em rgba(0, 0, 0, 0.25);
 }
 
-/* ================= BASE ================= */
+/* ================= BASE ================= 43% */
 *,
 *::before,
 *::after {
@@ -75,13 +75,14 @@ html {
   font-family: 'Google Sans', sans-serif;
   /* Старий спосіб: завжди показувати скролбар */
   overflow-y: scroll;
-
+  scroll-behavior: auto;
   /* Новий спосіб: резервувати місце під скролбар */
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
 
 body {
+  /* overscroll-behavior: none; */
   position: relative;
   overflow: hidden;
   min-height: 100vh;

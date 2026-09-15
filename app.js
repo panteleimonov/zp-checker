@@ -434,6 +434,93 @@ document.body.addEventListener('click', (e) => {
 // Event Listener 'click' for all '.input-container'
 // *************************************************
 
+// =============================================
+// Додаємо для inputs плавну прокрутку при фокусі
+// =====
+
+const INPUT_Y = 0.3
+const SCROLL_DURATION = 400
+const SCROLL_TOLERANCE = 100
+
+// Плавна прокрутка з контрольованою тривалістю
+function smoothScrollTo(targetY, duration = SCROLL_DURATION) {
+	const startY = window.scrollY
+	const distance = targetY - startY
+	const startTime = performance.now()
+
+	// Плавний старт і плавне гальмування
+	const easeInOut = (t) => {
+		return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+	}
+
+	function animate(currentTime) {
+		const progress = Math.min((currentTime - startTime) / duration, 1)
+
+		const easedProgress = easeInOut(progress)
+
+		window.scrollTo(0, startY + distance * easedProgress)
+
+		if (progress < 1) {
+			requestAnimationFrame(animate)
+		}
+	}
+
+	requestAnimationFrame(animate)
+}
+
+// Обробка натискання на input
+document.addEventListener('pointerdown', (e) => {
+	const input = e.target.closest('input, textarea')
+
+	if (!input) return
+
+	// Якщо input уже активний — нічого не змінюємо
+	if (document.activeElement === input) return
+
+	// Не дозволяємо Safari одразу фокусувати input
+	// та автоматично прокручувати сторінку
+	e.preventDefault()
+
+	// Висота viewport ДО відкриття клавіатури
+	const viewportHeight = window.visualViewport?.height ?? window.innerHeight
+
+	// Бажана позиція input — 20% від верхньої
+	// частини початкового viewport
+	const targetY = viewportHeight * INPUT_Y
+
+	// Поточна позиція input відносно viewport
+	const inputY = input.getBoundingClientRect().top
+
+	// На скільки потрібно прокрутити сторінку
+	const scrollDelta = inputY - targetY
+
+	// Якщо input уже знаходиться майже там, де потрібно
+	if (Math.abs(scrollDelta) <= SCROLL_TOLERANCE) {
+		input.focus()
+		return
+	}
+
+	// Плавно прокручуємо сторінку
+	smoothScrollTo(window.scrollY + scrollDelta)
+
+	// Чекаємо завершення анімації
+	setTimeout(() => {
+		// Невелика корекція позиції після прокрутки
+		const finalInputY = input.getBoundingClientRect().top
+		const finalDelta = finalInputY - targetY
+
+		if (Math.abs(finalDelta) > SCROLL_TOLERANCE) {
+			window.scrollTo(0, window.scrollY + finalDelta)
+		}
+
+		// Тільки тепер відкриваємо клавіатуру
+		input.focus()
+	}, SCROLL_DURATION + 20)
+})
+// *****
+// Додаємо для inputs плавну прокрутку при фокусі
+// *************************************************
+
 // ============================================================================
 // Автоматичний розрахунок вечірніх / нічних годин
 // =====
