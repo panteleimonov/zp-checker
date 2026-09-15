@@ -271,7 +271,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 0)
+					}, 200)
 				}
 				// // Додаємо will-change перед анімацією
 				// const activeDetails = document.querySelector('.inp-details.active')
@@ -336,7 +336,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 0)
+					}, 200)
 				}
 			}
 			__log(input, 'input --> blur - end!')
@@ -374,7 +374,7 @@ inputs.forEach((input) => {
 // 	})
 // })
 
-// =============================================
+// =================================================================================
 // Видаляємо дефолтне спрацювання для label щоб змінити логіку фокусування на інпути
 // для мобільної версії => фокусування тільки після безпосереднього кліку на інпут
 // =====
@@ -414,7 +414,7 @@ document.querySelectorAll('.input-container').forEach((inputContainer) => {
 // Event Listener 'click' for all '.input-container'
 // *************************************************
 
-// =============================================
+// ========================================================================
 // Слухаємо BODY на 'click' щоб закрити інпут-деталі та обнулити збережений
 // активний інпут (щоб не було небажаних фокусів при кліках на інпут-деталі)
 // =====

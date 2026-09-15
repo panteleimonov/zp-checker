@@ -1,9 +1,9 @@
-/* ZP Checker Styles -- 12.09.2026 */
+/* ZP Checker Styles -- 16.09.2026 */
 /* ================= VARIABLES ================= */
 
 :root {
   /* Base colors */
-  --bg-main: #fcfcfc;
+  --bg-main: #f8f8f8;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
@@ -66,7 +66,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 300ms ease-in-out;
+  transition: all 300ms ease;
   font-optical-sizing: auto;
   font-variation-settings: 'GRAD' 0;
 }
@@ -222,7 +222,7 @@ input::placeholder {
   align-items: center;
   /* margin-bottom: 0.25em;
   margin-top: 0.25em; */
-  padding: 0.25em 1rem;
+  padding: 0.25em 1em 0.25em 0.75em;
 }
 
 label {
@@ -362,12 +362,15 @@ legend.lqdglass {
   background-image: var(--general-field-bg);
 }
 
-
 .general-field input[type='text'] {
   border-color: var(--general-input-border);
 }
 
-.general-field .inp-details {
+.general-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.general-field .input-container:has(.inp-details.active) {
   border-left-color: var(--general-field-border);
 }
 
@@ -389,13 +392,20 @@ legend.lqdglass {
   background-image: var(--timesheet-bg);
 }
 
-
 .timesheet-field input[type='text'] {
   border-color: var(--timesheet-input-border);
 }
 
 .timesheet-field .inp-details {
   border-left-color: var(--timesheet-details-bg);
+}
+
+.timesheet-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.timesheet-field .input-container:has(.inp-details.active) {
+  border-left-color: var(--timesheet-field-border);
 }
 
 .timesheet-field .input-container:focus-within,
@@ -413,12 +423,19 @@ legend.lqdglass {
   background-image: var(--deductions-bg);
 }
 
-
 .deductions-field input[type='text'] {
   border-color: var(--deductions-input-border);
 }
 
 .deductions-field .inp-details {
+  border-left-color: var(--deductions-field-border);
+}
+
+.deductions-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.deductions-field .input-container:has(.inp-details.active) {
   border-left-color: var(--deductions-field-border);
 }
 
@@ -429,6 +446,14 @@ legend.lqdglass {
 
 .deductions-field .inputs-group {
   border-color: var(--deductions-inputs-group-border);
+}
+
+.accruals-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.accruals-field .input-container:has(.inp-details.active) {
+  border-left-color: var(--accruals-field-border);
 }
 
 /* ================= ADVANCED ================= */
@@ -467,7 +492,7 @@ input[type='text']:focus-visible {
 }
 
 .footer-details {
-  border: 4px solid #fff;
+  border: 1px solid var(--main-border-color);
   min-width: 80%;
   background-color: #fff;
   padding: 1em;
@@ -598,8 +623,8 @@ button:active {
 .inp-details {
   max-height: 0;
   margin: 0;
-  padding: 0 1.25em;
-  border-left: 4px solid var(--accruals-field-border);
+  padding: 0 1rem 0 1rem;
+  /* border-left: 4px solid var(--accruals-field-border); */
   font-size: 14px;
   hyphens: auto;
   overflow-wrap: break-word;
@@ -683,14 +708,6 @@ p.deductions {
   color: darkred
 }
 
-.input-container,
-.checkbox-container {
-  overflow: hidden;
-  padding: 0 0.5em;
-  position: relative;
-}
-
-
 /* MEDIA */
 
 
@@ -771,6 +788,8 @@ p.deductions {
   .checkbox-container {
     border-radius: 1em;
     padding: 0;
+    overflow: hidden;
+    position: relative;
   }
 
   .input-container::after,
