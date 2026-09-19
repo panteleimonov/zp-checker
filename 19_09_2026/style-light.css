@@ -1,9 +1,9 @@
-/* ZP Checker Styles -- 12.09.2026 */
+/* ZP Checker Styles -- 16.09.2026 */
 /* ================= VARIABLES ================= */
 
 :root {
   /* Base colors */
-  --bg-main: #fcfcfc;
+  --bg-main: #f8f8f8;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
@@ -102,6 +102,7 @@ p {
 }
 
 input::placeholder {
+  font-size: 15px;
   color: #aaa;
 }
 
@@ -131,7 +132,6 @@ input::placeholder {
   margin: 0;
   margin-left: 0.25em;
   font-size: 1.75em;
-  /*font-size: 2em;*/
   line-height: 1;
 }
 
@@ -170,7 +170,6 @@ input::placeholder {
 }
 
 .main.hidden {
-  /* max-height: 100vh; */
   opacity: 0;
 }
 
@@ -219,9 +218,7 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 0.25em;
-  margin-top: 0.25em; */
-  padding: 0.25em 1rem;
+  padding: 0.25em 1em 0.25em 0.75em;
 }
 
 label {
@@ -236,12 +233,12 @@ label:hover {
 
 /* ================= INPUTS ================= */
 input[type='text'] {
-  background-color: var(--bg-main);
+  font-size: 16px;
   background-color: rgba(255, 255, 255, 0.9);
-  width: 5.5em;
-  margin-left: 0.5em;
+  width: 4.5em;
+  margin-left: 0.25em;
   text-align: center;
-  line-height: 1.75;
+  line-height: 1.5;
   font-family: 'Rubik', sans-serif;
   border: 1px solid var(--accruals-input-border);
   border-radius: 0.5em;
@@ -249,7 +246,7 @@ input[type='text'] {
 }
 
 input[type='text'].short {
-  width: 4.25em;
+  width: 3.25em;
 }
 
 .input-wrapper:has(input[type='text'][disabled]) {
@@ -261,7 +258,7 @@ input[type='checkbox'] {
 }
 
 input.large {
-  width: 5.5em;
+  width: 4.5em;
 }
 
 input[type='checkbox'] {
@@ -361,16 +358,20 @@ legend.lqdglass {
   background-image: var(--general-field-bg);
 }
 
-
 .general-field input[type='text'] {
   border-color: var(--general-input-border);
 }
 
-.general-field .inp-details {
+.general-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.general-field .input-container:has(.inp-details.active) {
   border-left-color: var(--general-field-border);
 }
 
-.general-field .input-container:focus-within {
+.general-field .input-container:focus-within,
+.general-field .input-container:has(.inp-details.active) {
   background: var(--general-details-bg);
 }
 
@@ -387,7 +388,6 @@ legend.lqdglass {
   background-image: var(--timesheet-bg);
 }
 
-
 .timesheet-field input[type='text'] {
   border-color: var(--timesheet-input-border);
 }
@@ -396,7 +396,16 @@ legend.lqdglass {
   border-left-color: var(--timesheet-details-bg);
 }
 
-.timesheet-field .input-container:focus-within {
+.timesheet-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.timesheet-field .input-container:has(.inp-details.active) {
+  border-left-color: var(--timesheet-field-border);
+}
+
+.timesheet-field .input-container:focus-within,
+.timesheet-field .input-container:has(.inp-details.active) {
   background: var(--timesheet-details-bg);
 }
 
@@ -410,7 +419,6 @@ legend.lqdglass {
   background-image: var(--deductions-bg);
 }
 
-
 .deductions-field input[type='text'] {
   border-color: var(--deductions-input-border);
 }
@@ -419,12 +427,29 @@ legend.lqdglass {
   border-left-color: var(--deductions-field-border);
 }
 
-.deductions-field .input-container:focus-within {
+.deductions-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.deductions-field .input-container:has(.inp-details.active) {
+  border-left-color: var(--deductions-field-border);
+}
+
+.deductions-field .input-container:focus-within,
+.deductions-field .input-container:has(.inp-details.active) {
   background: var(--deductions-details-bg);
 }
 
 .deductions-field .inputs-group {
   border-color: var(--deductions-inputs-group-border);
+}
+
+.accruals-field .input-container {
+  border-left: 4px solid transparent;
+}
+
+.accruals-field .input-container:has(.inp-details.active) {
+  border-left-color: var(--accruals-field-border);
 }
 
 /* ================= ADVANCED ================= */
@@ -463,7 +488,7 @@ input[type='text']:focus-visible {
 }
 
 .footer-details {
-  border: 4px solid #fff;
+  border: 1px solid var(--main-border-color);
   min-width: 80%;
   background-color: #fff;
   padding: 1em;
@@ -585,16 +610,17 @@ button:active {
   align-items: center;
 }
 
-.input-container:focus-within {
-  /* padding-top: 0.75em; */
+.input-container:focus-within,
+.input-container:has(.inp-details.active) {
   background: var(--accruals-details-bg);
 }
+
 
 .inp-details {
   max-height: 0;
   margin: 0;
-  padding: 0 1.25em;
-  border-left: 4px solid var(--accruals-field-border);
+  padding: 0 1rem;
+  /* border-left: 4px solid var(--accruals-field-border); */
   font-size: 14px;
   hyphens: auto;
   overflow-wrap: break-word;
@@ -620,7 +646,6 @@ button:active {
   border: none;
   border-top: 2px dashed rgba(0, 0, 0, 0.15);
 }
-
 
 .details-icon {
   margin-left: -3px;
@@ -659,7 +684,6 @@ button:active {
   border-bottom: 1px solid var(--main-border-color);
 }
 
-
 .results-section.active {
   display: flex;
   top: 0;
@@ -678,16 +702,7 @@ p.deductions {
   color: darkred
 }
 
-.input-container,
-.checkbox-container {
-  overflow: hidden;
-  padding: 0 0.5em;
-  position: relative;
-}
-
-
 /* MEDIA */
-
 
 @media (max-width: 1260px) {
 
@@ -723,7 +738,6 @@ p.deductions {
   .header span.start-visible {
     display: none;
   }
-
 
 }
 
@@ -766,6 +780,8 @@ p.deductions {
   .checkbox-container {
     border-radius: 1em;
     padding: 0;
+    overflow: hidden;
+    position: relative;
   }
 
   .input-container::after,
@@ -823,7 +839,6 @@ p.deductions {
     display: none
   }
 
-
   .results-close-btn {
     width: 100%;
     padding: 1em 1.5em;
@@ -838,13 +853,8 @@ p.deductions {
     cursor: pointer;
   }
 
-
   .flex-container {
     display: block;
-  }
-
-  .input-container:focus-within {
-    /*padding-top: 0.75em;*/
   }
 
   .flex-block {
@@ -862,7 +872,6 @@ p.deductions {
   }
 
 }
-
 
 @media (max-width: 800px) {
 
@@ -883,7 +892,6 @@ p.deductions {
   }
 
 }
-
 
 @media (max-width: 550px) {
 

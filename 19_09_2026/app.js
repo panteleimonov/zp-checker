@@ -1,3 +1,9 @@
+const __log = (a1, a2) => {
+	console.log(a1)
+	console.log(a2)
+	console.log('- - - - - - - - - - - - - - - - - - - -')
+}
+
 function getFormValues(formId) {
 	const form = document.querySelector(formId)
 	const formData = new FormData(form)
@@ -177,7 +183,8 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			const displayValue = typeof value === 'boolean' ? (value ? 'Так' : 'Ні') : value
 			if (!displayValue) return
 
-			const label = document.querySelector(`label[for="${id}"]`)
+			// const label = document.querySelector(`label[for="${id}"]`)
+			const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('label')
 			let labelText = label ? label.textContent : id
 			if (labelText === 'evn_h') {
 				labelText = 'Вечірні години'
@@ -232,6 +239,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 document._myLastActiveInput = null
 const inputs = document.querySelectorAll('input[type="text"]')
 const footerDetails = document.querySelector('.footer-details')
+const _isMobileMode = window.getComputedStyle(footerDetails).display === 'none'
 const footerDetailsHeader = footerDetails.querySelector('.header-footer-details')
 const footerDetailsText = footerDetails.querySelector('.text-footer-details')
 const footerDetailsCode = footerDetails.querySelector('.code-footer-details')
@@ -244,7 +252,7 @@ inputs.forEach((input) => {
 		document._myLastActiveInput = input
 		const inpDetails = input.closest('.input-wrapper').nextElementSibling
 		if (inpDetails && inpDetails.classList.contains('inp-details')) {
-			if (window.getComputedStyle(footerDetails).display !== 'none') {
+			if (!_isMobileMode) {
 				const inpLabel = _getCleanText(input.closest('.input-wrapper').querySelector('label'))
 				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
 				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
@@ -256,42 +264,51 @@ inputs.forEach((input) => {
 					footerDetails.classList.remove('hidden-content')
 				}, 300) // CSS --> transition: all 300ms
 			} else {
-				console.log('start focus', inpDetails)
-
-				// Додаємо will-change перед анімацією
+				// ====== Mobile mode ============================================================
+				__log(input, 'input --> focus - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
-				if (activeDetails) {
-					activeDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-				}
-				inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-
-				setTimeout(() => {
-					if (activeDetails) {
+				console.log(activeDetails)
+				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
+					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}
-					inpDetails.classList.add('active')
-					inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-					// Прибираємо will-change після завершення transition
-					inpDetails.addEventListener(
-						'transitionend',
-						() => {
-							inpDetails.style.willChange = 'auto'
-							console.log('clear style.willChange after focus', inpDetails)
-						},
-						{ once: true },
-					)
-					console.log('finish focus', inpDetails)
-				}, 400)
-				// requestAnimationFrame(() => {
+					}, 0)
+				}
+				// // Додаємо will-change перед анімацією
+				// const activeDetails = document.querySelector('.inp-details.active')
+				// if (activeDetails) {
+				// 	activeDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
+				// }
+				// inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
+
+				// setTimeout(() => {
+				// 	if (activeDetails) {
+				// 		activeDetails.classList.remove('active')
+				// 		activeDetails.style.maxHeight = ''
+				// 	}
 				// 	inpDetails.classList.add('active')
-				// 	inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px`
-				// })
+				// 	inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+				// 	// Прибираємо will-change після завершення transition
+				// 	inpDetails.addEventListener(
+				// 		'transitionend',
+				// 		() => {
+				// 			inpDetails.style.willChange = 'auto'
+				// 			console.log('clear style.willChange after focus', inpDetails)
+				// 		},
+				// 		{ once: true },
+				// 	)
+				// 	console.log('finish focus', inpDetails)
+				// }, 400)
+				// // requestAnimationFrame(() => {
+				// // 	inpDetails.classList.add('active')
+				// // 	inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px`
+				// // })
+				__log(input, 'input --> focus - end!')
 			}
 		}
 	})
 
-	input.addEventListener('blur', () => {
+	input.addEventListener('blur', (e) => {
 		const inpDetails = input.closest('.input-wrapper').nextElementSibling
 		if (inpDetails && inpDetails.classList.contains('inp-details')) {
 			if (window.getComputedStyle(footerDetails).display !== 'none') {
@@ -312,43 +329,115 @@ inputs.forEach((input) => {
 					}
 				}, 300) // CSS --> transition: all 300ms
 			} else {
-				console.log('start blur', inpDetails)
-				// Додаємо will-change перед анімацією
-				inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
+				// ====== Mobile mode ============================================================
+				__log(input, 'input --> blur - start!')
+				const activeDetails = document.querySelector('.inp-details.active')
 
-				setTimeout(() => {
-					if (document.activeElement.closest('.input-container') !== input.closest('.input-container')) {
-						inpDetails.classList.remove('active')
-						inpDetails.style.maxHeight = ''
-						// Прибираємо will-change після завершення transition
-						inpDetails.addEventListener(
-							'transitionend',
-							() => {
-								inpDetails.style.willChange = 'auto'
-								console.log('clear style.willChange after blur', inpDetails)
-							},
-							{ once: true },
-						)
-					}
-					console.log('finish blur', inpDetails)
-				}, 0)
+				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
+					setTimeout(() => {
+						activeDetails.classList.remove('active')
+						activeDetails.style.maxHeight = ''
+					}, 0)
+				}
 			}
+			__log(input, 'input --> blur - end!')
+			// // Додаємо will-change перед анімацією
+			// inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
+
+			// setTimeout(() => {
+			// 	if (document.activeElement.closest('.input-container') !== input.closest('.input-container')) {
+			// 		inpDetails.classList.remove('active')
+			// 		inpDetails.style.maxHeight = ''
+			// 		// Прибираємо will-change після завершення transition
+			// 		inpDetails.addEventListener(
+			// 			'transitionend',
+			// 			() => {
+			// 				inpDetails.style.willChange = 'auto'
+			// 				console.log('clear style.willChange after blur', inpDetails)
+			// 			},
+			// 			{ once: true },
+			// 		)
+			// 	}
+			// 	console.log('finish blur', inpDetails)
+			// }, 0)
 		}
 	})
 })
 
+// document.querySelectorAll('.input-container').forEach((inputContainer) => {
+// 	inputContainer.addEventListener('dblclick', (e) => {
+// 		if (!(e.target instanceof HTMLInputElement)) {
+// 			console.log('click -->', e.target)
+// 			if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
+// 				document._myLastActiveInput.focus()
+// 			} else e.target.closest('.input-container').querySelector('input[type="text"]').focus()
+// 		}
+// 	})
+// })
+
+// =================================================================================
+// Видаляємо дефолтне спрацювання для label щоб змінити логіку фокусування на інпути
+// для мобільної версії => фокусування тільки після безпосереднього кліку на інпут
+// =====
+if (_isMobileMode) {
+	document.querySelectorAll('label').forEach((inputLabel) => {
+		inputLabel.setAttribute('for', '')
+	})
+}
+
+// =================================================
+// Event Listener 'click' for all '.input-container'
+// =====
 document.querySelectorAll('.input-container').forEach((inputContainer) => {
 	inputContainer.addEventListener('click', (e) => {
-		if (!(e.target instanceof HTMLInputElement)) {
-			console.log('click -->', e.target)
-			if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
-				document._myLastActiveInput.focus()
-			} else e.target.closest('.input-container').querySelector('input[type="text"]').focus()
+		if (!_isMobileMode) return
+		if (e.target instanceof HTMLInputElement && e.target.type === 'text') return
+		console.log('.input-container --> click', e.target)
+		if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
+			document._myLastActiveInput.focus()
+		} else {
+			document._myLastActiveInput = null
 		}
+		const activeDetails = document.querySelector('.inp-details.active')
+		const inpDetails = e.target.closest('.input-container').querySelector('.inp-details')
+
+		setTimeout(() => {
+			if (activeDetails && activeDetails !== inpDetails) {
+				activeDetails.classList.remove('active')
+				activeDetails.style.maxHeight = ''
+			}
+			inpDetails.classList.add('active')
+			inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+		}, 0)
 	})
 })
-// Автоматичний розрахунок вечірніх / нічних годин
+// *****
+// Event Listener 'click' for all '.input-container'
+// *************************************************
+
+// ========================================================================
+// Слухаємо BODY на 'click' щоб закрити інпут-деталі та обнулити збережений
+// активний інпут (щоб не було небажаних фокусів при кліках на інпут-деталі)
+// =====
+document.body.addEventListener('click', (e) => {
+	if (!e.target.closest('.input-container')) {
+		document._myLastActiveInput = null
+		const activeDetails = document.querySelector('.inp-details.active')
+		if (activeDetails) {
+			setTimeout(() => {
+				activeDetails.classList.remove('active')
+				activeDetails.style.maxHeight = ''
+			}, 0)
+		}
+	}
+})
+// *****
+// Слухаємо BODY на 'click' щоб закрити інпут-деталі
+// *************************************************
+
 // ============================================================================
+// Автоматичний розрахунок вечірніх / нічних годин
+// =====
 
 const evnDays_input = document.querySelector('#evn_d')
 const evnHours_input = document.querySelector('#evn_h')
@@ -432,6 +521,8 @@ document.getElementById('app-form').addEventListener('reset', () => {
 	nightDaysToHourse_UI_reset()
 })
 
+// *****
+// Автоматичний розрахунок вечірніх / нічних годин
 // ****************************************************************************
 
 // Автозаповнення: оклад --> оклад за поп. мисяць (для зручност користувача)
