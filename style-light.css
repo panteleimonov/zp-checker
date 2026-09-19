@@ -458,13 +458,13 @@ legend.lqdglass {
 .input-container:has(.inp-details.active) label {
   font-variation-settings: 'GRAD' 200;
 }
-
+/*
 .input-container:has(.inp-details.active),
 .input-container:focus-within {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 1em;
 }
-
+*/
 input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
