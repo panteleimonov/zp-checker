@@ -281,9 +281,7 @@ input[type='checkbox'] {
 fieldset {
   /*position: relative;*/
   margin: 1.5em 0 0 0;
-  padding: 1em 0.5em;
-  padding-bottom: 0.5em;
-  /* border: 1px solid var(--accruals-inputs-group-border); */
+  padding: 1em 0.5em 0.75em 0.5em;
   border: 1px solid var(--main-border-color);
   border-radius: var(--main-bradius);
   background-color: #fff;
@@ -357,18 +355,12 @@ legend.lqdglass {
 
 .general-field {
   border-color: var(--main-border-color);
-  /* border-color: var(--general-input-border); */
   background-image: var(--general-field-bg);
 }
 
 .general-field input[type='text'] {
   border-color: var(--general-input-border);
 }
-
-/* 
-.general-field .input-container:has(.inp-details.active) {
-  border-left-color: var(--general-field-border);
-} */
 
 .general-field .input-container {
   background-image: var(--general-details-bg);
@@ -379,16 +371,15 @@ legend.lqdglass {
   background-color: var(--general-input-shadow_focus);
 }
 
-.inputs-group:not(:last-child) {
+/* .inputs-group:not(:last-child) {
   margin-bottom: 0.25em;
   padding-bottom: 0.25em;
   border-bottom: 1px solid var(--accruals-inputs-group-border);
-}
+} */
 
 /* ================= TAB FIELD (BLUE) ================= */
 .timesheet-field {
   border-color: var(--main-border-color);
-  /* border-color: var(--timesheet-inputs-group-border); */
   background-image: var(--timesheet-bg);
 }
 
@@ -398,10 +389,6 @@ legend.lqdglass {
 
 .timesheet-field .inp-details {
   border-left-color: var(--timesheet-details-bg);
-}
-
-.timesheet-field .input-container {
-  /*  border-left: 4px solid transparent;*/
 }
 
 .timesheet-field .input-container:has(.inp-details.active) {
@@ -435,10 +422,6 @@ legend.lqdglass {
   border-left-color: var(--deductions-field-border);
 }
 
-.deductions-field .input-container {
-  /*border-left: 4px solid transparent;*/
-}
-
 .deductions-field .input-container:has(.inp-details.active) {
   border-left-color: var(--deductions-field-border);
 }
@@ -457,7 +440,6 @@ legend.lqdglass {
   border-color: var(--deductions-inputs-group-border);
 }
 
-
 .accruals-field .input-container {
   background: var(--accruals-details-bg);
 }
@@ -466,10 +448,6 @@ legend.lqdglass {
 .accruals-field .input-container:focus-within {
   background-color: var(--accruals-input-shadow_focus);
 }
-
-/* .accruals-field .input-container:has(.inp-details.active) {
-  border-left-color: var(--accruals-field-border);
-} */
 
 /* ================= ADVANCED ================= */
 
@@ -509,7 +487,6 @@ input[type='text']:focus-visible {
   box-shadow: 0 0 4px 4px var(--deductions-input-shadow_focus);
 }
 
-
 .form-footer {
   display: flex;
   justify-content: space-between;
@@ -525,7 +502,6 @@ input[type='text']:focus-visible {
   box-shadow: var(--main-shadow);
   border-radius: var(--main-bradius);
 }
-
 
 .code-footer-details {
   background-color: #eee;
@@ -566,7 +542,6 @@ input[type='text']:focus-visible {
   margin: 0;
   padding: 0;
 }
-
 
 /* ================= BUTTONS ================= */
 .btns-wrap {
@@ -817,37 +792,6 @@ p.deductions {
     padding-bottom: 0;
     border-bottom: none;
   }
-
-  /*
-.input-container:first-child {
-  border-radius: 0.75em 0.75em 0em 0em;
-}
-.input-container:last-child {
-  border-radius: 0em 0em 0.75em 0.75em;
-}*/
-  /*.input-container::after,
-  .checkbox-container::after {
-    content: '';
-    display: block;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-  }*/
-
-  /* last 
-  .input-container+.input-container:has(.inp-details.active)::after {
-    display: none;
-  }
-
-  .input-container:has(.inp-details.active)::after {
-    display: none;
-  }
-  */
-  /*
-  .input-container.last-in-field::after {
-    display: none;
-  }*/
 
   .general-field .input-container::after,
   .general-field .checkbox-container::after {
