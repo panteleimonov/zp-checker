@@ -17,8 +17,10 @@
   --general-field-border: rgba(255, 191, 0, 0.5);
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
-  --general-input-shadow_focus: 0 0 4px 4px rgba(255, 191, 0, 0.25);
-  --general-details-bg: rgba(255, 191, 0, 0.2);
+  --general-input-shadow_focus: rgba(255, 191, 0, 0.15);
+  --general-details-bg: linear-gradient(180deg,
+      rgba(255, 191, 0, 0.1),
+      rgba(255, 191, 0, 0.15));
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
@@ -28,8 +30,9 @@
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
-  --accruals-input-shadow_focus: 0 0 4px 4px rgba(20, 200, 20, 0.15);
-  --accruals-details-bg: rgba(20, 200, 20, 0.15);
+  --accruals-input-shadow_focus: rgba(20, 200, 20, 0.1);
+  --accruals-details-bg: linear-gradient(180deg,
+      rgba(20, 200, 20, 0.05), rgba(20, 200, 20, 0.1));
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
@@ -39,8 +42,8 @@
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
   --timesheet-input-border_focus: rgba(20, 20, 255, 0.6);
-  --timesheet-input-shadow_focus: 0 0 4px 4px rgba(20, 20, 255, 0.15);
-  --timesheet-details-bg: rgba(20, 20, 255, 0.15);
+  --timesheet-input-shadow_focus: rgba(20, 20, 255, 0.1);
+  --timesheet-details-bg: linear-gradient(180deg, rgba(20, 20, 255, 0.05), rgba(20, 20, 255, 0.1));
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
@@ -50,11 +53,11 @@
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
-  --deductions-input-shadow_focus: 0 0 4px 4px rgba(255, 40, 0, 0.15);
-  --deductions-details-bg: rgba(255, 40, 0, 0.15);
+  --deductions-input-shadow_focus: rgba(255, 40, 0, 0.1);
+  --deductions-details-bg: linear-gradient(rgba(255, 40, 0, 0.05), rgba(255, 40, 0, 0.1));
 
   /* Effects */
-  --main-bradius: 1.25em;
+  --main-bradius: 1.5em;
   --legend-bradius: 100em;
   --main-border-color: #ddd;
   --main-shadow: 0 4px 0.5em rgba(0, 0, 0, 0.1);
@@ -218,7 +221,7 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25em 1em 0.25em 0.75em;
+  padding: 0.25em 0.5em;
 }
 
 label {
@@ -278,8 +281,8 @@ input[type='checkbox'] {
 fieldset {
   /*position: relative;*/
   margin: 1.5em 0 0 0;
-  padding: 1em 0;
-  padding-bottom: 14px;
+  padding: 1em 0.5em;
+  padding-bottom: 0.5em;
   /* border: 1px solid var(--accruals-inputs-group-border); */
   border: 1px solid var(--main-border-color);
   border-radius: var(--main-bradius);
@@ -362,17 +365,18 @@ legend.lqdglass {
   border-color: var(--general-input-border);
 }
 
-.general-field .input-container {
-  border-left: 4px solid transparent;
-}
-
+/* 
 .general-field .input-container:has(.inp-details.active) {
   border-left-color: var(--general-field-border);
+} */
+
+.general-field .input-container {
+  background-image: var(--general-details-bg);
 }
 
-.general-field .input-container:focus-within,
-.general-field .input-container:has(.inp-details.active) {
-  background: var(--general-details-bg);
+.general-field .input-container:has(.inp-details.active),
+.general-field .input-container:focus-within {
+  background-color: var(--general-input-shadow_focus);
 }
 
 .inputs-group:not(:last-child) {
@@ -397,16 +401,20 @@ legend.lqdglass {
 }
 
 .timesheet-field .input-container {
-  border-left: 4px solid transparent;
+  /*  border-left: 4px solid transparent;*/
 }
 
 .timesheet-field .input-container:has(.inp-details.active) {
   border-left-color: var(--timesheet-field-border);
 }
 
-.timesheet-field .input-container:focus-within,
-.timesheet-field .input-container:has(.inp-details.active) {
+.timesheet-field .input-container {
   background: var(--timesheet-details-bg);
+}
+
+.timesheet-field .input-container:has(.inp-details.active),
+.timesheet-field .input-container:focus-within {
+  background-color: var(--timesheet-input-shadow_focus);
 }
 
 .timesheet-field .inputs-group {
@@ -428,55 +436,77 @@ legend.lqdglass {
 }
 
 .deductions-field .input-container {
-  border-left: 4px solid transparent;
+  /*border-left: 4px solid transparent;*/
 }
 
 .deductions-field .input-container:has(.inp-details.active) {
   border-left-color: var(--deductions-field-border);
 }
 
-.deductions-field .input-container:focus-within,
-.deductions-field .input-container:has(.inp-details.active) {
+.deductions-field .input-container,
+.deductions-field .checkbox-container {
   background: var(--deductions-details-bg);
+}
+
+.deductions-field .input-container:has(.inp-details.active),
+.deductions-field .input-container:focus-within {
+  background-color: var(--deductions-input-shadow_focus);
 }
 
 .deductions-field .inputs-group {
   border-color: var(--deductions-inputs-group-border);
 }
 
+
 .accruals-field .input-container {
-  border-left: 4px solid transparent;
+  background: var(--accruals-details-bg);
 }
 
-.accruals-field .input-container:has(.inp-details.active) {
-  border-left-color: var(--accruals-field-border);
+.accruals-field .input-container:has(.inp-details.active),
+.accruals-field .input-container:focus-within {
+  background-color: var(--accruals-input-shadow_focus);
 }
+
+/* .accruals-field .input-container:has(.inp-details.active) {
+  border-left-color: var(--accruals-field-border);
+} */
 
 /* ================= ADVANCED ================= */
-.input-wrapper:focus-within label {
+
+.input-container:focus-within label {
   font-variation-settings: 'GRAD' 200;
+}
+
+.input-container:has(.inp-details.active) label {
+  font-variation-settings: 'GRAD' 200;
+}
+
+.input-container:has(.inp-details.active),
+.input-container:focus-within {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
 }
 
 input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
   border-color: var(--accruals-input-border_focus);
-  box-shadow: var(--accruals-input-shadow_focus);
+  box-shadow: 0 0 4px 4px var(--accruals-input-shadow_focus);
 }
 
 .general-field input[type='text']:focus-visible {
   border-color: var(--general-input-border_focus);
-  box-shadow: var(--general-input-shadow_focus);
+  box-shadow: 0 0 4px 4px var(--general-input-shadow_focus);
 }
 
 .timesheet-field input[type='text']:focus-visible {
   border-color: var(--timesheet-input-border_focus);
-  box-shadow: var(--timesheet-input-shadow_focus);
+  box-shadow: 0 0 4px 4px var(--timesheet-input-shadow_focus);
 }
 
 .deductions-field input[type='text']:focus-visible {
   border-color: var(--deductions-input-border_focus);
-  box-shadow: var(--deductions-input-shadow_focus);
+  box-shadow: 0 0 4px 4px var(--deductions-input-shadow_focus);
 }
 
 
@@ -605,21 +635,31 @@ button:active {
   background-color: #09b160;
 }
 
+.input-container,
+.checkbox-container {
+  border: none;
+  border-radius: 0.5em;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  margin-block: 2px;
+}
+
 .checkbox-wrap {
   display: flex;
   align-items: center;
 }
 
-.input-container:focus-within,
+
 .input-container:has(.inp-details.active) {
-  background: var(--accruals-details-bg);
+  padding-top: 0.5em;
 }
 
 
 .inp-details {
   max-height: 0;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   /* border-left: 4px solid var(--accruals-field-border); */
   font-size: 14px;
   hyphens: auto;
@@ -652,6 +692,7 @@ button:active {
 }
 
 .details-text {
+  /* font-size: 1rem; */
   white-space: normal;
   overflow-wrap: break-word;
   word-break: normal;
@@ -766,9 +807,10 @@ p.deductions {
     padding-inline: 20vw;
   }
 
+  /* 
   fieldset {
-    padding: 1em 0;
-  }
+    padding: 1em 0.5em;
+  } */
 
   .inputs-group:not(:last-child) {
     margin-bottom: 0;
@@ -776,15 +818,14 @@ p.deductions {
     border-bottom: none;
   }
 
-  .input-container,
-  .checkbox-container {
-    border-radius: 1em;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .input-container::after,
+  /*
+.input-container:first-child {
+  border-radius: 0.75em 0.75em 0em 0em;
+}
+.input-container:last-child {
+  border-radius: 0em 0em 0.75em 0.75em;
+}*/
+  /*.input-container::after,
   .checkbox-container::after {
     content: '';
     display: block;
@@ -792,11 +833,21 @@ p.deductions {
     position: absolute;
     bottom: 0;
     height: 1px;
-  }
+  }*/
 
-  .input-container.last-in-field::after {
+  /* last 
+  .input-container+.input-container:has(.inp-details.active)::after {
     display: none;
   }
+
+  .input-container:has(.inp-details.active)::after {
+    display: none;
+  }
+  */
+  /*
+  .input-container.last-in-field::after {
+    display: none;
+  }*/
 
   .general-field .input-container::after,
   .general-field .checkbox-container::after {

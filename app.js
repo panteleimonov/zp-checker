@@ -249,11 +249,15 @@ const footerDetailsCode_defaultText = footerDetailsCode.innerText
 
 inputs.forEach((input) => {
 	input.addEventListener('focus', () => {
+		if (document._myLastActiveInput === input) {
+			__log('document._myLastActiveInput === input')
+			return
+		}
 		document._myLastActiveInput = input
-		const inpDetails = input.closest('.input-wrapper').nextElementSibling
-		if (inpDetails && inpDetails.classList.contains('inp-details')) {
+		const inpDetails = input.closest('.input-container').querySelector('.inp-details')
+		if (inpDetails) {
 			if (!_isMobileMode) {
-				const inpLabel = _getCleanText(input.closest('.input-wrapper').querySelector('label'))
+				const inpLabel = _getCleanText(input.closest('.input-container').querySelector('label'))
 				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
 				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
 				footerDetails.classList.add('hidden-content')
@@ -265,9 +269,9 @@ inputs.forEach((input) => {
 				}, 300) // CSS --> transition: all 300ms
 			} else {
 				// ====== Mobile mode ============================================================
-				__log(input, 'input --> focus - start!')
+				// __log(input, 'input --> focus - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
-				console.log(activeDetails)
+				// console.log(activeDetails)
 				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
@@ -303,34 +307,36 @@ inputs.forEach((input) => {
 				// // 	inpDetails.classList.add('active')
 				// // 	inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px`
 				// // })
-				__log(input, 'input --> focus - end!')
+				// __log(input, 'input --> focus - end!')
 			}
 		}
 	})
 
 	input.addEventListener('blur', (e) => {
-		const inpDetails = input.closest('.input-wrapper').nextElementSibling
-		if (inpDetails && inpDetails.classList.contains('inp-details')) {
-			if (window.getComputedStyle(footerDetails).display !== 'none') {
-				footerDetails.classList.add('hidden-content')
-				setTimeout(() => {
-					// костиль, щоб при клiку за межi браузера поле footerDetails не пропадало
-					footerDetails.classList.remove('hidden-content')
-				}, 400)
-				setTimeout(() => {
-					if (!(document.activeElement instanceof HTMLInputElement && document.activeElement.type === 'text')) {
-						// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
-						// Інакше ігноруємо скидання тексту на дефолтний (щоб не заважати обробці focus).
-						// ! Припускаємо, що фокус може бути не на input - в такому разі скидаємо текст.
-						footerDetailsHeader.innerText = footerDetailsHeader_defaultText
-						footerDetailsText.innerText = footerDetailsText_defaultText
-						footerDetailsCode.innerText = footerDetailsCode_defaultText
-						footerDetails.classList.remove('hidden-content')
-					}
-				}, 300) // CSS --> transition: all 300ms
+		// const inpDetails = input.closest('.input-wrapper').nextElementSibling
+		const inpDetails = input.closest('.input-container').querySelector('.inp-details')
+		if (inpDetails) {
+			if (!_isMobileMode) {
+				return
+				// footerDetails.classList.add('hidden-content')
+				// setTimeout(() => {
+				// 	// костиль, щоб при клiку за межi браузера поле footerDetails не пропадало
+				// 	footerDetails.classList.remove('hidden-content')
+				// }, 400)
+				// setTimeout(() => {
+				// 	if (!(document.activeElement instanceof HTMLInputElement && document.activeElement.type === 'text')) {
+				// 		// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
+				// 		// Інакше ігноруємо скидання тексту на дефолтний (щоб не заважати обробці focus).
+				// 		// ! Припускаємо, що фокус може бути не на input - в такому разі скидаємо текст.
+				// 		footerDetailsHeader.innerText = footerDetailsHeader_defaultText
+				// 		footerDetailsText.innerText = footerDetailsText_defaultText
+				// 		footerDetailsCode.innerText = footerDetailsCode_defaultText
+				// 		footerDetails.classList.remove('hidden-content')
+				// 	}
+				// }, 300) // CSS --> transition: all 300ms
 			} else {
 				// ====== Mobile mode ============================================================
-				__log(input, 'input --> blur - start!')
+				// __log(input, 'input --> blur - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
 
 				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
@@ -340,7 +346,7 @@ inputs.forEach((input) => {
 					}, 0)
 				}
 			}
-			__log(input, 'input --> blur - end!')
+			// __log(input, 'input --> blur - end!')
 			// // Додаємо will-change перед анімацією
 			// inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
 
@@ -390,9 +396,13 @@ if (_isMobileMode) {
 // =====
 document.querySelectorAll('.input-container').forEach((inputContainer) => {
 	inputContainer.addEventListener('click', (e) => {
-		if (!_isMobileMode) return
+		if (!_isMobileMode) {
+			if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
+				document._myLastActiveInput.focus()
+			}
+			return
+		}
 		if (e.target instanceof HTMLInputElement && e.target.type === 'text') return
-		console.log('.input-container --> click', e.target)
 		if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
 			document._myLastActiveInput.focus()
 		} else {
@@ -422,6 +432,15 @@ document.querySelectorAll('.input-container').forEach((inputContainer) => {
 document.body.addEventListener('click', (e) => {
 	if (!e.target.closest('.input-container')) {
 		document._myLastActiveInput = null
+		if (!_isMobileMode && footerDetailsHeader.innerText !== footerDetailsHeader_defaultText) {
+			footerDetails.classList.add('hidden-content')
+			setTimeout(() => {
+				footerDetailsHeader.innerText = footerDetailsHeader_defaultText
+				footerDetailsText.innerText = footerDetailsText_defaultText
+				footerDetailsCode.innerText = footerDetailsCode_defaultText
+				footerDetails.classList.remove('hidden-content')
+			}, 300) // CSS --> transition: all 300ms
+		}
 		const activeDetails = document.querySelector('.inp-details.active')
 		if (activeDetails) {
 			setTimeout(() => {
@@ -575,5 +594,23 @@ function disableAvans(e) {
 
 avansField.addEventListener('input', disableDaysForAvans)
 daysForAvansField.addEventListener('input', disableAvans)
+
+// *****************************************************************************
+
+// Включення поля для внескiв з тринадцятоъ
+// =============================================================================
+
+const prem_13 = document.querySelector('#prem_13')
+const blag_vnes_13 = document.querySelector('#blag_vnes_13')
+
+function enableBlag_vnes_13(e) {
+	if (e.target.value !== '') {
+		blag_vnes_13.removeAttribute('disabled')
+	} else {
+		blag_vnes_13.setAttribute('disabled', true)
+	}
+}
+
+prem_13.addEventListener('input', enableBlag_vnes_13)
 
 // *****************************************************************************
