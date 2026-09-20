@@ -276,7 +276,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 0)
+					}, 200)
 				}
 				// // Додаємо will-change перед анімацією
 				// const activeDetails = document.querySelector('.inp-details.active')
