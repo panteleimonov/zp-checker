@@ -12,8 +12,8 @@
 
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
-      rgba(255, 222, 92, 0.15),
-      rgba(255, 191, 0, 0.15));
+      rgba(255, 222, 92, 0.2),
+      rgba(255, 191, 0, 0.2));
   --general-field-border: rgba(255, 191, 0, 0.5);
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
@@ -24,8 +24,8 @@
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
-      rgba(20, 200, 20, 0.05),
-      rgba(20, 200, 20, 0.05));
+      rgba(20, 200, 20, 0.1),
+      rgba(20, 200, 20, 0.1));
   --accruals-field-border: rgba(20, 200, 20, 0.3);
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
@@ -36,8 +36,8 @@
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
-      rgba(20, 20, 255, 0.05),
-      rgba(20, 20, 255, 0.05));
+      rgba(20, 20, 255, 0.1),
+      rgba(20, 20, 255, 0.1));
   --timesheet-field-border: rgba(20, 20, 255, 0.3);
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
@@ -47,8 +47,8 @@
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(255, 40, 0, 0.05),
-      rgba(255, 40, 0, 0.05));
+      rgba(255, 40, 0, 0.1),
+      rgba(255, 40, 0, 0.1));
   --deductions-field-border: rgba(255, 40, 0, 0.3);
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
@@ -848,7 +848,7 @@ button:active {
   }
 
   .btns-wrap {
-    padding: 1.5em;
+    padding: 1.25rem 1rem;
     margin-bottom: 1.25em;
   }
 
