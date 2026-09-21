@@ -1,10 +1,10 @@
-/* ZP Checker Styles -- 16.09.2026 */
+/* ZP Checker Styles */
 /* ================= VARIABLES ================= */
 
 :root {
   /* Base colors */
   --bg-main: #f8f8f8;
-  --text-main: #111;
+  --text-main: #000;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
   --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
@@ -13,7 +13,7 @@
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
       rgba(255, 222, 92, 0.15),
-      rgba(255, 191, 0, 0.25));
+      rgba(255, 191, 0, 0.15));
   --general-field-border: rgba(255, 191, 0, 0.5);
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
@@ -25,7 +25,7 @@
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
       rgba(20, 200, 20, 0.05),
-      rgba(20, 200, 20, 0.15));
+      rgba(20, 200, 20, 0.05));
   --accruals-field-border: rgba(20, 200, 20, 0.3);
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
@@ -37,7 +37,7 @@
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
       rgba(20, 20, 255, 0.05),
-      rgba(20, 20, 255, 0.15));
+      rgba(20, 20, 255, 0.05));
   --timesheet-field-border: rgba(20, 20, 255, 0.3);
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
@@ -48,7 +48,7 @@
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
       rgba(255, 40, 0, 0.05),
-      rgba(255, 40, 0, 0.15));
+      rgba(255, 40, 0, 0.05));
   --deductions-field-border: rgba(255, 40, 0, 0.3);
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
@@ -595,7 +595,6 @@ button:active {
 }
 
 .results-close-btn {
-  /* background: transparent; */
   background-color: #2EBB77;
   border: 1px solid #2EBB77;
   color: var(--text-main);
@@ -635,7 +634,6 @@ button:active {
   max-height: 0;
   margin: 0;
   padding: 0 0.5rem;
-  /* border-left: 4px solid var(--accruals-field-border); */
   font-size: 14px;
   hyphens: auto;
   overflow-wrap: break-word;
@@ -646,7 +644,6 @@ button:active {
     padding-top 300ms ease-in-out,
     padding-bottom 300ms ease-in-out,
     opacity 300ms ease-in-out;
-  /* text-align: justify; */
 }
 
 .inp-details.active {
@@ -706,17 +703,6 @@ button:active {
   opacity: 1;
 }
 
-mark {
-  display: none;
-}
-
-p.accruals {
-  color: inherit
-}
-
-p.deductions {
-  color: darkred
-}
 
 /* MEDIA */
 
