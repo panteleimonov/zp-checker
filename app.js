@@ -192,7 +192,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 				labelText = 'Нічні години'
 			}
 
-			return `<p><span>${labelText}</span><mark> ${id} </mark><b>${displayValue}</b></p>`
+			return `<p><span>${labelText}</span><b>${displayValue}</b></p>`
 		})
 		.join('')
 
