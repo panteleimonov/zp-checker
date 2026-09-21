@@ -186,9 +186,9 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			// const label = document.querySelector(`label[for="${id}"]`)
 			const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('label')
 			let labelText = label ? label.textContent : id
-			if (labelText === 'evn_h') {
+			if (id === 'evn_h') {
 				labelText = 'Вечірні години'
-			} else if (labelText === 'night_h') {
+			} else if (id === 'night_h') {
 				labelText = 'Нічні години'
 			}
 
