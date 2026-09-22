@@ -69,7 +69,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  transition: all 300ms ease;
+  transition: all 300ms ease-in-out;
   font-optical-sizing: auto;
   font-variation-settings: 'GRAD' 0;
 }
@@ -105,8 +105,8 @@ p {
 }
 
 input::placeholder {
-  font-size: 15px;
-  color: #aaa;
+  font-size: 16px;
+  color: #bbb;
 }
 
 /* ================= HEADER ================= */
@@ -638,11 +638,11 @@ button:active {
   overflow-wrap: break-word;
   overflow: hidden;
   opacity: 0;
-  /*transition:
+  transition:
     max-height 300ms ease-in-out,
     padding-top 300ms ease-in-out,
     padding-bottom 300ms ease-in-out,
-    opacity 300ms ease-in-out;*/
+    opacity 300ms ease-in-out;
 }
 
 .inp-details.active {
