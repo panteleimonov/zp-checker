@@ -12,49 +12,49 @@
 
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
-      rgba(255, 222, 92, 0.2),
-      rgba(255, 191, 0, 0.2));
+      rgba(255, 222, 92, 0.15),
+      rgba(255, 191, 0, 0.15));
   --general-field-border: rgba(255, 191, 0, 0.5);
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
   --general-input-shadow_focus: rgba(255, 191, 0, 0.15);
   --general-details-bg: linear-gradient(180deg,
-      rgba(255, 191, 0, 0.1),
-      rgba(255, 191, 0, 0.15));
+      rgba(255, 191, 0, 0.05),
+      rgba(255, 191, 0, 0.1));
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
-      rgba(20, 200, 20, 0.1),
-      rgba(20, 200, 20, 0.1));
+      rgba(20, 200, 20, 0.05),
+      rgba(20, 200, 20, 0.05));
   --accruals-field-border: rgba(20, 200, 20, 0.3);
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
   --accruals-input-shadow_focus: rgba(20, 200, 20, 0.1);
   --accruals-details-bg: linear-gradient(180deg,
-      rgba(20, 200, 20, 0.05), rgba(20, 200, 20, 0.1));
+      rgba(20, 200, 20, 0.025), rgba(20, 200, 20, 0.05));
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
-      rgba(20, 20, 255, 0.1),
-      rgba(20, 20, 255, 0.1));
+      rgba(20, 20, 255, 0.05),
+      rgba(20, 20, 255, 0.05));
   --timesheet-field-border: rgba(20, 20, 255, 0.3);
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
   --timesheet-input-border_focus: rgba(20, 20, 255, 0.6);
   --timesheet-input-shadow_focus: rgba(20, 20, 255, 0.1);
-  --timesheet-details-bg: linear-gradient(180deg, rgba(20, 20, 255, 0.05), rgba(20, 20, 255, 0.1));
+  --timesheet-details-bg: linear-gradient(180deg, rgba(20, 20, 255, 0.025), rgba(20, 20, 255, 0.05));
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(255, 40, 0, 0.1),
-      rgba(255, 40, 0, 0.1));
+      rgba(255, 40, 0, 0.05),
+      rgba(255, 40, 0, 0.05));
   --deductions-field-border: rgba(255, 40, 0, 0.3);
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
   --deductions-input-shadow_focus: rgba(255, 40, 0, 0.1);
-  --deductions-details-bg: linear-gradient(rgba(255, 40, 0, 0.05), rgba(255, 40, 0, 0.1));
+  --deductions-details-bg: linear-gradient(rgba(255, 40, 0, 0.025), rgba(255, 40, 0, 0.05));
 
   /* Effects */
   --main-bradius: 1.5em;
