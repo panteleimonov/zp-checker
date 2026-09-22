@@ -19,7 +19,7 @@
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
   --general-input-shadow_focus: rgba(255, 191, 0, 0.15);
   --general-details-bg: linear-gradient(180deg,
-      rgba(255, 191, 0, 0.05),
+      rgba(255, 191, 0, 0.075),
       rgba(255, 191, 0, 0.15));
 
   /* Green theme */
@@ -32,7 +32,7 @@
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
   --accruals-input-shadow_focus: rgba(20, 200, 20, 0.1);
   --accruals-details-bg: linear-gradient(180deg,
-      rgba(20, 200, 20, 0.025), rgba(20, 200, 20, 0.075));
+      rgba(20, 200, 20, 0.05), rgba(20, 200, 20, 0.075));
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
@@ -43,7 +43,7 @@
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
   --timesheet-input-border_focus: rgba(20, 20, 255, 0.6);
   --timesheet-input-shadow_focus: rgba(20, 20, 255, 0.1);
-  --timesheet-details-bg: linear-gradient(180deg, rgba(20, 20, 255, 0.025), rgba(20, 20, 255, 0.075));
+  --timesheet-details-bg: linear-gradient(180deg, rgba(20, 20, 255, 0.05), rgba(20, 20, 255, 0.075));
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
@@ -54,7 +54,7 @@
   --deductions-input-border: rgba(255, 40, 0, 0.4);
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
   --deductions-input-shadow_focus: rgba(255, 40, 0, 0.1);
-  --deductions-details-bg: linear-gradient(rgba(255, 40, 0, 0.025), rgba(255, 40, 0, 0.075));
+  --deductions-details-bg: linear-gradient(rgba(255, 40, 0, 0.05), rgba(255, 40, 0, 0.075));
 
   /* Effects */
   --main-bradius: 1.5em;
@@ -227,10 +227,11 @@ input::placeholder {
 label {
   text-align: left;
   line-height: 1;
-font-variation-settings: 'GRAD' 200;
+
 }
 
 label:hover {
+font-variation-settings: 'GRAD' 200;
   cursor: pointer;
 }
 
