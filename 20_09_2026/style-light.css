@@ -1,4 +1,4 @@
-/* ZP Checker Styles */
+/* ZP Checker Styles -- 20.09.2026 */
 /* ================= VARIABLES ================= */
 
 :root {
@@ -12,20 +12,20 @@
 
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
-      rgba(255, 222, 92, 0.2),
-      rgba(255, 191, 0, 0.2));
+      rgba(255, 222, 92, 0.15),
+      rgba(255, 191, 0, 0.3));
   --general-field-border: rgba(255, 191, 0, 0.5);
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
   --general-input-shadow_focus: rgba(255, 191, 0, 0.15);
   --general-details-bg: linear-gradient(180deg,
       rgba(255, 191, 0, 0.1),
-      rgba(255, 191, 0, 0.2));
+      rgba(255, 191, 0, 0.15));
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
-      rgba(20, 200, 20, 0.1),
-      rgba(20, 200, 20, 0.1));
+      rgba(20, 200, 20, 0.05),
+      rgba(20, 200, 20, 0.15));
   --accruals-field-border: rgba(20, 200, 20, 0.3);
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
@@ -36,8 +36,8 @@
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
-      rgba(20, 20, 255, 0.1),
-      rgba(20, 20, 255, 0.1));
+      rgba(20, 20, 255, 0.05),
+      rgba(20, 20, 255, 0.15));
   --timesheet-field-border: rgba(20, 20, 255, 0.3);
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
@@ -47,8 +47,8 @@
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(255, 40, 0, 0.1),
-      rgba(255, 40, 0, 0.1));
+      rgba(255, 40, 0, 0.05),
+      rgba(255, 40, 0, 0.15));
   --deductions-field-border: rgba(255, 40, 0, 0.3);
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
@@ -106,7 +106,7 @@ p {
 
 input::placeholder {
   font-size: 15px;
-  color: #bbb;
+  color: #aaa;
 }
 
 /* ================= HEADER ================= */
@@ -227,8 +227,6 @@ input::placeholder {
 label {
   text-align: left;
   line-height: 1;
-  color: #111;
-  font-variation-settings: 'GRAD' 100;
 }
 
 label:hover {
@@ -461,13 +459,12 @@ legend.lqdglass {
   font-variation-settings: 'GRAD' 200;
 }
 
-/*
 .input-container:has(.inp-details.active),
 .input-container:focus-within {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 1em;
 }
-*/
+
 input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
@@ -565,7 +562,7 @@ input[type='text']:focus-visible {
 
 button {
   width: 100%;
-  padding: 1rem 1.5em;
+  padding: 1em 1.5em;
   font-size: 14px;
   letter-spacing: 1px;
   line-height: 1;
@@ -575,7 +572,7 @@ button {
   background-image: linear-gradient(180deg, rgba(0, 0, 0, .0), rgba(0, 0, 0, .0), rgba(0, 0, 0, .2));
   background-color: dodgerblue;
   border: 1px solid dodgerblue;
-  border-radius: 1.5rem;
+  border-radius: 10em;
   box-shadow: var(--main-shadow);
   text-shadow: 2px 2px 0.5em rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -598,11 +595,13 @@ button:active {
 }
 
 .results-close-btn {
+  /* background: transparent; */
   background-color: #2EBB77;
   border: 1px solid #2EBB77;
   color: var(--text-main);
   color: #fff;
   width: auto;
+  /* font-weight: 600; */
   border-radius: 10em;
 }
 
@@ -610,7 +609,6 @@ button:active {
 .results-close-btn:active {
   background-color: #09b160;
 }
-
 
 .input-container,
 .checkbox-container {
@@ -622,25 +620,22 @@ button:active {
   margin-block: 2px;
 }
 
-.input-container {
-  will-change: padding-top, margin-top, margin-bottom;
-}
-
 .checkbox-wrap {
   display: flex;
   align-items: center;
 }
 
+
 .input-container:has(.inp-details.active) {
   padding-top: 0.5em;
-  margin-top: 4px;
-  margin-bottom: 4px;
 }
+
 
 .inp-details {
   max-height: 0;
   margin: 0;
   padding: 0 0.5rem;
+  /* border-left: 4px solid var(--accruals-field-border); */
   font-size: 14px;
   hyphens: auto;
   overflow-wrap: break-word;
@@ -651,7 +646,7 @@ button:active {
     padding-top 300ms ease-in-out,
     padding-bottom 300ms ease-in-out,
     opacity 300ms ease-in-out;
-  will-change: max-height, padding-top, padding-bottom, opacity;
+  /* text-align: justify; */
 }
 
 .inp-details.active {
@@ -664,18 +659,15 @@ button:active {
 .inp-details hr,
 .footer-details hr {
   border: none;
-  border-top: 2px dashed rgba(0, 0, 0, 0.1);
-}
-
-.inp-details hr {
-  margin-block: 0.5em;
+  border-top: 2px dashed rgba(0, 0, 0, 0.15);
 }
 
 .details-icon {
-  margin-left: -1px;
+  margin-left: -3px;
 }
 
 .details-text {
+  /* font-size: 1rem; */
   white-space: normal;
   overflow-wrap: break-word;
   word-break: normal;
@@ -714,6 +706,17 @@ button:active {
   opacity: 1;
 }
 
+mark {
+  display: none;
+}
+
+p.accruals {
+  color: inherit
+}
+
+p.deductions {
+  color: darkred
+}
 
 /* MEDIA */
 
@@ -779,6 +782,11 @@ button:active {
     padding-inline: 20vw;
   }
 
+  /* 
+  fieldset {
+    padding: 1em 0.5em;
+  } */
+
   .inputs-group:not(:last-child) {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -818,7 +826,7 @@ button:active {
   .results-top-panel {
     margin-top: 0;
     justify-content: center;
-    padding-top: 0.5em;
+    padding-top: 1.25em;
     border-bottom: none;
   }
 
@@ -828,14 +836,14 @@ button:active {
 
   .results-close-btn {
     width: 100%;
-    padding: 1rem 1.5em;
+    padding: 1em 1.5em;
     font-size: 14px;
     letter-spacing: 1px;
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
     color: #fff;
-    border-radius: 1.5rem;
+    border-radius: 10em;
     box-shadow: var(--main-shadow);
     cursor: pointer;
   }
@@ -854,7 +862,7 @@ button:active {
   }
 
   .btns-wrap {
-    padding: 1.25rem 1rem;
+    padding: 1.5em;
     margin-bottom: 1.25em;
   }
 
