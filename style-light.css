@@ -646,11 +646,6 @@ button:active {
   overflow-wrap: break-word;
   overflow: hidden;
   opacity: 0;
-  transition:
-    max-height 300ms ease-in-out,
-    padding-top 300ms ease-in-out,
-    padding-bottom 300ms ease-in-out,
-    opacity 300ms ease-in-out;
   will-change: max-height, padding-top, padding-bottom, opacity;
 }
 
