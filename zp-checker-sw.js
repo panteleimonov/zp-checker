@@ -1,10 +1,10 @@
 const CACHE_NAME = 'zp-checker-cache-v1'
 const urlsToCache = [
-	'/', // головна сторінка
-	'/index.html', // HTML
-	'/style-light.css', // CSS
-	'/main.js', // JS
-	'/app.js', // JS
+	'./', // головна сторінка
+	'./index.html', // HTML
+	'./style-light.css', // CSS
+	'./main.js', // JS
+	'./app.js', // JS
 ]
 
 // Встановлення SW і кешування ресурсів
