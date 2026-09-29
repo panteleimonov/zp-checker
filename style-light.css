@@ -733,10 +733,6 @@ button:active {
 
 @media (max-width: 1152px) {
 
-  html {
-    height: 2116px;
-  }
-
   .logo-header {
     padding: 2em 0;
   }
