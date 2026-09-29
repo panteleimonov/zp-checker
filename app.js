@@ -72,6 +72,7 @@ function salaryCalc(userData) {
 		dopNights: { type: 'accruals', code: 11, codeName: 'Доплата нічні', amount: 0 },
 		vidpNarah: { type: 'accruals', code: 0, codeName: 'Відпускні (нарах)', amount: 0 },
 		vidpMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. відпустка', amount: 0 },
+		prem13: { type: 'accruals', code: 155, codeName: 'Премія річна (13-та)', amount: 0 },
 		mStrahMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. страховка', amount: 0 },
 		vidpKomp: { type: 'accruals', code: 0, codeName: 'Компенсація', amount: 0 },
 		bonusGramPodjaka: { type: 'accruals', code: 0, codeName: 'Подяка / Грамота', amount: 0 },
@@ -89,8 +90,9 @@ function salaryCalc(userData) {
 		vidp: { type: 'deductions', code: 359, codeName: 'Ощ/к відпускні', amount: 0 },
 		profsp: { type: 'deductions', code: 339, codeName: 'Профспілка', amount: 0 },
 		vZbir: { type: 'deductions', code: 378, codeName: 'Військовий збір', amount: 0 },
-		vnesGO: { type: 'deductions', code: 379, codeName: 'Внески ГО', amount: 0 },
 		vnesZSU: { type: 'deductions', code: 380, codeName: 'Внески ЗСУ', amount: 0 },
+		vnesGO: { type: 'deductions', code: 379, codeName: 'Внески ГО', amount: 0 },
+		blagVnes13: { type: 'deductions', code: '381 та 383', codeName: 'Внески (13-та)', amount: 0 },
 		medicsStrah: { type: 'deductions', code: 0, codeName: 'Медична страховка', amount: 0 },
 		othersVidr: { type: 'deductions', code: 0, codeName: 'Інші відрахування', amount: 0 },
 		// Сума всіх відрахувань
@@ -124,6 +126,8 @@ function salaryCalc(userData) {
 	accruals.vidpNarah.amount = _floor2(userData.vidp_narah)
 	// Код - ***
 	accruals.vidpMatDop.amount = _floor2(userData.mater_dop)
+	// Код - ***
+	accruals.prem13.amount = _floor2(userData.prem_13)
 	// Код - ***
 	accruals.mStrahMatDop.amount = _floor2(userData.med_polis)
 	// Код - ***
@@ -159,6 +163,8 @@ function salaryCalc(userData) {
 	deductions.vnesGO.amount = _floor2((userData.blag_vnes_GO / 100) * accruals.accrualsSum.amount)
 	// Код - 380
 	deductions.vnesZSU.amount = _floor2((userData.blag_vnes_ZSU / 100) * accruals.accrualsSum.amount)
+	// Код - 381 and 383
+	deductions.blagVnes13.amount = userData.blag_vnes_13 ? _floor2((userData.blag_vnes_13 / 100) * accruals.prem13.amount) : 0
 	// Код - ***
 	deductions.medicsStrah.amount = _floor2(+userData.med_polis)
 	// Код - Інше
@@ -257,11 +263,13 @@ inputs.forEach((input) => {
 		const inpDetails = input.closest('.input-container').querySelector('.inp-details')
 		if (inpDetails) {
 			if (!_isMobileMode) {
+				// const bgImg = window.getComputedStyle(input.closest('fieldset'), 'background-image')
 				const inpLabel = _getCleanText(input.closest('.input-container').querySelector('label'))
 				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
 				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
 				footerDetails.classList.add('hidden-content')
 				setTimeout(() => {
+					// console.log(bgImg)
 					footerDetailsHeader.innerText = inpLabel
 					footerDetailsText.innerText = inpDetailsText
 					footerDetailsCode.innerText = inpDetailsCode
@@ -417,11 +425,12 @@ document.querySelectorAll('.input-container').forEach((inputContainer) => {
 				activeDetails.style.maxHeight = ''
 			}
 			inpDetails.classList.add('active')
-			inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
+			inpDetails.style.maxHeight = `${28 + inpDetails.scrollHeight}px`
+			// задаємо висоту контенту (28 за умови inpDetails fz = 14px)
 		}, 0)
 	})
 })
-// *****
+// *** end ***
 // Event Listener 'click' for all '.input-container'
 // *************************************************
 
@@ -450,7 +459,7 @@ document.body.addEventListener('click', (e) => {
 		}
 	}
 })
-// *****
+// *** end ***
 // Слухаємо BODY на 'click' щоб закрити інпут-деталі
 // *************************************************
 

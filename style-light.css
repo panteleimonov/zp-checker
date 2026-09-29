@@ -14,10 +14,12 @@
   --general-field-bg: linear-gradient(135deg,
       rgba(255, 222, 92, 0.2),
       rgba(255, 191, 0, 0.2));
-  --general-field-border: rgba(255, 191, 0, 0.5);
+  --general-field-bg-gradient: linear-gradient(135deg,
+      rgba(255, 222, 92, 0.15),
+      rgba(255, 191, 0, 0.3));
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
-  --general-input-shadow_focus: rgba(255, 191, 0, 0.15);
+  --general-input-shadow_focus: rgba(255, 191, 0, 0.1);
   --general-details-bg: linear-gradient(180deg,
       rgba(255, 191, 0, 0.1),
       rgba(255, 191, 0, 0.2));
@@ -26,7 +28,6 @@
   --accruals-field-bg: linear-gradient(135deg,
       rgba(20, 200, 20, 0.1),
       rgba(20, 200, 20, 0.1));
-  --accruals-field-border: rgba(20, 200, 20, 0.3);
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
@@ -38,7 +39,6 @@
   --timesheet-bg: linear-gradient(135deg,
       rgba(20, 20, 255, 0.1),
       rgba(20, 20, 255, 0.1));
-  --timesheet-field-border: rgba(20, 20, 255, 0.3);
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
   --timesheet-input-border_focus: rgba(20, 20, 255, 0.6);
@@ -49,7 +49,6 @@
   --deductions-bg: linear-gradient(135deg,
       rgba(255, 40, 0, 0.1),
       rgba(255, 40, 0, 0.1));
-  --deductions-field-border: rgba(255, 40, 0, 0.3);
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
@@ -208,7 +207,7 @@ input::placeholder {
 
 .caption-text {
   padding: 1em;
-  background: var(--caption-bg);
+  background-color: var(--caption-bg);
   border: 0.25em solid #fff;
   border-radius: var(--main-bradius);
   box-shadow: var(--main-shadow);
@@ -232,7 +231,7 @@ label {
 }
 
 label:hover {
-  font-variation-settings: 'GRAD' 200;
+  font-variation-settings: 'GRAD' 100;
   cursor: pointer;
 }
 
@@ -247,7 +246,7 @@ input[type='text'] {
   font-family: 'Rubik', sans-serif;
   border: 1px solid var(--accruals-input-border);
   border-radius: 0.5em;
-  transition: width 0ms;
+  transition: width 0ms !important;
 }
 
 input[type='text'].short {
@@ -320,7 +319,8 @@ fieldset {
 }
 
 #salary-resume .info-content {
-  background: var(--general-field-bg);
+  background-color: #fff;
+  background-image: var(--general-field-bg-gradient);
 }
 
 legend {
@@ -369,6 +369,7 @@ legend.lqdglass {
 }
 
 .general-field .input-container:has(.inp-details.active),
+.general-field .input-container:hover,
 .general-field .input-container:focus-within {
   background-color: var(--general-input-shadow_focus);
 }
@@ -389,19 +390,12 @@ legend.lqdglass {
   border-color: var(--timesheet-input-border);
 }
 
-.timesheet-field .inp-details {
-  border-left-color: var(--timesheet-details-bg);
-}
-
-.timesheet-field .input-container:has(.inp-details.active) {
-  border-left-color: var(--timesheet-field-border);
-}
-
 .timesheet-field .input-container {
-  background: var(--timesheet-details-bg);
+  background-image: var(--timesheet-details-bg);
 }
 
 .timesheet-field .input-container:has(.inp-details.active),
+.timesheet-field .input-container:hover,
 .timesheet-field .input-container:focus-within {
   background-color: var(--timesheet-input-shadow_focus);
 }
@@ -420,20 +414,13 @@ legend.lqdglass {
   border-color: var(--deductions-input-border);
 }
 
-.deductions-field .inp-details {
-  border-left-color: var(--deductions-field-border);
-}
-
-.deductions-field .input-container:has(.inp-details.active) {
-  border-left-color: var(--deductions-field-border);
-}
-
 .deductions-field .input-container,
 .deductions-field .checkbox-container {
   background: var(--deductions-details-bg);
 }
 
 .deductions-field .input-container:has(.inp-details.active),
+.deductions-field .input-container:hover,
 .deductions-field .input-container:focus-within {
   background-color: var(--deductions-input-shadow_focus);
 }
@@ -443,31 +430,29 @@ legend.lqdglass {
 }
 
 .accruals-field .input-container {
-  background: var(--accruals-details-bg);
+  background-image: var(--accruals-details-bg);
 }
 
 .accruals-field .input-container:has(.inp-details.active),
+.accruals-field .input-container:hover,
 .accruals-field .input-container:focus-within {
   background-color: var(--accruals-input-shadow_focus);
 }
 
 /* ================= ADVANCED ================= */
 
+.input-container:focus-within {
+  border-radius: 1rem;
+}
+
 .input-container:focus-within label {
   font-variation-settings: 'GRAD' 200;
 }
 
-.input-container:has(.inp-details.active) label {
+/* .input-container:has(.inp-details.active) label {
   font-variation-settings: 'GRAD' 200;
-}
+} */
 
-/*
-.input-container:has(.inp-details.active),
-.input-container:focus-within {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 1em;
-}
-*/
 input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
@@ -499,9 +484,9 @@ input[type='text']:focus-visible {
 
 .footer-details {
   border: 1px solid var(--main-border-color);
-  min-width: 80%;
+  min-width: 75%;
   background-color: #fff;
-  padding: 1em;
+  padding: 1.25em;
   box-shadow: var(--main-shadow);
   border-radius: var(--main-bradius);
 }
@@ -551,33 +536,32 @@ input[type='text']:focus-visible {
   flex-direction: column;
   border: 4px solid #fff;
   width: 100%;
-  padding: 1.15em;
+  padding: 1em;
   display: flex;
   gap: 1em;
   justify-content: space-between;
   justify-content: start;
   align-self: start;
   align-items: center;
-  background: var(--caption-bg);
+  background-color: var(--caption-bg);
   box-shadow: var(--main-shadow);
   border-radius: var(--main-bradius);
 }
 
 button {
   width: 100%;
-  padding: 1rem 1.5em;
-  font-size: 14px;
-  letter-spacing: 1px;
+  padding: 1em 1.5em;
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: 0.5px;
   line-height: 1;
-  font-weight: 500;
-  text-transform: uppercase;
   color: #fff;
   background-image: linear-gradient(180deg, rgba(0, 0, 0, .0), rgba(0, 0, 0, .0), rgba(0, 0, 0, .2));
   background-color: dodgerblue;
   border: 1px solid dodgerblue;
   border-radius: 1.5rem;
   box-shadow: var(--main-shadow);
-  text-shadow: 2px 2px 0.5em rgba(0, 0, 0, 0.25);
+  text-shadow: 2px 2px 0.5em rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
@@ -603,7 +587,6 @@ button:active {
   color: var(--text-main);
   color: #fff;
   width: auto;
-  border-radius: 10em;
 }
 
 .results-close-btn:hover,
@@ -623,7 +606,7 @@ button:active {
 }
 
 .input-container {
-  will-change: padding-top, margin-top, margin-bottom;
+  will-change: padding-top, background-color, border-radius;
 }
 
 .checkbox-wrap {
@@ -633,8 +616,7 @@ button:active {
 
 .input-container:has(.inp-details.active) {
   padding-top: 0.5em;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  border-radius: 1em;
 }
 
 .inp-details {
@@ -650,9 +632,9 @@ button:active {
 }
 
 .inp-details.active {
-  padding-top: 0.5em;
+  padding-top: 1em;
   padding-bottom: 1em;
-  /* max-height: inpDetails.style.maxHeight = `calc(1em + ${inpDetails.scrollHeight}px)` */
+  /* max-height: inpDetails.style.maxHeight = `calc(1em + 1em + ${inpDetails.scrollHeight}px)` */
   opacity: 1;
 }
 
@@ -751,6 +733,10 @@ button:active {
 
 @media (max-width: 1152px) {
 
+  html {
+    height: 2116px;
+  }
+
   .logo-header {
     padding: 2em 0;
   }
@@ -780,26 +766,6 @@ button:active {
     border-bottom: none;
   }
 
-  .general-field .input-container::after,
-  .general-field .checkbox-container::after {
-    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--general-input-border), var(--general-input-border), rgba(256, 256, 256, 0.0))
-  }
-
-  .timesheet-field .input-container::after,
-  .timesheet-field .checkbox-container::after {
-    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--timesheet-inputs-group-border), var(--timesheet-inputs-group-border), rgba(256, 256, 256, 0.0))
-  }
-
-  .accruals-field .input-container::after,
-  .accruals-field .checkbox-container::after {
-    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--accruals-inputs-group-border), var(--accruals-inputs-group-border), rgba(256, 256, 256, 0.0))
-  }
-
-  .deductions-field .input-container::after,
-  .deductions-field .checkbox-container::after {
-    background-image: linear-gradient(90deg, rgba(256, 256, 256, 0.0), var(--deductions-inputs-group-border), var(--deductions-inputs-group-border), rgba(256, 256, 256, 0.0))
-  }
-
   .form-footer {
     margin-top: 2em;
   }
@@ -821,18 +787,15 @@ button:active {
     display: none
   }
 
+  .warning-info {
+    margin-bottom: 3.75rem;
+  }
+
   .results-close-btn {
-    width: 100%;
-    padding: 1rem 1.5em;
-    font-size: 14px;
-    letter-spacing: 1px;
-    line-height: 1;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #fff;
-    border-radius: 1.5rem;
-    box-shadow: var(--main-shadow);
-    cursor: pointer;
+    position: fixed;
+    bottom: 1.75rem;
+    width: 90%;
+    box-shadow: 0 0 0.75rem 0.75rem var(--bg-main) !important;
   }
 
   .flex-container {
@@ -850,7 +813,7 @@ button:active {
 
   .btns-wrap {
     padding: 1.25rem 1rem;
-    margin-bottom: 1.25em;
+    margin-bottom: 1em;
   }
 
 }
