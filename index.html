@@ -55,7 +55,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="toLocalStorege" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Компенсація за шкідливі умови праці. Визначається як процентна надбавка до заробленого окладу (розмір залежить від умов праці робітника).</p>
+											<p class="details-text">Компенсація за шкідливі умови праці. Визначається як процентна надбавка до заробленого окладу (розмір надбавки залежить від умов праці).</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 32 в листку</span>
 										</div>
@@ -66,7 +66,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="toLocalStorege" type="text" inputmode="numeric" id="bezper_stag" name="bezper_stag" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Доплата за "безперервний" стаж в енергетиці. Визначається як процентна надбавка до заробленого окладу (розмір залежить від тривалості роботи в енергетичній галузі).</p>
+											<p class="details-text">Доплата за "безперервний" стаж в енергетиці. Визначається як процентна надбавка до заробленого окладу (розмір надбавки залежить від тривалості роботи в енергетичній галузі).</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 150 в листку</span>
 										</div>
@@ -469,5 +469,13 @@
 
 		<script src="main.js" defer></script>
 		<script src="app.js" defer></script>
+		<script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker
+					.register('/zp-checker-sw.js')
+					.then((reg) => console.log('Service Worker registered:', reg))
+					.catch((err) => console.error('Service Worker registration failed:', err))
+			}
+		</script>
 	</body>
 </html>
