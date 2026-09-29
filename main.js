@@ -57,14 +57,14 @@ const allTextInputs = document.querySelectorAll('input[type="text"]')
 function validateNumber(input) {
 	let value = input.value.replace(',', '.') // кома → крапка
 
-	// Для полів без класу large відразу повертаємо максимум двозначне число.
-	if (!input.classList.contains('large')) {
+	// Для полів без класу decimal відразу повертаємо максимум двозначне число.
+	if (!input.classList.contains('decimal')) {
 		value = value.replace(/[^\d]/g, '').slice(0, 2)
 		input.value = value
 		return value // повертаємо числове значення
 	}
 
-	// Залишаємо лише цифри та крапку для полів з класом large.
+	// Залишаємо лише цифри та крапку для полів з класом decimal.
 	value = value.replace(/[^\d.]/g, '')
 
 	// Крапка не може бути першим символом

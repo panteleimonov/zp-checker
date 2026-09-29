@@ -3,7 +3,7 @@
 
 :root {
   /* Base colors */
-  --bg-main: #fafafa;
+  --bg-main: #f8f8f8;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
@@ -19,8 +19,10 @@
       rgba(255, 191, 0, 0.3));
   --general-input-border: rgba(255, 191, 0, 0.7);
   --general-input-border_focus: rgba(255, 191, 0, 0.8);
-  --general-input-shadow_focus: rgba(255, 191, 0, 0.3);
-  --general-details-bg: rgba(255, 191, 0, 0.15);
+  --general-input-shadow_focus: rgba(255, 191, 0, 0.1);
+  --general-details-bg: linear-gradient(180deg,
+      rgba(255, 191, 0, 0.1),
+      rgba(255, 191, 0, 0.2));
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
@@ -29,8 +31,9 @@
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
-  --accruals-input-shadow_focus: rgba(20, 200, 20, 0.15);
-  --accruals-details-bg: rgba(20, 200, 20, 0.075);
+  --accruals-input-shadow_focus: rgba(20, 200, 20, 0.1);
+  --accruals-details-bg: linear-gradient(180deg,
+      rgba(20, 200, 20, 0.05), rgba(20, 200, 20, 0.1));
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
@@ -39,8 +42,8 @@
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
   --timesheet-input-border_focus: rgba(20, 20, 255, 0.6);
-  --timesheet-input-shadow_focus: rgba(20, 20, 255, 0.15);
-  --timesheet-details-bg: rgba(20, 20, 255, 0.075);
+  --timesheet-input-shadow_focus: rgba(20, 20, 255, 0.1);
+  --timesheet-details-bg: linear-gradient(180deg, rgba(20, 20, 255, 0.05), rgba(20, 20, 255, 0.1));
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
@@ -49,8 +52,8 @@
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
-  --deductions-input-shadow_focus: rgba(255, 40, 0, 0.15);
-  --deductions-details-bg: rgba(255, 40, 0, 0.075);
+  --deductions-input-shadow_focus: rgba(255, 40, 0, 0.1);
+  --deductions-details-bg: linear-gradient(rgba(255, 40, 0, 0.05), rgba(255, 40, 0, 0.1));
 
   /* Effects */
   --main-bradius: 1.5em;
@@ -234,9 +237,9 @@ label:hover {
 
 /* ================= INPUTS ================= */
 input[type='text'] {
-  width: 5em;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 4.5em;
   margin-left: 0.25em;
   text-align: center;
   line-height: 1.5;
@@ -258,9 +261,9 @@ input[type='checkbox'] {
   margin: 0.5em 1em;
 }
 
-/* input.decimal {
-  width: 5em;
-} */
+input.large {
+  width: 4.5em;
+}
 
 input[type='checkbox'] {
   margin-left: 1em;
@@ -362,7 +365,7 @@ legend.lqdglass {
 }
 
 .general-field .input-container {
-  background-color: var(--general-details-bg);
+  background-image: var(--general-details-bg);
 }
 
 .general-field .input-container:has(.inp-details.active),
@@ -388,7 +391,7 @@ legend.lqdglass {
 }
 
 .timesheet-field .input-container {
-  background-color: var(--timesheet-details-bg);
+  background-image: var(--timesheet-details-bg);
 }
 
 .timesheet-field .input-container:has(.inp-details.active),
@@ -413,7 +416,7 @@ legend.lqdglass {
 
 .deductions-field .input-container,
 .deductions-field .checkbox-container {
-  background-color: var(--deductions-details-bg);
+  background: var(--deductions-details-bg);
 }
 
 .deductions-field .input-container:has(.inp-details.active),
@@ -426,9 +429,8 @@ legend.lqdglass {
   border-color: var(--deductions-inputs-group-border);
 }
 
-/* ================= GREEN FIELD ================= */
 .accruals-field .input-container {
-  background-color: var(--accruals-details-bg);
+  background-image: var(--accruals-details-bg);
 }
 
 .accruals-field .input-container:has(.inp-details.active),

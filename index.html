@@ -41,7 +41,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="oklad">Оклад (поточний) грн.</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large toLocalStorege" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" required />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal toLocalStorege" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" required />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Ваш поточний оклад (станом на зараз). Впливає на більшість нарахувань у зарплаті працівника: премія, шкідливість, різні види доплат, матеріальна допомога, тощо.</p>
@@ -55,7 +55,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="toLocalStorege" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Компенсація за шкідливі умови праці. Визначається як процентна надбавка до поточного окладу, в залежності від умов праці працівника.</p>
+											<p class="details-text">Компенсація за шкідливі умови праці. Визначається як процентна надбавка до заробленого окладу (розмір залежить від умов праці робітника).</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 32 в листку</span>
 										</div>
@@ -66,7 +66,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="toLocalStorege" type="text" inputmode="numeric" id="bezper_stag" name="bezper_stag" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Доплата за "безперервний" стаж в енергетиці. Визначається як процентна надбавка до поточного окладу, в залежності від тривалості роботи в енергетичній галузі.</p>
+											<p class="details-text">Доплата за "безперервний" стаж в енергетиці. Визначається як процентна надбавка до заробленого окладу (розмір залежить від тривалості роботи в енергетичній галузі).</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 150 в листку</span>
 										</div>
@@ -106,10 +106,10 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="calendar_hourses_norm">Норма годин календарна</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="calendar_hourses_norm" name="calendar_hourses_norm" placeholder="Всього" required />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="calendar_hourses_norm" name="calendar_hourses_norm" placeholder="Всього" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Норма годин на календарний місяць (інша назва в табелі &mdash; кількість годин по нормі). Впливає на розрахунок вартості години праці а також розмірів доплат за вечірні та нічні години.</p>
+											<p class="details-text">Норма годин на календарний місяць (інша назва в табелі &mdash; "кількість годин по нормі"). Впливає на розрахунок вартості години праці а також розмірів доплат за вечірні та нічні години.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі (облік робочого часу)</span>
 										</div>
@@ -123,12 +123,12 @@
 											<div class="double-inputs">
 												<input autocapitalize="off" autocomplete="off" spellcheck="false" type="text" inputmode="numeric" id="evn_d" name="evn_d" placeholder="Всього" />
 												<span class="evn_d-after">або</span>
-												<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="evn_h" name="evn_h" placeholder="Години" />
+												<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="evn_h" name="evn_h" placeholder="Години" />
 												<span class="evn_h-after"></span>
 											</div>
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Вкажіть кількість вечірніх змін або кількість вечірніх годин. Важливо: завжди перевіряйте правильність вечірніх або нічних годин відповідно до фактичної кількості відповідних змін. Тривалість зміни становить 8.25&nbsp;год.</p>
+											<p class="details-text">Вкажіть кількість вечірніх змін або кількість вечірніх годин. Важливо: завжди перевіряйте правильність вечірніх або нічних годин відповідно до фактичної кількості таких змін. Тривалість зміни становить 8.25&nbsp;год.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі / розрахунковому листку</span>
 										</div>
@@ -140,7 +140,7 @@
 											<div class="double-inputs">
 												<input autocapitalize="off" autocomplete="off" spellcheck="false" type="text" inputmode="numeric" id="night_d" name="night_d" placeholder="Всього" />
 												<span class="night_d-after">або</span>
-												<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="night_h" name="night_h" placeholder="Години" />
+												<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="night_h" name="night_h" placeholder="Години" />
 												<span class="night_h-after"></span>
 											</div>
 										</div>
@@ -162,7 +162,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="prem">Премія (за рез. роботи) %</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large toLocalStorege" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" required />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal toLocalStorege" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Розмір премії за результатами роботи. Може змінюватися за рішенням роботодавця. Важливо: премію нараховують за попередній місяць (наприклад, разом із зарплатою за березень виплачується премія за лютий).</p>
@@ -174,7 +174,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="pop_oklad">Оклад за попередній місяць</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="pop_oklad" name="pop_oklad" placeholder="Сума" required />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="pop_oklad" name="pop_oklad" placeholder="Сума" required />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Оклад (повний або частково), який було зароблено в попередньому місяці. Впливає на розмір премії за попередній місяць.</p>
@@ -188,7 +188,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="vidp_narah">Відпускні (нараховано)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="vidp_narah" name="vidp_narah" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_narah" name="vidp_narah" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір відпускних нарахувань, які зазначено в розрахунковому листку. Вкажіть суму таких нарахувань, якщо частини однієї відпустки були в різних місяцях.</p>
@@ -200,7 +200,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="vidp_komp">Компенсація (нараховано)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="vidp_komp" name="vidp_komp" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_komp" name="vidp_komp" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Компенсація за невикористані дні відпустки. Вкажіть розмір компенсації, який зазначено в нарахуваннях розрахункового листка.</p>
@@ -212,7 +212,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="mater_dop">Матеріальна допомога</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="mater_dop" name="mater_dop" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="mater_dop" name="mater_dop" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір матеріальної допомоги, який зазначено в нарахуваннях. Розмір матеріальної допомоги дорівнює окладу на початок поточного року.</p>
@@ -226,7 +226,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="prem_13">Премія рез. за рік (13-та)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="prem_13" name="prem_13" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="prem_13" name="prem_13" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір річної премії (так званої тринадцятої), який зазначено в нарахуваннях розрахункового листка.</p>
@@ -237,7 +237,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="prem_others">Премія інші досягнення</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="prem_others" name="prem_others" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="prem_others" name="prem_others" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір премії за інші досягнення (якщо було нараховано). Пам’ятайте: ваша важка праця та відданість спільній меті не залишаються без уваги керівництва.</p>
@@ -249,7 +249,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="gram_pod">Премія за грамоту / подяку</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="gram_pod" name="gram_pod" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="gram_pod" name="gram_pod" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір грошової виплати до подяки чи грамоти, який зазначено в нарахуваннях розрахункового листка.</p>
@@ -261,7 +261,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="pidg_pers">Доплата за підг. кадрів</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="pidg_pers" name="pidg_pers" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="pidg_pers" name="pidg_pers" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір нарахувань за підготовку кадрів (керівництво у навчанні, підготовка на робочому місці).</p>
@@ -273,7 +273,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="indexation">Індексація (грн.)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="indexation" name="indexation" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="indexation" name="indexation" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір індексації, який зазначено в нарахуваннях розрахункового листка.</p>
@@ -285,7 +285,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="others_nar">Інші нарахування (грн.)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="others_nar" name="others_nar" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="others_nar" name="others_nar" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір нарахувань або суму нарахувань, які не були передбачені даною формою.</p>
@@ -305,10 +305,10 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="avans">Аванс (якщо вже отримано)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Вкажіть суму авансу, який вже було виплачено. Зазначається у розділі відрахувань розрахункового листка. Важливо: аванс не виплачується, якщо працівник з 1го по 15те число перебував у відпустці чи на лікарняному.</p>
+											<p class="details-text">Вкажіть суму авансу, який вже було отримано. Зазначається у розділі відрахувань розрахункового листка. Важливо: аванс не виплачується, якщо працівник з 1&#8209;го по 15&#8209;те число перебував у відпустці або на лікарняному.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 330 в розрахунковому листку</span>
 										</div>
@@ -316,10 +316,10 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="days_for_avans">Днів для авансу (до 15 числа)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="days_for_avans" name="days_for_avans" placeholder="Всього" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Наближений розрахунок авансу! Введіть кількість відпрацьованих днів до 15го числа (включно). Важливо: аванс виплачується за фактично відпрацьовані дні до 15го числа. Однак, розміри авансових виплат можуть коригуватися з різних причин.</p>
+											<p class="details-text">Наближений розрахунок авансу! Введіть кількість відпрацьованих днів до 15&#8209;го числа (включно). Важливо: зазвичай аванс виплачується за фактично відпрацьовані дні до 15&#8209;го числа. Проте, розміри авансових виплат інколи можуть коригуватися.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі (облік робочого часу)</span>
 										</div>
@@ -327,7 +327,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="vidp_oplata">Відпускні (отримано)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="vidp_oplata" name="vidp_oplata" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_oplata" name="vidp_oplata" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть суму відпускних, що були фактично виплачені перед відпусткою. Зазначається у розділі відрахувань розрахункового листка.</p>
@@ -363,10 +363,10 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="blag_vnes_ZSU">Благодійні внески (ЗСУ) %</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="blag_vnes_ZSU" name="blag_vnes_ZSU" placeholder="Процент" value="1.5" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="blag_vnes_ZSU" name="blag_vnes_ZSU" placeholder="Процент" value="1.5" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Допомога армії — це спосіб бути поруч із тими, хто сьогодні стоїть за всіх нас.</p>
+											<p class="details-text">Допомога армії &mdash; це спосіб бути поруч із тими, хто сьогодні стоїть за всіх нас.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 380 в розрахунковому листку</span>
 										</div>
@@ -375,7 +375,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="blag_vnes_GO">Благодійні внески (ГО) %</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="blag_vnes_GO" name="blag_vnes_GO" placeholder="Процент" value="3.5" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="blag_vnes_GO" name="blag_vnes_GO" placeholder="Процент" value="3.5" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Навіть невеликий внесок має значення, коли тисячі людей роблять його разом.</p>
@@ -386,7 +386,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="blag_vnes_13">Благодійні внески (13-та) %</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="blag_vnes_13" name="blag_vnes_13" placeholder="Процент" disabled />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="blag_vnes_13" name="blag_vnes_13" placeholder="Процент" disabled />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Справжня благодійність починається там, де допомагають не заради подяки.</p>
@@ -400,7 +400,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="med_polis">Медичне страхування (поліс)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="med_polis" name="med_polis" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="med_polis" name="med_polis" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть суму відрахувань на поліс медичного страхування. Важливо: роботодавець компенсує вартість страховки у вигляді матеріальної допомоги, яка оподатковується.</p>
@@ -412,7 +412,7 @@
 									<div class="input-container">
 										<div class="input-wrapper">
 											<label for="others_vidr">Інші відрахування (грн.)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="large" type="text" inputmode="numeric" id="others_vidr" name="others_vidr" placeholder="Сума" />
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="others_vidr" name="others_vidr" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
 											<p class="details-text">Вкажіть розмір відрахувань або суму відрахувань, які не були передбачені даною формою.</p>
