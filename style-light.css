@@ -439,17 +439,17 @@ legend.lqdglass {
 
 /* ================= ADVANCED ================= */
 
-.input-container:focus-within {
+/* .input-container:focus-within {
   border-radius: 1rem;
-}
+} */
 
 .input-container:focus-within label {
   font-variation-settings: 'GRAD' 200;
 }
 
-/* .input-container:has(.inp-details.active) label {
+.input-container:has(.inp-details.active) label {
   font-variation-settings: 'GRAD' 200;
-} */
+}
 
 input[type='text']:focus-visible {
   outline: none;

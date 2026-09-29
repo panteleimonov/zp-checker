@@ -473,8 +473,8 @@
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker
 					.register('/zp-checker-sw.js')
-					.then((reg) => alert('Service Worker registered:', reg))
-					.catch((err) => alert('Service Worker registration failed:', err))
+					.then((reg) => console.log('Service Worker registered:', reg))
+					.catch((err) => console.log('Service Worker registration failed:', err))
 			}
 		</script>
 	</body>
