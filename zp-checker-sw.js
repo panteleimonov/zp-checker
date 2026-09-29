@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zp-checker-cache-v1'
+const CACHE_NAME = 'zp-checker-cache-v2'
 const urlsToCache = [
 	'./', // головна сторінка
 	'./index.html', // HTML
@@ -14,6 +14,24 @@ self.addEventListener('install', (event) => {
 
 // Перехоплення запитів
 self.addEventListener('fetch', (event) => {
+	const url = new URL(event.request.url)
+
+	// Кешування Google Fonts
+	if (url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com') {
+		event.respondWith(
+			caches.open('google-fonts').then((cache) =>
+				fetch(event.request)
+					.then((response) => {
+						cache.put(event.request, response.clone())
+						return response
+					})
+					.catch(() => caches.match(event.request)),
+			),
+		)
+		return
+	}
+
+	// Стандартна стратегія для локальних файлів
 	event.respondWith(
 		caches.match(event.request).then((response) => {
 			// Якщо є в кеші — повертаємо
@@ -31,7 +49,7 @@ self.addEventListener('fetch', (event) => {
 
 // У activate події видаляємо старі кеші
 self.addEventListener('activate', (event) => {
-	const cacheWhitelist = [CACHE_NAME]
+	const cacheWhitelist = [CACHE_NAME, 'google-fonts']
 	event.waitUntil(
 		caches.keys().then((keys) =>
 			Promise.all(
