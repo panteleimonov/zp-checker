@@ -10,6 +10,13 @@
   --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
   --btn-reset: linear-gradient(180deg, tomato, indianred);
 
+  /* Effects */
+  --main-bradius: 1.5em;
+  --legend-bradius: 100em;
+  --main-border-color: #ddd;
+  --main-shadow: 0 4px 0.5em rgba(0, 0, 0, 0.1);
+  --main-shadow_hover: 0 4px 1em rgba(0, 0, 0, 0.25);
+
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
       rgba(255, 222, 92, 0.2),
@@ -51,13 +58,6 @@
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
   --deductions-input-shadow_focus: rgba(255, 40, 0, 0.15);
   --deductions-details-bg: rgba(255, 40, 0, 0.075);
-
-  /* Effects */
-  --main-bradius: 1.5em;
-  --legend-bradius: 100em;
-  --main-border-color: #ddd;
-  --main-shadow: 0 4px 0.5em rgba(0, 0, 0, 0.1);
-  --main-shadow_hover: 0 4px 1em rgba(0, 0, 0, 0.25);
 }
 
 /* ================= BASE ================= */
@@ -838,10 +838,26 @@ button:active {
     display: none;
   }
 
-  .form,
+  .form {
+    padding-inline: 0;
+  }
+
+  .form fieldset {
+    border-radius: 1rem;
+  }
+
+  .inp-details,
+  .input-wrapper {
+    padding-inline: 0.75rem;
+  }
+
   .results,
   .header {
     padding-inline: 0.5em;
+  }
+
+  .btns-wrap {
+    margin-inline: 0.5em;
   }
 
 }
