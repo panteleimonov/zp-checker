@@ -23,8 +23,7 @@
 						<h1>ZP Checker</h1>
 					</div>
 					<p class="caption-text">
-						Наближений розрахунок заробітної плати. Введіть свої дані щоб побачити прогноз по зарплаті. Окремі поля
-						<span class="start-visible">форм</span> заповнюються лише в разі потреби.
+						Наближений розрахунок заробітної плати. Введіть свої дані, щоб побачити прогноз по зарплаті. Окремі поля форм заповнюються лише в разі потреби.
 					</p>
 				</header>
 			</div>
@@ -44,7 +43,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal toLocalStorege" type="text" inputmode="numeric" id="oklad" name="oklad" placeholder="Сума" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Ваш поточний оклад (станом на зараз). Впливає на більшість нарахувань у зарплаті працівника: премія, шкідливість, різні види доплат, матеріальна допомога, тощо.</p>
+											<p class="details-text">Ваш поточний оклад (станом на зараз). Впливає на більшість нарахувань у заробітній платі: премію, відпускні, різні види доплат, матеріальну допомогу тощо.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в персональному кабінеті</span>
 										</div>
@@ -55,7 +54,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="toLocalStorege" type="text" inputmode="numeric" id="shkid" name="shkid" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Компенсація за шкідливі умови праці. Визначається як процентна надбавка до заробленого окладу (розмір залежить від умов праці).</p>
+											<p class="details-text">Компенсація за шкідливі умови праці. Визначається як відсоткова надбавка до нарахованого окладу (розмір залежить від умов праці).</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 32 в листку</span>
 										</div>
@@ -66,7 +65,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="toLocalStorege" type="text" inputmode="numeric" id="bezper_stag" name="bezper_stag" placeholder="Процент" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Доплата за "безперервний" стаж в енергетиці. Визначається як процентна надбавка до заробленого окладу (розмір залежить від тривалості роботи в енергетичній галузі).</p>
+											<p class="details-text">Доплата за «безперервний» стаж в енергетиці. Визначається як відсоткова надбавка до нарахованого окладу (розмір залежить від тривалості роботи в енергетичній галузі).</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 150 в листку</span>
 										</div>
@@ -85,7 +84,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" type="text" inputmode="numeric" id="planed_work_days" name="planed_work_days" placeholder="Всього" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Запланована норма робочих днів за графіком. Це така кількість робочих днів, яка передбачена на місяць (з урахуванням робочого графіка). Є нормою щоб "заробити" 100% окладу.</p>
+											<p class="details-text">Запланована норма робочих днів за графіком. Це кількість робочих днів, передбачена на весь місяць з урахуванням робочого графіка. Є нормою для нарахування 100&nbsp;% окладу.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі (облік робочого часу)</span>
 										</div>
@@ -97,7 +96,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" type="text" inputmode="numeric" id="real_work_days" name="real_work_days" placeholder="Всього" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Загальна кількість фактично відпрацьованих днів (разом з доробками та навчанням). Визначає розмір окладу (неповний чи весь), який працівник "заробив" за місяць.</p>
+											<p class="details-text">Загальна кількість фактично відпрацьованих днів (разом із доробками та навчанням). Визначає розмір окладу (неповний або повний), який працівник отримує за місяць.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі / розрахунковому листку</span>
 										</div>
@@ -109,7 +108,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="calendar_hourses_norm" name="calendar_hourses_norm" placeholder="Всього" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Норма годин на календарний місяць (інша назва в табелі &mdash; "кількість годин по нормі"). Впливає на розрахунок вартості години праці а також розмірів доплат за вечірні та нічні години.</p>
+											<p class="details-text">Норма годин на календарний місяць (інша назва в табелі — «кількість годин по нормі»). Впливає на розрахунок вартості години праці, а також на розміри доплат за вечірні й нічні години.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі (облік робочого часу)</span>
 										</div>
@@ -128,7 +127,7 @@
 											</div>
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Вкажіть кількість вечірніх змін або кількість вечірніх годин. Важливо: завжди перевіряйте правильність вечірніх або нічних годин відповідно до фактичної кількості таких змін. Тривалість зміни становить 8.25&nbsp;год.</p>
+											<p class="details-text">Вкажіть кількість вечірніх змін або кількість вечірніх годин. Важливо: завжди перевіряйте, чи відповідає кількість вечірніх або нічних годин фактичній кількості таких змін. Тривалість зміни становить 8,25&nbsp;год.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі / розрахунковому листку</span>
 										</div>
@@ -145,7 +144,7 @@
 											</div>
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Вкажіть кількість нічних змін або кількість нічних годин. Важливо: якщо нічна зміна припадає на перше число, то перша 1.25&nbsp;година такої зміни оплачується в попередньому місяці.</p>
+											<p class="details-text">Вкажіть кількість нічних змін або кількість нічних годин. Важливо: якщо нічна зміна припадає на перше число місяця, то перші 1,25&nbsp;год. такої зміни оплачуються в попередньому місяці.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в табелі / розрахунковому листку</span>
 										</div>
@@ -177,7 +176,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="pop_oklad" name="pop_oklad" placeholder="Сума" required />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Оклад, який було зароблено в попередньому місяці (повністю або частково). Напряму впливає на розмір премії за попередній місяць.</p>
+											<p class="details-text">Оклад, який було нараховано в попередньому місяці (повністю або частково). Напряму впливає на розмір премії за попередній місяць.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 2 в листку за попередній місяць</span>
 										</div>
@@ -191,7 +190,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_narah" name="vidp_narah" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Вкажіть розмір відпускних, які зазначено в "нарахуваннях" розрахункового листка. Або вкажіть суму таких нарахувань, якщо частини однієї відпустки були в різних місяцях.</p>
+											<p class="details-text">Вкажіть розмір відпускних, зазначений у «Нарахуваннях» розрахункового листка. Або вкажіть суму таких нарахувань, якщо частини однієї відпустки припадають на різні місяці.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 20 та/або 21 в розрахунковому листку</span>
 										</div>
@@ -203,7 +202,7 @@
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_komp" name="vidp_komp" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Компенсація за невикористані дні відпустки. Вкажіть розмір компенсації, який зазначено в нарахуваннях розрахункового листка.</p>
+											<p class="details-text">Компенсація за невикористані дні відпустки. Вкажіть розмір компенсації, зазначений у «Нарахуваннях» розрахункового листка.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 59 в розрахунковому листку</span>
 										</div>
