@@ -3,7 +3,7 @@
 
 :root {
   /* Base colors */
-  --bg-main: #f2f2f2;
+  --bg-main: #fafafa;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
@@ -19,7 +19,7 @@
 
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
-      rgba(255, 222, 92, 0.2),
+      rgba(255, 222, 92, 0.1),
       rgba(255, 191, 0, 0.2));
   --general-field-bg-gradient: linear-gradient(135deg,
       rgba(255, 222, 92, 0.15),
@@ -31,7 +31,7 @@
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
-      rgba(20, 200, 20, 0.1),
+      rgba(20, 200, 20, 0.05),
       rgba(20, 200, 20, 0.1));
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
@@ -41,7 +41,7 @@
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
-      rgba(20, 20, 255, 0.1),
+      rgba(20, 20, 255, 0.05),
       rgba(20, 20, 255, 0.1));
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
@@ -51,7 +51,7 @@
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(255, 40, 0, 0.1),
+      rgba(255, 40, 0, 0.05),
       rgba(255, 40, 0, 0.1));
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
@@ -284,7 +284,6 @@ fieldset {
   border-radius: var(--main-bradius);
   background-color: #fff;
   background-image: var(--accruals-field-bg);
-  background-image: none !important;
   box-shadow: var(--main-shadow);
   overflow: hidden;
 }
