@@ -3,7 +3,7 @@
 
 :root {
   /* Base colors */
-  --bg-main: #fafafa;
+  --bg-main: #f2f2f2;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --caption-bg: #e8e8e8;
@@ -284,6 +284,7 @@ fieldset {
   border-radius: var(--main-bradius);
   background-color: #fff;
   background-image: var(--accruals-field-bg);
+  background-image: none !important;
   box-shadow: var(--main-shadow);
   overflow: hidden;
 }
