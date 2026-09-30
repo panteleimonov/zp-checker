@@ -19,7 +19,7 @@
 
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
-      rgba(255, 222, 92, 0.1),
+      rgba(255, 222, 92, 0.2),
       rgba(255, 191, 0, 0.2));
   --general-field-bg-gradient: linear-gradient(135deg,
       rgba(255, 222, 92, 0.15),
@@ -31,7 +31,7 @@
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
-      rgba(20, 200, 20, 0.05),
+      rgba(20, 200, 20, 0.1),
       rgba(20, 200, 20, 0.1));
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
@@ -41,7 +41,7 @@
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
-      rgba(20, 20, 255, 0.05),
+      rgba(20, 20, 255, 0.1),
       rgba(20, 20, 255, 0.1));
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
@@ -51,7 +51,7 @@
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(255, 40, 0, 0.05),
+      rgba(255, 40, 0, 0.1),
       rgba(255, 40, 0, 0.1));
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
@@ -447,15 +447,16 @@ legend.lqdglass {
   font-variation-settings: 'GRAD' 200;
 }
 
+/*
 .input-container:has(.inp-details.active) label {
   font-variation-settings: 'GRAD' 200;
-}
+} */
 
 input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
   border-color: var(--accruals-input-border_focus);
-  box-shadow: 0 0 4px 4px var(--accruals-input-shadow_focus);
+  box-shadow: 0 0 2px 2px var(--accruals-input-shadow_focus);
 }
 
 .general-field input[type='text']:focus-visible {
