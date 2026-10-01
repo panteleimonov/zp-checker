@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zp-checker-cache-v7'
+const CACHE_NAME = 'zpch-cache-v26.10.02'
 const urlsToCache = [
 	'./', // головна сторінка
 	'./index.html', // HTML
