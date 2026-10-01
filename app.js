@@ -284,7 +284,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 200)
+					}, 300)
 				}
 				// // Додаємо will-change перед анімацією
 				// const activeDetails = document.querySelector('.inp-details.active')
@@ -425,8 +425,8 @@ document.querySelectorAll('.input-container').forEach((inputContainer) => {
 				activeDetails.style.maxHeight = ''
 			}
 			inpDetails.classList.add('active')
-			inpDetails.style.maxHeight = `${28 + inpDetails.scrollHeight}px`
-			// задаємо висоту контенту (28 за умови inpDetails fz = 14px)
+			inpDetails.style.maxHeight = `${25 + inpDetails.scrollHeight}px`
+			// задаємо висоту контенту (24 за умови padding по висоті 1 rem + 0.5 rem)
 		}, 0)
 	})
 })
