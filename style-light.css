@@ -236,7 +236,7 @@ label:hover {
 input[type='text'] {
   width: 5em;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   margin-left: 0.25em;
   text-align: center;
   line-height: 1.5;
@@ -461,17 +461,17 @@ input[type='text']:focus-visible {
 
 .general-field input[type='text']:focus-visible {
   border-color: var(--general-input-border_focus);
-  box-shadow: 0 0 4px 4px var(--general-input-shadow_focus);
+  box-shadow: 0 0 2px 2px var(--general-input-shadow_focus);
 }
 
 .timesheet-field input[type='text']:focus-visible {
   border-color: var(--timesheet-input-border_focus);
-  box-shadow: 0 0 4px 4px var(--timesheet-input-shadow_focus);
+  box-shadow: 0 0 2px 2px var(--timesheet-input-shadow_focus);
 }
 
 .deductions-field input[type='text']:focus-visible {
   border-color: var(--deductions-input-border_focus);
-  box-shadow: 0 0 4px 4px var(--deductions-input-shadow_focus);
+  box-shadow: 0 0 2px 2px var(--deductions-input-shadow_focus);
 }
 
 .form-footer {
@@ -614,8 +614,8 @@ button:active {
 }
 
 .input-container:has(.inp-details.active) {
-  padding-top: 0.5em;
-  border-radius: 1em;
+  padding-top: 0.5rem;
+  border-radius: 0.75rem;
 }
 
 .inp-details {
@@ -631,8 +631,8 @@ button:active {
 }
 
 .inp-details.active {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
   /* max-height: inpDetails.style.maxHeight = `calc(1em + 1em + ${inpDetails.scrollHeight}px)` */
   opacity: 1;
 }
