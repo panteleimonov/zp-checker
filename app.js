@@ -75,6 +75,7 @@ function salaryCalc(userData) {
 		prem13: { type: 'accruals', code: 155, codeName: 'Премія річна (13-та)', amount: 0 },
 		mStrahMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. страховка', amount: 0 },
 		vidpKomp: { type: 'accruals', code: 0, codeName: 'Компенсація', amount: 0 },
+		premOthers: { type: 'accruals', code: 0, codeName: 'Прем. інші досягнення', amount: 0 },
 		bonusGramPodjaka: { type: 'accruals', code: 0, codeName: 'Подяка / Грамота', amount: 0 },
 		bonusTeaching: { type: 'accruals', code: 0, codeName: 'Підг. персоналу', amount: 0 },
 		indexation: { type: 'accruals', code: 0, codeName: 'Iндексацiя', amount: 0 },
@@ -132,6 +133,8 @@ function salaryCalc(userData) {
 	accruals.mStrahMatDop.amount = _floor2(userData.med_polis)
 	// Код - ***
 	accruals.vidpKomp.amount = _floor2(userData.vidp_komp)
+	// Код - ***
+	accruals.premOthers.amount = _floor2(userData.prem_others)
 	// Код - ***
 	accruals.bonusGramPodjaka.amount = _floor2(userData.gram_pod)
 	// Код - ***
@@ -286,36 +289,6 @@ inputs.forEach((input) => {
 						activeDetails.style.maxHeight = ''
 					}, 300)
 				}
-				// // Додаємо will-change перед анімацією
-				// const activeDetails = document.querySelector('.inp-details.active')
-				// if (activeDetails) {
-				// 	activeDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-				// }
-				// inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-
-				// setTimeout(() => {
-				// 	if (activeDetails) {
-				// 		activeDetails.classList.remove('active')
-				// 		activeDetails.style.maxHeight = ''
-				// 	}
-				// 	inpDetails.classList.add('active')
-				// 	inpDetails.style.maxHeight = `calc(1.5em + ${inpDetails.scrollHeight}px)` // задаємо висоту контенту
-				// 	// Прибираємо will-change після завершення transition
-				// 	inpDetails.addEventListener(
-				// 		'transitionend',
-				// 		() => {
-				// 			inpDetails.style.willChange = 'auto'
-				// 			console.log('clear style.willChange after focus', inpDetails)
-				// 		},
-				// 		{ once: true },
-				// 	)
-				// 	console.log('finish focus', inpDetails)
-				// }, 400)
-				// // requestAnimationFrame(() => {
-				// // 	inpDetails.classList.add('active')
-				// // 	inpDetails.style.maxHeight = `${24 + inpDetails.scrollHeight}px`
-				// // })
-				// __log(input, 'input --> focus - end!')
 			}
 		}
 	})
@@ -326,25 +299,8 @@ inputs.forEach((input) => {
 		if (inpDetails) {
 			if (!_isMobileMode) {
 				return
-				// footerDetails.classList.add('hidden-content')
-				// setTimeout(() => {
-				// 	// костиль, щоб при клiку за межi браузера поле footerDetails не пропадало
-				// 	footerDetails.classList.remove('hidden-content')
-				// }, 400)
-				// setTimeout(() => {
-				// 	if (!(document.activeElement instanceof HTMLInputElement && document.activeElement.type === 'text')) {
-				// 		// перевіряємо чи спрацювання blur не є наслідком переходу в інше поле input.
-				// 		// Інакше ігноруємо скидання тексту на дефолтний (щоб не заважати обробці focus).
-				// 		// ! Припускаємо, що фокус може бути не на input - в такому разі скидаємо текст.
-				// 		footerDetailsHeader.innerText = footerDetailsHeader_defaultText
-				// 		footerDetailsText.innerText = footerDetailsText_defaultText
-				// 		footerDetailsCode.innerText = footerDetailsCode_defaultText
-				// 		footerDetails.classList.remove('hidden-content')
-				// 	}
-				// }, 300) // CSS --> transition: all 300ms
 			} else {
 				// ====== Mobile mode ============================================================
-				// __log(input, 'input --> blur - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
 
 				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
@@ -354,40 +310,9 @@ inputs.forEach((input) => {
 					}, 0)
 				}
 			}
-			// __log(input, 'input --> blur - end!')
-			// // Додаємо will-change перед анімацією
-			// inpDetails.style.willChange = 'max-height, padding-top, padding-bottom, opacity'
-
-			// setTimeout(() => {
-			// 	if (document.activeElement.closest('.input-container') !== input.closest('.input-container')) {
-			// 		inpDetails.classList.remove('active')
-			// 		inpDetails.style.maxHeight = ''
-			// 		// Прибираємо will-change після завершення transition
-			// 		inpDetails.addEventListener(
-			// 			'transitionend',
-			// 			() => {
-			// 				inpDetails.style.willChange = 'auto'
-			// 				console.log('clear style.willChange after blur', inpDetails)
-			// 			},
-			// 			{ once: true },
-			// 		)
-			// 	}
-			// 	console.log('finish blur', inpDetails)
-			// }, 0)
 		}
 	})
 })
-
-// document.querySelectorAll('.input-container').forEach((inputContainer) => {
-// 	inputContainer.addEventListener('dblclick', (e) => {
-// 		if (!(e.target instanceof HTMLInputElement)) {
-// 			console.log('click -->', e.target)
-// 			if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
-// 				document._myLastActiveInput.focus()
-// 			} else e.target.closest('.input-container').querySelector('input[type="text"]').focus()
-// 		}
-// 	})
-// })
 
 // =================================================================================
 // Видаляємо дефолтне спрацювання для label щоб змінити логіку фокусування на інпути

@@ -3,9 +3,11 @@
 
 :root {
   /* Base colors */
-  --bg-main: #fafafa;
+  --bg-main: #f8f8f8;
+  --bg-main_mobile: #fdfdfd;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
+  --header-bg_mobile: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main_mobile));
   --caption-bg: #e8e8e8;
   --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
   --btn-reset: linear-gradient(180deg, tomato, indianred);
@@ -36,8 +38,8 @@
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
-  --accruals-input-shadow_focus: rgba(20, 200, 20, 0.15);
-  --accruals-details-bg: rgba(20, 200, 20, 0.075);
+  --accruals-input-shadow_focus: rgba(20, 200, 20, 0.2);
+  --accruals-details-bg: rgba(20, 200, 20, 0.1);
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
@@ -108,22 +110,20 @@ input::placeholder {
 /* ================= HEADER ================= */
 
 .header-container {
-  background: var(--header-bg);
+  background-image: var(--header-bg);
 }
 
 .header {
   max-width: 1536px;
   margin: 0 auto;
-  /* padding-block: 1em 0; */
   padding-inline: 3em;
-  /* padding: 3em 0.75em 3em; */
 }
 
 .logo-header {
   display: flex;
   align-items: center;
   color: #fff;
-  padding: 5vh 0;
+  padding: 5vh 0 4.25vh;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -217,13 +217,13 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25em 0.5em;
+  /* padding: 0.25em 0.5em; */
+  padding: 3px 0.5em;
 }
 
 label {
   text-align: left;
   line-height: 1;
-  color: #111;
   font-variation-settings: 'GRAD' 100;
 }
 
@@ -258,10 +258,6 @@ input[type='checkbox'] {
   margin: 0.5em 1em;
 }
 
-/* input.decimal {
-  width: 5em;
-} */
-
 input[type='checkbox'] {
   margin-left: 1em;
 }
@@ -277,7 +273,6 @@ input[type='checkbox'] {
 
 /* ================= FIELDSETS ================= */
 fieldset {
-  /*position: relative;*/
   margin: 1.5em 0 0 0;
   padding: 1em 0.5em 0.75em 0.5em;
   border: 1px solid var(--main-border-color);
@@ -353,7 +348,6 @@ legend.lqdglass {
 }
 
 .general-field {
-  border-color: var(--main-border-color);
   background-image: var(--general-field-bg);
 }
 
@@ -363,12 +357,15 @@ legend.lqdglass {
 
 .general-field .input-container {
   background-color: var(--general-details-bg);
+  border: 1px solid var(--general-details-bg);
 }
 
 .general-field .input-container:has(.inp-details.active),
 .general-field .input-container:hover,
 .general-field .input-container:focus-within {
   background-color: var(--general-input-shadow_focus);
+  border-color: var(--general-input-shadow_focus);
+
 }
 
 /* .inputs-group:not(:last-child) {
@@ -379,7 +376,6 @@ legend.lqdglass {
 
 /* ================= TAB FIELD (BLUE) ================= */
 .timesheet-field {
-  border-color: var(--main-border-color);
   background-image: var(--timesheet-bg);
 }
 
@@ -389,12 +385,14 @@ legend.lqdglass {
 
 .timesheet-field .input-container {
   background-color: var(--timesheet-details-bg);
+  border: 1px solid var(--timesheet-details-bg);
 }
 
 .timesheet-field .input-container:has(.inp-details.active),
 .timesheet-field .input-container:hover,
 .timesheet-field .input-container:focus-within {
   background-color: var(--timesheet-input-shadow_focus);
+  border-color: var(--timesheet-input-shadow_focus);
 }
 
 .timesheet-field .inputs-group {
@@ -403,7 +401,6 @@ legend.lqdglass {
 
 /* ================= RED FIELD ================= */
 .deductions-field {
-  /* border-color: var(--deductions-inputs-group-border); */
   background-image: var(--deductions-bg);
 }
 
@@ -414,12 +411,14 @@ legend.lqdglass {
 .deductions-field .input-container,
 .deductions-field .checkbox-container {
   background-color: var(--deductions-details-bg);
+  border: 1px solid var(--deductions-details-bg);
 }
 
 .deductions-field .input-container:has(.inp-details.active),
 .deductions-field .input-container:hover,
 .deductions-field .input-container:focus-within {
   background-color: var(--deductions-input-shadow_focus);
+  border-color: var(--deductions-input-shadow_focus);
 }
 
 .deductions-field .inputs-group {
@@ -429,12 +428,14 @@ legend.lqdglass {
 /* ================= GREEN FIELD ================= */
 .accruals-field .input-container {
   background-color: var(--accruals-details-bg);
+  border: 1px solid var(--accruals-details-bg);
 }
 
 .accruals-field .input-container:has(.inp-details.active),
 .accruals-field .input-container:hover,
 .accruals-field .input-container:focus-within {
   background-color: var(--accruals-input-shadow_focus);
+  border-color: var(--accruals-input-shadow_focus);
 }
 
 /* ================= ADVANCED ================= */
@@ -456,22 +457,22 @@ input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
   border-color: var(--accruals-input-border_focus);
-  box-shadow: 0 0 2px 2px var(--accruals-input-shadow_focus);
+  box-shadow: 0 0 0.25em 0.25em var(--accruals-input-shadow_focus);
 }
 
 .general-field input[type='text']:focus-visible {
   border-color: var(--general-input-border_focus);
-  box-shadow: 0 0 2px 2px var(--general-input-shadow_focus);
+  box-shadow: 0 0 0.25em 0.25em var(--general-input-shadow_focus);
 }
 
 .timesheet-field input[type='text']:focus-visible {
   border-color: var(--timesheet-input-border_focus);
-  box-shadow: 0 0 2px 2px var(--timesheet-input-shadow_focus);
+  box-shadow: 0 0 0.25em 0.25em var(--timesheet-input-shadow_focus);
 }
 
 .deductions-field input[type='text']:focus-visible {
   border-color: var(--deductions-input-border_focus);
-  box-shadow: 0 0 2px 2px var(--deductions-input-shadow_focus);
+  box-shadow: 0 0 0.25em 0.25em var(--deductions-input-shadow_focus);
 }
 
 .form-footer {
@@ -605,7 +606,8 @@ button:active {
 }
 
 .input-container {
-  will-change: padding-top, background-color, border-radius;
+  /* will-change: padding-top, background-color, border-radius; */
+  will-change: background-color, border-radius;
 }
 
 .checkbox-wrap {
@@ -614,7 +616,7 @@ button:active {
 }
 
 .input-container:has(.inp-details.active) {
-  padding-top: 0.5rem;
+  /* padding-top: 0.5rem; */
   border-radius: 0.75rem;
 }
 
@@ -671,7 +673,7 @@ button:active {
   top: 100%;
   left: 0;
   right: 0;
-  background: #f8f8f8;
+  background: var(--bg-main);
 }
 
 .results-top-panel {
@@ -731,6 +733,18 @@ button:active {
 }
 
 @media (max-width: 1152px) {
+
+  body {
+    background-color: var(--bg-main_mobile);
+  }
+
+  .header-container {
+    background-image: var(--header-bg_mobile);
+  }
+
+  .input-wrapper {
+    padding-block: 4px;
+  }
 
   .logo-header {
     padding: 2em 0;
@@ -839,26 +853,28 @@ button:active {
     display: none;
   }
 
-  .form {
-    padding-inline: 0;
-  }
-
-  .form fieldset {
-    border-radius: 1rem;
-  }
-
-  .inp-details,
+  /* .inp-details,
   .input-wrapper {
     padding-inline: 0.75rem;
-  }
+  } */
 
+  .form,
   .results,
   .header {
     padding-inline: 0.5em;
   }
 
-  .btns-wrap {
-    margin-inline: 0.5em;
+
+  .double-inputs input[type='text']:last-of-type {
+    margin-left: 2px;
   }
+
+  .double-inputs span:first-of-type {
+    margin-left: 2px;
+  }
+
+  /* .btns-wrap {
+    margin-inline: 0.5em;
+  } */
 
 }
