@@ -70,8 +70,10 @@ function salaryCalc(userData) {
 		premium: { type: 'accruals', code: 157, codeName: 'Премія', amount: 0 },
 		dopEvenings: { type: 'accruals', code: 10, codeName: 'Доплата вечірні', amount: 0 },
 		dopNights: { type: 'accruals', code: 11, codeName: 'Доплата нічні', amount: 0 },
-		vidpNarah: { type: 'accruals', code: 0, codeName: 'Відпускні (нарах)', amount: 0 },
+		vidpNarahPot: { type: 'accruals', code: 20, codeName: 'Відпускні поточний', amount: 0 },
+		vidpNarahNast: { type: 'accruals', code: 21, codeName: 'Відпускні наступний', amount: 0 },
 		vidpMatDop: { type: 'accruals', code: 201, codeName: 'Мат. доп. відпустка', amount: 0 },
+		likarn5days: { type: 'accruals', code: 106, codeName: 'Лікарняні (5 днів)', amount: 0 },
 		prem13: { type: 'accruals', code: 155, codeName: 'Премія річна (13-та)', amount: 0 },
 		mStrahMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. страховка', amount: 0 },
 		vidpKomp: { type: 'accruals', code: 59, codeName: 'Компенсація', amount: 0 },
@@ -123,10 +125,14 @@ function salaryCalc(userData) {
 	accruals.dopNights.amount = _floor2((userData.oklad / _calendarHoursesNorm) * _nightHours * 0.4)
 	// Код - 157
 	accruals.premium.amount = _floor2((userData.pop_oklad * userData.prem) / 100)
+	// Код - 20
+	accruals.vidpNarahPot.amount = _floor2(userData.vidp_narah_pot)
+	// Код - 21
+	accruals.vidpNarahNast.amount = _floor2(userData.vidp_narah_nast)
 	// Код - ***
-	accruals.vidpNarah.amount = _floor2(userData.vidp_narah)
-	// Код - ***
-	accruals.vidpMatDop.amount = _floor2(userData.mater_dop)
+	accruals.vidpMatDop.amount = userData.mater_dop ? _floor2(userData.mater_dop) : 0
+	// Код - 106
+	accruals.likarn5days.amount = _floor2(userData.likarn5days)
 	// Код - ***
 	accruals.prem13.amount = _floor2(userData.prem_13)
 	// Код - ***
@@ -159,13 +165,13 @@ function salaryCalc(userData) {
 	// deductions.vidp.amount = _floor2(accruals.vidpNarah.amount + accruals.vidpMatDop.amount) * PDFO_VZ_PROF__GO_ZSU
 	deductions.vidp.amount = _floor2(userData.vidp_oplata)
 	// Код - 339
-	deductions.profsp.amount = _floor2(userData.member_prof ? 0.01 * accruals.accrualsSum.amount : 0)
+	deductions.profsp.amount = _floor2(userData.member_prof ? 0.01 * (accruals.accrualsSum.amount - accruals.likarn5days.amount) : 0)
 	// Код - 378
 	deductions.vZbir.amount = _floor2(0.05 * accruals.accrualsSum.amount)
 	// Код - 379
-	deductions.vnesGO.amount = _floor2((userData.blag_vnes_GO / 100) * accruals.accrualsSum.amount)
+	deductions.vnesGO.amount = _floor2((userData.blag_vnes_GO / 100) * (accruals.accrualsSum.amount - accruals.likarn5days.amount))
 	// Код - 380
-	deductions.vnesZSU.amount = _floor2((userData.blag_vnes_ZSU / 100) * accruals.accrualsSum.amount)
+	deductions.vnesZSU.amount = _floor2((userData.blag_vnes_ZSU / 100) * (accruals.accrualsSum.amount - accruals.likarn5days.amount))
 	// Код - 381 and 383
 	deductions.blagVnes13.amount = userData.blag_vnes_13 ? _floor2((userData.blag_vnes_13 / 100) * accruals.prem13.amount) : 0
 	// Код - ***
@@ -546,5 +552,23 @@ function enableBlag_vnes_13(e) {
 }
 
 prem_13.addEventListener('input', enableBlag_vnes_13)
+
+// *****************************************************************************
+
+// Включення поля для матер. допомоги
+// =============================================================================
+
+const vidp_narah = document.querySelector('#vidp_narah')
+const mater_dop = document.querySelector('#mater_dop')
+
+function enableMaterDopOzd(e) {
+	if (e.target.value !== '') {
+		mater_dop.removeAttribute('disabled')
+	} else {
+		mater_dop.setAttribute('disabled', true)
+	}
+}
+
+vidp_narah.addEventListener('input', enableMaterDopOzd)
 
 // *****************************************************************************

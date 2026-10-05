@@ -68,6 +68,17 @@
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 150 в листку</span>
 										</div>
 									</div>
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="prem">Премія (за рез. роботи) %</label>
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal toLocalStorege" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" required />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Розмір премії за результатами роботи. Змінюється за рішенням роботодавця. Важливо: премію нараховують за попередній місяць (наприклад, разом із зарплатою за березень виплачується премія за лютий).</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в персональному кабінеті</span>
+										</div>
+									</div>
 								</div>
 							</fieldset>
 
@@ -158,18 +169,6 @@
 								<div class="inputs-group">
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="prem">Премія (за рез. роботи) %</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal toLocalStorege" type="text" inputmode="numeric" id="prem" name="prem" placeholder="Процент" required />
-										</div>
-										<div class="inp-details">
-											<p class="details-text">Розмір премії за результатами роботи. Змінюється за рішенням роботодавця. Важливо: премію нараховують за попередній місяць (наприклад, разом із зарплатою за березень виплачується премія за лютий).</p>
-											<hr />
-											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в персональному кабінеті</span>
-										</div>
-									</div>
-
-									<div class="input-container">
-										<div class="input-wrapper">
 											<label for="pop_oklad">Оклад за попередній місяць</label>
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="pop_oklad" name="pop_oklad" placeholder="Сума" required />
 										</div>
@@ -184,13 +183,37 @@
 								<div class="inputs-group">
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="vidp_narah">Відпускні (нараховано)</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_narah" name="vidp_narah" placeholder="Сума" />
+											<label for="vidp_narah_pot">Відпускні (поточний місяць)</label>
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_narah_pot" name="vidp_narah_pot" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Вкажіть розмір відпускних, зазначений у «Нарахуваннях» розрахункового листка. Або вкажіть суму таких нарахувань, якщо частини однієї відпустки припадають на різні місяці.</p>
+											<p class="details-text">Вкажіть розмір відпускних за поточний місяць, зазначений у «Нарахуваннях» розрахункового листка. Актуально для частини відпустки (або повної відпустки), що припадає на поточний місяць.</p>
 											<hr />
-											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 20 та/або 21 в розрахунковому листку</span>
+											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 20 в розрахунковому листку</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="vidp_narah_nast">Відпускні (наступний)</label>
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="vidp_narah_nast" name="vidp_narah_nast" placeholder="Сума" />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Вкажіть розмір відпускних за наступний місяць, зазначений у «Нарахуваннях» розрахункового листка. Актуально, якщо частини однієї відпустки припадають на різні місяці.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 21 в розрахунковому листку</span>
+										</div>
+									</div>
+
+									<div class="input-container">
+										<div class="input-wrapper">
+											<label for="mater_dop">Матеріальна допомога</label>
+											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="mater_dop" name="mater_dop" placeholder="Сума" disabled />
+										</div>
+										<div class="inp-details">
+											<p class="details-text">Вкажіть розмір матеріальної допомоги на оздоровлення, зазначений у «Нарахуваннях». Матеріальна допомога надається до відпустки та дорівнює окладу на початок поточного року.</p>
+											<hr />
+											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 201 в листку</span>
 										</div>
 									</div>
 
@@ -205,17 +228,17 @@
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 59 в розрахунковому листку</span>
 										</div>
 									</div>
+								</div>
 
-									<div class="input-container">
-										<div class="input-wrapper">
-											<label for="mater_dop">Матеріальна допомога</label>
-											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="mater_dop" name="mater_dop" placeholder="Сума" />
-										</div>
-										<div class="inp-details">
-											<p class="details-text">Вкажіть розмір матеріальної допомоги на оздоровлення, зазначений у «Нарахуваннях». Матеріальна допомога надається до відпустки та дорівнює окладу на початок поточного року.</p>
-											<hr />
-											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Вказано в кабінеті / Код 201 в листку</span>
-										</div>
+								<div class="input-container">
+									<div class="input-wrapper">
+										<label for="likarn5days">Лікарняні (перші 5 днів)</label>
+										<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="likarn5days" name="likarn5days" placeholder="Сума" />
+									</div>
+									<div class="inp-details">
+										<p class="details-text">Вкажіть розмір лікарняних, зазначений у «Нарахуваннях» розрахункового листка. Перші 5 днів лікарняного оплачує роботодавець, а подальші дні (окремим платежем) — за рахунок Фонду соціального страхування.</p>
+										<hr />
+										<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 106 в розрахунковому листку</span>
 									</div>
 								</div>
 
@@ -301,7 +324,7 @@
 								<div class="inputs-group">
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="avans">Аванс (якщо вже отримано)</label>
+											<label for="avans">Аванс (вже отримано)</label>
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="avans" name="avans" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
