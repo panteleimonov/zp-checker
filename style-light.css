@@ -777,7 +777,7 @@ button:active {
 
   .input-container,
   .checkbox-container {
-    margin-block: 4px;
+    /*margin-block: 4px;*/
   }
 
   .inputs-group:not(:last-child) {
