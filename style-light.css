@@ -448,10 +448,10 @@ legend.lqdglass {
   font-variation-settings: 'GRAD' 200;
 }
 
-/*
+
 .input-container:has(.inp-details.active) label {
   font-variation-settings: 'GRAD' 200;
-} */
+}
 
 input[type='text']:focus-visible {
   outline: none;
@@ -634,7 +634,7 @@ button:active {
   overflow-wrap: break-word;
   overflow: hidden;
   opacity: 0;
-  will-change: max-height, padding-top, padding-bottom, opacity;
+  will-change: min-height, height, padding-top, padding-bottom, opacity;
 }
 
 .inp-details.active {
