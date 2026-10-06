@@ -4,7 +4,7 @@
 :root {
   /* Base colors */
   --bg-main: #f8f8f8;
-  --bg-main_mobile: #fdfdfd;
+  --bg-main_mobile: #fefefe;
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --header-bg_mobile: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main_mobile));
@@ -13,10 +13,10 @@
   --btn-reset: linear-gradient(180deg, tomato, indianred);
 
   /* Effects */
-  --main-bradius: 1.5em;
+  --main-bradius: 1.25em;
   --legend-bradius: 100em;
   --main-border-color: #ddd;
-  --main-shadow: 0 4px 0.5em rgba(0, 0, 0, 0.1);
+  --main-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
   --main-shadow_hover: 0 4px 1em rgba(0, 0, 0, 0.25);
 
   /* Gold theme */
@@ -777,7 +777,7 @@ button:active {
 
   .input-container,
   .checkbox-container {
-    margin-block: 4px;
+    margin-block: 2px;
   }
 
   .inputs-group:not(:last-child) {
