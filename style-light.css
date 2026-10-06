@@ -21,8 +21,8 @@
 
   /* Gold theme */
   --general-field-bg: linear-gradient(135deg,
-      rgba(255, 222, 92, 0.15),
-      rgba(255, 191, 0, 0.15));
+      rgba(255, 222, 92, 0.2),
+      rgba(255, 191, 0, 0.2));
   --general-field-bg-gradient: linear-gradient(135deg,
       rgba(255, 222, 92, 0.15),
       rgba(255, 191, 0, 0.3));
@@ -33,8 +33,8 @@
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
-      rgba(20, 200, 20, 0.75),
-      rgba(20, 200, 20, 0.75));
+      rgba(20, 200, 20, 0.075),
+      rgba(20, 200, 20, 0.075));
   --accruals-inputs-group-border: rgba(20, 200, 20, 0.25);
   --accruals-input-border: rgba(20, 200, 20, 0.4);
   --accruals-input-border_focus: rgba(20, 200, 20, 0.6);
@@ -43,8 +43,8 @@
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
-      rgba(20, 20, 255, 0.75),
-      rgba(20, 20, 255, 0.75));
+      rgba(20, 20, 255, 0.075),
+      rgba(20, 20, 255, 0.075));
   --timesheet-inputs-group-border: rgba(20, 20, 255, 0.2);
   --timesheet-input-border: rgba(20, 20, 255, 0.4);
   --timesheet-input-border_focus: rgba(20, 20, 255, 0.6);
@@ -53,8 +53,8 @@
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(255, 40, 0, 0.75),
-      rgba(255, 40, 0, 0.75));
+      rgba(255, 40, 0, 0.075),
+      rgba(255, 40, 0, 0.075));
   --deductions-inputs-group-border: rgba(255, 40, 0, 0.2);
   --deductions-input-border: rgba(255, 40, 0, 0.4);
   --deductions-input-border_focus: rgba(255, 40, 0, 0.6);
