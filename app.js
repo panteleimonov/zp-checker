@@ -558,17 +558,19 @@ prem_13.addEventListener('input', enableBlag_vnes_13)
 // Включення поля для матер. допомоги
 // =============================================================================
 
-const vidp_narah = document.querySelector('#vidp_narah')
+const vidp_narah_pot = document.querySelector('#vidp_narah_pot')
+const vidp_narah_nast = document.querySelector('#vidp_narah_nast')
 const mater_dop = document.querySelector('#mater_dop')
 
-function enableMaterDopOzd(e) {
-	if (e.target.value !== '') {
+function enableMaterDopOzd() {
+	if (vidp_narah_pot.value || vidp_narah_nast.value) {
 		mater_dop.removeAttribute('disabled')
 	} else {
 		mater_dop.setAttribute('disabled', true)
 	}
 }
 
-vidp_narah.addEventListener('input', enableMaterDopOzd)
+vidp_narah_pot.addEventListener('input', enableMaterDopOzd)
+vidp_narah_nast.addEventListener('input', enableMaterDopOzd)
 
 // *****************************************************************************
