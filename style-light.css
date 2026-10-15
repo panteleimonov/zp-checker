@@ -151,7 +151,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   color: #fff;
-  padding: 4.25vh 0 4vh;
+  padding: 4.25vh 0 3.75vh;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -307,8 +307,7 @@ input[type='checkbox'] {
 /* ================= FIELDSETS ================= */
 fieldset {
   margin: 1.5em 0 0 0;
-  /* padding: 1em 0.5em 0.75em 0.5em; */
-  padding: 0.5em 0.5em;
+  padding: 0.5em 0.5em 0.75em;
   border: 1px solid var(--main-border-color);
   border-radius: var(--main-bradius);
   background-color: #fff;
