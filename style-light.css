@@ -8,7 +8,7 @@
   --text-main: #111;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --header-bg_mobile: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main_mobile));
-  --caption-bg: #e8e8e8;
+  --caption-bg: #e4e4e4;
   --btn-ok: linear-gradient(180deg, deepskyblue, royalblue);
   --btn-reset: linear-gradient(180deg, tomato, indianred);
 
@@ -16,7 +16,7 @@
   --main-bradius: 1.5em;
   --legend-bradius: 100em;
   --main-border-color: #ddd;
-  --main-shadow: 0 4px 0.75em rgba(0, 0, 0, 0.075);
+  --main-shadow: 0 4px 1em rgba(0, 0, 0, 0.1);
   --main-shadow_hover: 0 4px 1em rgba(0, 0, 0, 0.25);
 
   /* Gold theme */
@@ -27,40 +27,36 @@
   --general-field-bg-gradient: linear-gradient(135deg,
       rgba(255, 222, 92, 0.15),
       rgba(255, 191, 0, 0.3));
-  --general-input-border: rgba(212, 175, 55, 0.4);
-  --general-input-border_focus: rgba(212, 175, 55, 0.4);
+  --general-border: rgba(212, 175, 55, 0.4);
   --general-input-shadow_focus: rgba(212, 175, 55, 0.4);
-  --general-details-bg: rgba(212, 175, 55, 0.25);
+  --general-details-bg: rgba(212, 175, 55, 0.2);
 
   /* Green theme */
   --accruals-field-bg: linear-gradient(135deg,
       rgba(80, 200, 120, 0.25),
       rgba(80, 200, 120, 0.15));
-  --accruals-inputs-group-border: rgba(80, 200, 120, 0.4);
-  --accruals-input-border: rgba(80, 200, 120, 0.4);
-  --accruals-input-border_focus: rgba(80, 200, 120, 0.4);
-  --accruals-input-shadow_focus: rgba(80, 200, 120, 0.4);
-  --accruals-details-bg: rgba(80, 200, 120, 0.2);
+  --accruals-inputs-group-border: rgba(80, 200, 120, 0.35);
+  --accruals-border: rgba(80, 200, 120, 0.35);
+  --accruals-input-shadow_focus: rgba(80, 200, 120, 0.35);
+  --accruals-details-bg: rgba(80, 200, 120, 0.15);
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
       rgba(90, 82, 255, 0.25),
       rgba(90, 82, 255, 0.15));
-  --timesheet-inputs-group-border: rgba(90, 82, 255, 0.25);
-  --timesheet-input-border: rgba(90, 82, 255, 0.25);
-  --timesheet-input-border_focus: rgba(90, 82, 255, 0.25);
-  --timesheet-input-shadow_focus: rgba(90, 82, 255, 0.25);
-  --timesheet-details-bg: rgba(90, 82, 255, 0.15);
+  --timesheet-inputs-group-border: rgba(90, 82, 255, 0.20);
+  --timesheet-border: rgba(90, 82, 255, 0.20);
+  --timesheet-input-shadow_focus: rgba(90, 82, 255, 0.20);
+  --timesheet-details-bg: rgba(90, 82, 255, 0.1);
 
   /* Red theme */
   --deductions-bg: linear-gradient(135deg,
-      rgba(252, 75, 8, 0.15),
-      rgba(252, 75, 8, 0.10));
-  --deductions-inputs-group-border: rgba(252, 75, 8, 0.2);
-  --deductions-input-border: rgba(252, 75, 8, 0.25);
-  --deductions-input-border_focus: rgba(252, 75, 8, 0.2);
-  --deductions-input-shadow_focus: rgba(252, 75, 8, 0.2);
-  --deductions-details-bg: rgba(252, 75, 8, 0.1);
+      rgba(201, 35, 81, 0.20),
+      rgba(201, 35, 81, 0.1));
+  --deductions-inputs-group-border: rgba(201, 35, 81, 0.2);
+  --deductions-border: rgba(201, 35, 81, 0.2);
+  --deductions-input-shadow_focus: rgba(201, 35, 81, 0.2);
+  --deductions-details-bg: rgba(201, 35, 81, 0.1);
 }
 
 /* ================= BASE ================= */
@@ -235,7 +231,8 @@ input::placeholder {
   border-radius: var(--main-bradius);
   box-shadow: var(--main-shadow);
   margin-top: 0;
-  margin-bottom: 1.25em;
+  /* margin-bottom: 1.25em; */
+  margin-bottom: 1em;
 }
 
 /* ================= FORM ================= */
@@ -270,7 +267,7 @@ input[type='text'] {
   font-family: 'Rubik', sans-serif;
   border: 1px solid var(--accruals-input-border);
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   transition: width 0ms !important;
 }
 
@@ -307,8 +304,10 @@ input[type='checkbox'] {
 /* ================= FIELDSETS ================= */
 fieldset {
   margin: 1.5em 0 0 0;
-  padding: 0.5em 0.5em 0.75em;
-  border: 1px solid var(--main-border-color);
+  /* padding: 0.5em 0.5em 0.75em; */
+  padding: 0.5em;
+  /* border: 1px solid var(--main-border-color); */
+  border: 1px solid var(--accruals-border);
   border-radius: var(--main-bradius);
   background-color: #fff;
   background-image: var(--accruals-field-bg);
@@ -389,6 +388,7 @@ legend {
 
 .general-field {
   background-image: var(--general-field-bg);
+  border-color: var(--general-border);
 }
 
 .general-field input[type='text'] {
@@ -405,7 +405,6 @@ legend {
 .general-field .input-container:focus-within {
   background-color: var(--general-input-shadow_focus);
   border-color: var(--general-input-shadow_focus);
-
 }
 
 /* .inputs-group:not(:last-child) {
@@ -416,7 +415,9 @@ legend {
 
 /* ================= TAB FIELD (BLUE) ================= */
 .timesheet-field {
+  margin-top: 2em;
   background-image: var(--timesheet-bg);
+  border-color: var(--timesheet-border);
 }
 
 .timesheet-field input[type='text'] {
@@ -442,6 +443,7 @@ legend {
 /* ================= RED FIELD ================= */
 .deductions-field {
   background-image: var(--deductions-bg);
+  border-color: var(--deductions-border);
 }
 
 .deductions-field input[type='text'] {
@@ -488,7 +490,6 @@ legend {
   font-variation-settings: 'GRAD' 200;
 }
 
-
 .input-container:has(.inp-details.active) label {
   font-variation-settings: 'GRAD' 200;
 }
@@ -496,29 +497,29 @@ legend {
 input[type='text']:focus-visible {
   outline: none;
   background-color: #fff;
-  border-color: var(--accruals-input-border_focus);
-  box-shadow: 0 0 0.25em 0.25em var(--accruals-input-shadow_focus);
+  border-color: var(--accruals-border);
+  box-shadow: 0 0 1px 1px var(--accruals-input-shadow_focus);
 }
 
 .general-field input[type='text']:focus-visible {
-  border-color: var(--general-input-border_focus);
-  box-shadow: 0 0 0.25em 0.25em var(--general-input-shadow_focus);
+  border-color: var(--general-border);
+  box-shadow: 0 0 1px 1px var(--general-input-shadow_focus);
 }
 
 .timesheet-field input[type='text']:focus-visible {
-  border-color: var(--timesheet-input-border_focus);
-  box-shadow: 0 0 0.25em 0.25em var(--timesheet-input-shadow_focus);
+  border-color: var(--timesheet-border);
+  box-shadow: 0 0 1px 1px var(--timesheet-input-shadow_focus);
 }
 
 .deductions-field input[type='text']:focus-visible {
-  border-color: var(--deductions-input-border_focus);
-  box-shadow: 0 0 0.25em 0.25em var(--deductions-input-shadow_focus);
+  border-color: var(--deductions-border);
+  box-shadow: 0 0 1px 1px 1px var(--deductions-input-shadow_focus);
 }
 
 .form-footer {
   display: flex;
   justify-content: space-between;
-  margin: 2.5em 0 1em;
+  margin: 2.25em 0 1em;
   gap: 2em;
 }
 
@@ -642,7 +643,7 @@ button:active {
   padding: 0;
   overflow: hidden;
   position: relative;
-  margin-block: 2px;
+  margin-block: 3px;
 }
 
 .input-container {
@@ -781,7 +782,10 @@ button:active {
   *,
   *::before,
   *::after {
-    transition: opacity 500ms ease-in-out, padding 0s, max-height 0s;
+    transition:
+      all 300ms ease-in-out,
+      opacity 500ms ease-in-out,
+      padding 0s, max-height 0s;
   }
 
   body {
@@ -793,11 +797,11 @@ button:active {
   }
 
   .input-wrapper {
-    padding-block: 4px;
+    padding-block: 5px;
   }
 
   .logo-header {
-    padding: 2em 0;
+    padding: 1.75rem 0 1.5rem;
   }
 
   .logo-header h1 {
@@ -820,6 +824,10 @@ button:active {
     padding-inline: 20vw;
   }
 
+  .timesheet-field {
+    margin-top: 1.5em;
+  }
+
   .input-container,
   .checkbox-container {
     margin-block: 4px;
@@ -832,7 +840,7 @@ button:active {
   }
 
   .form-footer {
-    margin-top: 2em;
+    margin-block: 1.5em;
   }
 
   .results {
@@ -878,7 +886,11 @@ button:active {
 
   .btns-wrap {
     padding: 1.25rem 1rem;
-    margin-bottom: 1em;
+    margin: 0;
+  }
+
+  .reset-btn {
+    display: none;
   }
 
 }
