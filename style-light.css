@@ -38,7 +38,7 @@
   --accruals-inputs-group-border: rgba(80, 200, 120, 0.35);
   --accruals-border: rgba(80, 200, 120, 0.35);
   --accruals-input-shadow_focus: rgba(80, 200, 120, 0.35);
-  --accruals-details-bg: rgba(80, 200, 120, 0.15);
+  --accruals-details-bg: rgba(80, 200, 120, 0.20);
 
   /* Blue theme */
   --timesheet-bg: linear-gradient(135deg,
