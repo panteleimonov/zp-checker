@@ -293,7 +293,7 @@ inputs.forEach((input) => {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
 						activeDetails.style.maxHeight = ''
-					}, 300)
+					}, 0)
 				}
 			}
 		}
