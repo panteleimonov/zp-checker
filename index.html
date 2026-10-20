@@ -242,6 +242,18 @@
 									</div>
 								</div>
 
+								<div class="input-container">
+									<div class="input-wrapper">
+										<label for="donors">Донорські (грн.)</label>
+										<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="donors" name="donors" placeholder="Сума" />
+									</div>
+									<div class="inp-details">
+										<p class="details-text">Згідно статті 124 Кодексу законів про працю України, у день здачі крові та її компонентів за працівником зберігається середній заробіток за місцем роботи. Розмір «донорських» нарахувань зазначається у розрахунковому листку.</p>
+										<hr />
+										<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 26 в розрахунковому листку</span>
+									</div>
+								</div>
+
 								<div class="inputs-group">
 									<div class="input-container">
 										<div class="input-wrapper">
@@ -278,7 +290,7 @@
 										</div>
 									</div>
 
-									<div class="input-container">
+									<div class="input-container only-mobile">
 										<div class="input-wrapper">
 											<label for="pidg_pers">Доплата за підг. кадрів</label>
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="pidg_pers" name="pidg_pers" placeholder="Сума" />
@@ -432,11 +444,11 @@
 
 									<div class="input-container">
 										<div class="input-wrapper">
-											<label for="prem_pererah">Перерахування премії (грн.)</label>
+											<label for="prem_pererah">Перерахунок премії (грн.)</label>
 											<input autocapitalize="off" autocomplete="off" spellcheck="false" class="decimal" type="text" inputmode="numeric" id="prem_pererah" name="prem_pererah" placeholder="Сума" />
 										</div>
 										<div class="inp-details">
-											<p class="details-text">Премія (святкова, вислуга, інше), яку було виплачено окремо від авансу чи заробітної плати. Оподаткована сума такої премії зазначається у «Відрахуваннях» розрахункового листка.</p>
+											<p class="details-text">Премія (святкова, вислуга чи інша), виплачена окремо від авансу або заробітної плати. Оподаткована сума такої премії відображається у «Відрахуваннях» розрахункового листка.</p>
 											<hr />
 											<span class="code-details"><span class="details-icon">🟠&nbsp;</span>Код 335 в розрахунковому листку</span>
 										</div>
@@ -484,7 +496,7 @@
 						<!-- <span class="emoji-icon">💸</span> -->
 						<h2>ZP Checker</h2>
 					</div>
-					<button class="results-close-btn" type="button"><span class="hidemobile">Esc | </span>Закрити</button>
+					<button class="results-close-btn" type="button"><span class="hide-mobile">Esc | Закрити</span><span class="only-mobile">Зрозуміло</span></button>
 				</div>
 				<div class="flex-container">
 					<div id="salary-report" class="flex-block"></div>
@@ -492,7 +504,7 @@
 					<div class="flex-block">
 						<div id="salary-resume"></div>
 						<p class="caption-text warning-info">
-							Тільки для особистого використання! <br class="hidemobile" />
+							Тільки для особистого використання! <br class="hide-mobile" />
 							Точність розрахунків не гарантується, оскільки ZP&nbsp;Checker не враховує всіх факторів та нюансів, що можуть вплинути на зарплатні нарахування.
 						</p>
 					</div>

@@ -74,13 +74,14 @@ function salaryCalc(userData) {
 		vidpNarahNast: { type: 'accruals', code: 21, codeName: 'Відпускні наступний', amount: 0 },
 		vidpMatDop: { type: 'accruals', code: 201, codeName: 'Мат. доп. відпустка', amount: 0 },
 		likarn5days: { type: 'accruals', code: 106, codeName: 'Лікарняні (5 днів)', amount: 0 },
+		donors: { type: 'accruals', code: 26, codeName: 'Донорські', amount: 0 },
 		prem13: { type: 'accruals', code: 155, codeName: 'Прем. річна (13-та)', amount: 0 },
 		mStrahMatDop: { type: 'accruals', code: 0, codeName: 'Мат. доп. страховка', amount: 0 },
 		vidpKomp: { type: 'accruals', code: 59, codeName: 'Компенсація', amount: 0 },
 		premOthers: { type: 'accruals', code: 158, codeName: 'Прем. інші досягн.', amount: 0 },
 		bonusGramPodjaka: { type: 'accruals', code: 169, codeName: 'Подяка / Грамота', amount: 0 },
 		bonusTeaching: { type: 'accruals', code: 8, codeName: 'Підг. персоналу', amount: 0 },
-		indexation: { type: 'accruals', code: 0, codeName: 'Iндексацiя', amount: 0 },
+		indexation: { type: 'accruals', code: 161, codeName: 'Iндексацiя', amount: 0 },
 		othersAccruals: { type: 'accruals', code: 0, codeName: 'Інші нарахування', amount: 0 },
 		// Сума всіх нарахувань
 		accrualsSum: { type: 'accruals', codeName: '<b>Всього нараховано</b>', amount: 0 },
@@ -97,6 +98,7 @@ function salaryCalc(userData) {
 		vnesGO: { type: 'deductions', code: 379, codeName: 'Внески ГО', amount: 0 },
 		blagVnes13: { type: 'deductions', code: '381 та 383', codeName: 'Внески (13-та)', amount: 0 },
 		medicsStrah: { type: 'deductions', code: 0, codeName: 'Медична страховка', amount: 0 },
+		premPererah: { type: 'deductions', code: 335, codeName: 'Перерахунок премії', amount: 0 },
 		othersVidr: { type: 'deductions', code: 0, codeName: 'Інші відрахування', amount: 0 },
 		// Сума всіх відрахувань
 		deductionsSum: { type: 'deductions', codeName: '<b>Всього утримано</b>', amount: 0 },
@@ -133,6 +135,8 @@ function salaryCalc(userData) {
 	accruals.vidpMatDop.amount = userData.mater_dop ? _floor2(userData.mater_dop) : 0
 	// Код - 106
 	accruals.likarn5days.amount = _floor2(userData.likarn5days)
+	// Код - 26
+	accruals.donors.amount = _floor2(userData.donors)
 	// Код - ***
 	accruals.prem13.amount = _floor2(userData.prem_13)
 	// Код - ***
@@ -144,7 +148,7 @@ function salaryCalc(userData) {
 	// Код - ***
 	accruals.bonusGramPodjaka.amount = _floor2(userData.gram_pod)
 	// Код - ***
-	accruals.bonusTeaching.amount = _floor2(userData.pidg_pers)
+	accruals.bonusTeaching.amount = userData.pidg_pers ? _floor2(userData.pidg_pers) : 0
 	// Код - ***
 	accruals.indexation.amount = _floor2(userData.indexation)
 	// Код - ***
@@ -163,7 +167,7 @@ function salaryCalc(userData) {
 	deductions.pdfo.amount = _floor2(0.18 * accruals.accrualsSum.amount)
 	// Код - 359
 	// deductions.vidp.amount = _floor2(accruals.vidpNarah.amount + accruals.vidpMatDop.amount) * PDFO_VZ_PROF__GO_ZSU
-	deductions.vidp.amount = _floor2(userData.vidp_oplata)
+	deductions.vidp.amount = _floor2(+userData.vidp_oplata)
 	// Код - 339
 	deductions.profsp.amount = _floor2(userData.member_prof ? 0.01 * (accruals.accrualsSum.amount - accruals.likarn5days.amount) : 0)
 	// Код - 378
@@ -176,6 +180,8 @@ function salaryCalc(userData) {
 	deductions.blagVnes13.amount = userData.blag_vnes_13 ? _floor2((userData.blag_vnes_13 / 100) * accruals.prem13.amount) : 0
 	// Код - ***
 	deductions.medicsStrah.amount = _floor2(+userData.med_polis)
+	// Код - ***
+	deductions.premPererah.amount = _floor2(+userData.prem_pererah)
 	// Код - Інше
 	deductions.othersVidr.amount = _floor2(+userData.others_vidr)
 	// Сума всіх відрахувань
