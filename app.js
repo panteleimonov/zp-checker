@@ -224,7 +224,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			return !val.amount
 				? ''
 				: `
-			<p><span>${val.type === 'accruals' ? '🟢' : '🔴'} ${val.codeName}${val.code ? ' - <span class="hidemobile">код </span>' + val.code : ''}</span><b>${val.plusMinus ? '+/- ' + _formatMoney(val.amount) : _formatMoney(val.amount)}</b></p>
+			<p><span>${val.type === 'accruals' ? '🟢' : '🔴'} ${val.codeName}${val.code ? ' - <span class="hide-mobile">код </span>' + val.code : ''}</span><b>${val.plusMinus ? '+/- ' + _formatMoney(val.amount) : _formatMoney(val.amount)}</b></p>
 			`
 		})
 		.join('')
