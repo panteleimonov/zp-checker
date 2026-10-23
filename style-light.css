@@ -38,7 +38,7 @@
   --accruals-field-bg: linear-gradient(135deg,
       rgba(80, 200, 120, .2),
       rgba(80, 200, 120, .15));
-  /* --accruals-inputs-group-border: rgba(80, 200, 120, .35); */
+  --accruals-accent-text: rgba(80, 200, 120, .9);
   --accruals-border: rgba(80, 200, 120, .35);
   --accruals-input-shadow_focus: rgba(80, 200, 120, .35);
   --accruals-details-bg: rgba(80, 200, 120, .2);
@@ -47,7 +47,7 @@
   --timesheet-bg: linear-gradient(135deg,
       rgba(90, 82, 255, .2),
       rgba(90, 82, 255, .15));
-  /* --timesheet-inputs-group-border: rgba(90, 82, 255, .2); */
+  --timesheet-accent-text: rgba(90, 82, 255, .8);
   --timesheet-border: rgba(90, 82, 255, .2);
   --timesheet-input-shadow_focus: rgba(90, 82, 255, .2);
   --timesheet-details-bg: rgba(90, 82, 255, .1);
@@ -56,7 +56,7 @@
   --deductions-bg: linear-gradient(135deg,
       rgba(255, 99, 71, .2),
       rgba(255, 99, 71, .15));
-  /* --deductions-inputs-group-border: rgba(255, 99, 71, .15); */
+  --deductions-accent-text: rgba(255, 99, 71, .8);
   --deductions-border: rgba(255, 99, 71, .25);
   --deductions-input-shadow_focus: rgba(255, 99, 71, .25);
   --deductions-details-bg: rgba(255, 99, 71, .15);
@@ -112,9 +112,10 @@ h3 {
 }
 
 .legend-header {
+  display: inline-block;
   margin-top: 0;
-  margin-bottom: .5em;
-  margin-left: 0;
+  margin-bottom: 0;
+  /* margin-left: 0; */
   font-size: 1.25rem;
   line-height: 1;
 }
@@ -130,6 +131,25 @@ h3 {
   background-color: rgba(255, 255, 255, .4);
   border: 1px solid rgba(255, 255, 255, .4);
   border-radius: 10em;
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5em;
+}
+
+.toggle-full-list {
+  display: none;
+  font-variation-settings: 'GRAD' 100;
+  color: rgba(0, 0, 0, .6);
+  text-decoration: none;
+  line-height: 1;
+  margin: 0;
+  margin-right: 0.25em;
+  padding: 2px 0 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
 }
 
 input::placeholder {
@@ -375,23 +395,6 @@ legend {
   box-shadow: var(--main-shadow);
 }
 
-/* legend.lqdglass {
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, .35),
-      rgba(255, 255, 255, .1));
-
-  border: 1px solid rgba(255, 255, 255, .4);
-
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, .15),
-    inset 0 -2px 2px rgba(255, 255, 255, .8);
-
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-
-  border-radius: 160px;
-} */
-
 .general-field {
   background-image: var(--general-field-bg);
   border-color: var(--general-border);
@@ -412,12 +415,6 @@ legend {
   background-color: var(--general-input-shadow_focus);
   border-color: var(--general-input-shadow_focus);
 }
-
-/* .inputs-group:not(:last-child) {
-  margin-bottom: .25em;
-  padding-bottom: .25em;
-  border-bottom: 1px solid var(--accruals-inputs-group-border);
-} */
 
 /* ================= TAB FIELD (BLUE) ================= */
 .timesheet-field {
@@ -442,10 +439,6 @@ legend {
   border-color: var(--timesheet-input-shadow_focus);
 }
 
-.timesheet-field .inputs-group {
-  border-color: var(--timesheet-inputs-group-border);
-}
-
 /* ================= RED FIELD ================= */
 .deductions-field {
   background-image: var(--deductions-bg);
@@ -467,10 +460,6 @@ legend {
 .deductions-field .input-container:focus-within {
   background-color: var(--deductions-input-shadow_focus);
   border-color: var(--deductions-input-shadow_focus);
-}
-
-.deductions-field .inputs-group {
-  border-color: var(--deductions-inputs-group-border);
 }
 
 /* ================= GREEN FIELD ================= */
@@ -805,6 +794,19 @@ button:active {
     display: block;
   }
 
+
+  .toggle-full-list {
+    display: inline
+  }
+
+  .hide-items-wrapper {
+    display: none;
+  }
+
+  .show-all-items .hide-items-wrapper {
+    display: block;
+  }
+
   body {
     background-color: var(--bg-main_mobile);
   }
@@ -852,12 +854,6 @@ button:active {
   .input-container,
   .checkbox-container {
     margin-block: 4px;
-  }
-
-  .inputs-group:not(:last-child) {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
   }
 
   .form-footer {

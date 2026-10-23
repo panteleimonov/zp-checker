@@ -580,3 +580,21 @@ vidp_narah_pot.addEventListener('input', enableMaterDopOzd)
 vidp_narah_nast.addEventListener('input', enableMaterDopOzd)
 
 // *****************************************************************************
+
+// Включення всіх полів
+// =============================================================================
+
+const toggleFullList = document.querySelectorAll('.toggle-full-list')
+
+toggleFullList.forEach((toggleBtn) => {
+	toggleBtn.addEventListener('click', (e) => {
+		e.preventDefault()
+
+		const fieldset = toggleBtn.closest('fieldset')
+		fieldset.classList.toggle('show-all-items')
+
+		toggleBtn.textContent = fieldset.classList.contains('show-all-items') ? 'Основне' : 'Весь список'
+	})
+})
+
+// *****************************************************************************
