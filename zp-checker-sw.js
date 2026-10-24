@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zpch-cache-v2026.10.24b'
+const CACHE_NAME = 'zpch-cache-v2026.10.25'
 const urlsToCache = [
 	'./', // головна сторінка
 	'./index.html', // HTML
@@ -9,6 +9,7 @@ const urlsToCache = [
 
 // Встановлення SW і кешування ресурсів
 self.addEventListener('install', (event) => {
+	self.skipWaiting()
 	event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)))
 })
 
@@ -49,16 +50,19 @@ self.addEventListener('fetch', (event) => {
 
 // У activate події видаляємо старі кеші
 self.addEventListener('activate', (event) => {
-	const cacheWhitelist = [CACHE_NAME, 'google-fonts']
 	event.waitUntil(
-		caches.keys().then((keys) =>
-			Promise.all(
-				keys.map((key) => {
-					if (!cacheWhitelist.includes(key)) {
-						return caches.delete(key)
-					}
-				}),
+		Promise.all([
+			self.clients.claim(),
+
+			caches.keys().then((keys) =>
+				Promise.all(
+					keys.map((key) => {
+						if (key !== CACHE_NAME && key !== 'google-fonts') {
+							return caches.delete(key)
+						}
+					}),
+				),
 			),
-		),
+		]),
 	)
 })

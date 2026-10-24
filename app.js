@@ -254,6 +254,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 		document.querySelector('.main').classList.add('mxh_100vh')
 		document.querySelector('.results-section').classList.add('active')
 		document.querySelector('body').classList.add('not-overflow')
+		window.scrollTo(0, document.body.scrollHeight)
 	}, 300)
 })
 
@@ -490,7 +491,7 @@ document.getElementById('app-form').addEventListener('reset', () => {
 // Автоматичний розрахунок вечірніх / нічних годин
 // ****************************************************************************
 
-// Автозаповнення: оклад --> оклад за поп. мисяць (для зручност користувача)
+// Автозаповнення: оклад --> оклад за поп. місяць (для зручност користувача)
 // ============================================================================
 
 setTimeout(() => {
@@ -507,6 +508,7 @@ function closeResults() {
 	setTimeout(() => {
 		document.querySelector('.main').classList.remove('mxh_100vh')
 		document.querySelector('.main').classList.remove('hidden')
+		window.scrollTo(0, 0)
 	}, 300)
 }
 document.querySelector('.results-close-btn').addEventListener('click', closeResults)
@@ -593,7 +595,7 @@ toggleFullList.forEach((toggleBtn) => {
 		const fieldset = toggleBtn.closest('fieldset')
 		fieldset.classList.toggle('show-all-items')
 
-		toggleBtn.textContent = fieldset.classList.contains('show-all-items') ? 'Основне' : 'Весь список'
+		toggleBtn.textContent = fieldset.classList.contains('show-all-items') ? '▲Основне' : '▼Весь список'
 	})
 })
 
