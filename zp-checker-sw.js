@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zpch-cache-v2026.10.25d'
+const CACHE_NAME = 'zpch-cache-v2026.10.25e'
 const urlsToCache = [
 	'./', // головна сторінка
 	'./index.html', // HTML
