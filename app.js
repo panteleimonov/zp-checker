@@ -243,7 +243,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
   `
 	document.querySelector('#salary-resume').innerHTML = `
     <div class="info-content">
-     <h2>😎 Підсумок</h2>
+     <h2>✅ Підсумок</h2>
 		 <p><span>${salaryRes.avans.codeName}</span><b>${avans ? (salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(avans) : _formatMoney(avans)) : 'Без авансу'}</b></p>
 		 <p><span>Зарплата (до видачi)</span><b>${avans && salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(fullZP) : _formatMoney(fullZP)}</b></p>
 		 <p><span><b>Разом</b></span><b>${_formatMoney(fullZP + avans)}</b></p>
