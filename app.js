@@ -51,10 +51,7 @@ function _getCleanText(elem) {
 // const text = getCleanText('.details-text');
 // console.log(text);
 
-function salaryCalc(userData) {
-	// Коефіціенти
-	const PDFO_VZ_PROF__GO_ZSU = (100 - 23 - userData.blag_vnes_GO - userData.blag_vnes_ZSU - (userData.member_prof ? 1 : 0)) / 100
-
+function salaryCalc(userData, PDFO_VZ_PROF__GO_ZSU) {
 	// Години
 	const _planedHours = userData.planed_work_days * 8.25
 	const _realHours = userData.real_work_days * 8.25
@@ -192,8 +189,9 @@ function salaryCalc(userData) {
 
 document.querySelector('#app-form').addEventListener('submit', (e) => {
 	e.preventDefault()
-	const formValues = getFormValues('#app-form')
-	const salaryRes = salaryCalc(formValues)
+	const formValues = getFormValues('#app-form') // Коефіціенти
+	const PDFO_VZ_PROF__GO_ZSU = (100 - 23 - formValues.blag_vnes_GO - formValues.blag_vnes_ZSU - (formValues.member_prof ? 1 : 0)) / 100
+	const salaryRes = salaryCalc(formValues, PDFO_VZ_PROF__GO_ZSU)
 	const fullZP = salaryRes.accrualsSum.amount - salaryRes.deductionsSum.amount
 	const avans = salaryRes.avans.amount
 
@@ -205,7 +203,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 			if (!displayValue) return
 
 			// const label = document.querySelector(`label[for="${id}"]`)
-			const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('label')
+			const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('.label-name')
 			let labelText = label ? label.textContent : id
 			if (id === 'evn_h') {
 				labelText = 'Вечірні години'
@@ -249,6 +247,19 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 		 <p><span><b>Разом</b></span><b>${_formatMoney(fullZP + avans)}</b></p>
     </div>
   `
+	if (salaryRes.vidp.amount) {
+		document.querySelector('#vidp-resume').innerHTML = `
+    <div class="info-content">
+     <h2>🏖️ Відпустка</h2>
+		 <p><span>Відпускні (нараховано)</span><b>${salaryRes.vidpNarahPot.amount ? _formatMoney(salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount) : 'Немає даних'}</b></p>
+		 <p><span>Мат. допомога (нараховано)</span><b>${salaryRes.vidpMatDop.amount ? _formatMoney(salaryRes.vidpMatDop.amount) : 'Без допомоги'}</b></p>
+		 <p><span>Всього нараховано</span><b>${_formatMoney(salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount + salaryRes.vidpMatDop.amount)}</b></p>
+		 <p><span><b>Всього до видачі</b></span><b>${_formatMoney(PDFO_VZ_PROF__GO_ZSU * (salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount + salaryRes.vidpMatDop.amount))}</b></p>
+		 <p><span><b>Було отримано</b></span><b>${_formatMoney(salaryRes.vidp.amount)}</b></p>
+    </div>
+  `
+	}
+
 	document.querySelector('.main').classList.add('hidden')
 	setTimeout(() => {
 		document.querySelector('.main').classList.add('mxh_100vh')
@@ -280,7 +291,7 @@ inputs.forEach((input) => {
 		if (inpDetails) {
 			if (!_isMobileMode) {
 				// const bgImg = window.getComputedStyle(input.closest('fieldset'), 'background-image')
-				const inpLabel = _getCleanText(input.closest('.input-container').querySelector('label'))
+				const inpLabel = _getCleanText(input.closest('.input-container').querySelector('.label-name'))
 				const inpDetailsText = _getCleanText(inpDetails.querySelector('.details-text'))
 				const inpDetailsCode = '🟠 ' + _getCleanText(inpDetails.querySelector('.code-details'))
 				footerDetails.classList.add('hidden-content')
@@ -595,7 +606,7 @@ toggleFullList.forEach((toggleBtn) => {
 		const fieldset = toggleBtn.closest('fieldset')
 		fieldset.classList.toggle('show-all-items')
 
-		toggleBtn.textContent = fieldset.classList.contains('show-all-items') ? '▲Основне' : '▼Весь список'
+		toggleBtn.textContent = fieldset.classList.contains('show-all-items') ? 'Показати основне' : 'Показати весь список'
 	})
 })
 
