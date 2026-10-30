@@ -280,13 +280,15 @@ input::placeholder {
 label {
   text-align: left;
   line-height: 1;
-  font-variation-settings: 'GRAD' 100;
 }
 
 label:hover {
-  font-variation-settings: 'GRAD' 100;
   cursor: pointer;
 }
+
+/* .label-name {
+  font-variation-settings: 'GRAD' 100;
+} */
 
 label .arrow {
   display: none;
@@ -296,7 +298,7 @@ label .arrow {
   font-size: 14px;
   position: relative;
   top: -1px;
-  transition: rotate 0ms;
+  transition: opacity 600ms, rotate 0ms;
 }
 
 .input-container:has(.inp-details.active) label .arrow {
@@ -319,10 +321,6 @@ input[type='text'] {
   transition: width 0ms !important;
 }
 
-/* input.long {
-  width: 6em;
-} */
-
 input[type='checkbox'] {
   margin: 0 1em;
   line-height: 1;
@@ -337,6 +335,7 @@ input[type='text'].short {
 }
 
 input[type='text'][disabled] {
+  cursor: not-allowed;
   opacity: .4;
 }
 
@@ -482,8 +481,7 @@ legend {
   border-color: var(--deductions-border);
 }
 
-.deductions-field .input-container,
-.deductions-field .checkbox-container {
+.deductions-field .input-container {
   background-color: var(--deductions-details-bg);
   border: 1px solid transparent;
   border-top-color: var(--general-details-bg);
@@ -512,11 +510,23 @@ legend {
 
 /* ================= ADVANCED ================= */
 
-.input-container:focus-within label {
+.input-container .label-name {
+  letter-spacing: .25px;
+}
+
+.input-container:focus-within .arrow {
+  opacity: .62;
+}
+
+.input-container:has(.inp-details.active) .arrow {
+  opacity: .62;
+}
+
+.input-container:focus-within .label-name {
   font-variation-settings: 'GRAD' 200;
 }
 
-.input-container:has(.inp-details.active) label {
+.input-container:has(.inp-details.active) .label-name {
   font-variation-settings: 'GRAD' 200;
 }
 
@@ -665,8 +675,7 @@ button:active {
 }
 
 
-.input-container,
-.checkbox-container {
+.input-container {
   border: none;
   border-radius: .5em;
   padding: 0;
@@ -678,16 +687,6 @@ button:active {
 .input-container {
   will-change: padding-top, background-color, border-radius, border-color, max-height;
 }
-
-/* .checkbox-container .input-wrapper {
-  min-height: 34px;
-} */
-
-
-/* .checkbox-wrap { delete?!
-  display: flex;
-  align-items: center;
-} */
 
 .input-container:has(.inp-details.active) {
   padding-top: .25rem;
@@ -766,8 +765,78 @@ button:active {
   opacity: 1;
 }
 
+/* ===== IOS Style sliders for checkbox ===== */
 
-/* MEDIA */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-block: 2px;
+}
+
+.switch input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* Disabled */
+.switch:has(input:disabled) {
+  opacity: .4;
+}
+
+.switch:has(input:disabled) .slider {
+  cursor: not-allowed;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background-color: #d1d1d6;
+  border-radius: 999px;
+  overflow: hidden;
+  /* transition: background-color .3s ease-in-out; */
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 25%);
+  /* transition:
+    translate .3s ease-in-out,
+    scale .3s ease-in-out; */
+}
+
+/* Hover / Active */
+.slider:hover::before,
+.slider:active::before {
+  scale: .9;
+}
+
+/* Checked */
+input:checked+.slider {
+  /* background-color: dodgerblue; */
+  background-color: #34c759;
+}
+
+input:checked+.slider::before {
+  translate: 20px;
+}
+
+/* Focus */
+input:focus-visible+.slider {
+  box-shadow: 0 0 0 2px var(--text-main);
+}
+
+/* ================== MEDIA ==================*/
 
 @media (max-width: 1260px) {
 
@@ -890,9 +959,12 @@ button:active {
     margin-top: 1.5em;
   }
 
-  .input-container,
-  .checkbox-container {
+  .input-container {
     margin-block: 4px;
+  }
+
+  .input-container .label-name {
+    letter-spacing: 0;
   }
 
   .form-footer {
@@ -993,11 +1065,11 @@ button:active {
   }
 
   .double-inputs input[type='text']:last-of-type {
-    margin-left: 1px;
+    margin-left: 0px;
   }
 
   .double-inputs span:first-of-type {
-    margin-left: 1px;
+    margin-left: 0px;
   }
 
   .results-close-btn {

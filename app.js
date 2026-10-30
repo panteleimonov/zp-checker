@@ -248,16 +248,19 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
     </div>
   `
 	if (salaryRes.vidp.amount) {
+		let vidpNarahAll = salaryRes.vidpNarahPot.amount ? salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount : null
 		document.querySelector('#vidp-resume').innerHTML = `
     <div class="info-content">
      <h2>🏖️ Відпустка</h2>
-		 <p><span>Відпускні (нараховано)</span><b>${salaryRes.vidpNarahPot.amount ? _formatMoney(salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount) : 'Немає даних'}</b></p>
+		 <p><span>Відпускні (нараховано)</span><b>${vidpNarahAll ? _formatMoney(vidpNarahAll) : 'Немає даних'}</b></p>
 		 <p><span>Мат. допомога (нараховано)</span><b>${salaryRes.vidpMatDop.amount ? _formatMoney(salaryRes.vidpMatDop.amount) : 'Без допомоги'}</b></p>
-		 <p><span>Всього нараховано</span><b>${_formatMoney(salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount + salaryRes.vidpMatDop.amount)}</b></p>
-		 <p><span><b>Всього до видачі</b></span><b>${_formatMoney(PDFO_VZ_PROF__GO_ZSU * (salaryRes.vidpNarahPot.amount + salaryRes.vidpNarahNast.amount + salaryRes.vidpMatDop.amount))}</b></p>
+		 <p><span>Всього нараховано</span><b>${vidpNarahAll ? _formatMoney(vidpNarahAll + salaryRes.vidpMatDop.amount) : 'Немає даних'}</b></p>
+		 <p><span><b>Всього до видачі</b></span><b>${vidpNarahAll ? _formatMoney(PDFO_VZ_PROF__GO_ZSU * (vidpNarahAll + salaryRes.vidpMatDop.amount)) : 'Немає даних'}</b></p>
 		 <p><span><b>Було отримано</b></span><b>${_formatMoney(salaryRes.vidp.amount)}</b></p>
     </div>
   `
+	} else {
+		document.querySelector('#vidp-resume').innerHTML = ''
 	}
 
 	document.querySelector('.main').classList.add('hidden')
@@ -270,7 +273,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
 })
 
 document._myLastActiveInput = null
-const inputs = document.querySelectorAll('input[type="text"]')
+const inputs = document.querySelectorAll('input')
 const footerDetails = document.querySelector('.footer-details')
 const _isMobileMode = window.getComputedStyle(footerDetails).display === 'none'
 const footerDetailsHeader = footerDetails.querySelector('.header-footer-details')
@@ -344,6 +347,8 @@ inputs.forEach((input) => {
 // =====
 if (_isMobileMode) {
 	document.querySelectorAll('label').forEach((inputLabel) => {
+		// Крім <label class="switch">
+		if (inputLabel.classList.contains('switch')) return
 		inputLabel.setAttribute('for', '')
 	})
 }
@@ -359,7 +364,8 @@ document.querySelectorAll('.input-container').forEach((inputContainer) => {
 			}
 			return
 		}
-		if (e.target instanceof HTMLInputElement && e.target.type === 'text') return
+
+		if ((e.target instanceof HTMLInputElement && e.target.type === 'text') || e.target.type === 'checkbox' || e.target.classList.contains('slider')) return
 		if (e.target.closest('.input-container') === document._myLastActiveInput?.closest('.input-container')) {
 			document._myLastActiveInput.focus()
 		} else {

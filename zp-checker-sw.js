@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v2026.10.29'
+const CACHE_NAME = 'v2026.10.30b'
 const urlsToCache = [
 	'./', // головна сторінка
 	'./index.html', // HTML
