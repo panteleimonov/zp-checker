@@ -5,7 +5,8 @@
   /* Base colors */
   --bg-main: #fafafa;
   --bg-main_mobile: #fefefe;
-  --text-main: #111;
+  --text-main: #222;
+  --text-main-active: #000;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --header-bg_mobile: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main_mobile));
   --caption-bg: #e4e4e4;
@@ -81,7 +82,7 @@ html {
   font-family: 'Google Sans', sans-serif;
   /* Старий спосіб: завжди показувати скролбар */
   overflow-y: scroll;
-
+  line-height: 1.25;
   /* Новий спосіб: резервувати місце під скролбар */
   overflow-y: auto;
   scrollbar-gutter: stable;
@@ -148,7 +149,8 @@ h3 {
 }
 
 .toggle-full-list {
-  color: rgba(0, 0, 0, .8);
+  /* color: rgba(0, 0, 0, .62); */
+  color: var(--text-main);
   font-size: 12px;
   text-transform: uppercase;
   text-decoration: none;
@@ -286,9 +288,10 @@ label:hover {
   cursor: pointer;
 }
 
-/* .label-name {
+.label-name {
   font-variation-settings: 'GRAD' 100;
-} */
+  color: #333;
+}
 
 label .arrow {
   display: none;
@@ -524,10 +527,12 @@ legend {
 
 .input-container:focus-within .label-name {
   font-variation-settings: 'GRAD' 200;
+  color: var(--text-main-active);
 }
 
 .input-container:has(.inp-details.active) .label-name {
   font-variation-settings: 'GRAD' 200;
+  color: var(--text-main-active);
 }
 
 input[type='text']:focus-visible {
@@ -569,12 +574,13 @@ input[type='text']:focus-visible {
 }
 
 .code-footer-details {
+  display: inline-block;
   background-color: #eee;
   background-image: linear-gradient(180deg, #fff, #eee);
   padding: .25em .5em;
   border-radius: .5em;
   border: 1px solid #ddd;
-  margin-bottom: 2em;
+  /* margin-bottom: 2em; */
 }
 
 .footer-details.hidden-content .footer-details_inner {
@@ -587,6 +593,8 @@ input[type='text']:focus-visible {
 
 .footer-details_inner {
   display: flex;
+  max-height: 114px;
+  overflow: auto;
 }
 
 .footer-details_content {
@@ -600,7 +608,7 @@ input[type='text']:focus-visible {
 }
 
 .footer-details hr {
-  margin: 1em 0 .5em 0;
+  margin: .75em 0 .5em 0;
 }
 
 .text-footer-details {
@@ -838,7 +846,7 @@ input:focus-visible+.slider {
 
 /* ================== MEDIA ==================*/
 
-@media (max-width: 1260px) {
+@media (max-width: 1380px) {
 
   .form,
   .results,
@@ -867,15 +875,15 @@ input:focus-visible+.slider {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
 
-  .header span.start-visible {
+  .header span._hide-or-show {
     display: none;
   }
 
 }
 
-@media (max-width: 1152px) {
+@media (max-width: 1140px) {
 
   *,
   *::before,
@@ -940,7 +948,7 @@ input:focus-visible+.slider {
     font-size: 1.75em;
   }
 
-  .header span.start-visible {
+  .header span._hide-or-show {
     display: inline;
   }
 

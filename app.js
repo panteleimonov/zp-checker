@@ -88,7 +88,7 @@ function salaryCalc(userData, PDFO_VZ_PROF__GO_ZSU) {
 		// Відрахування
 		pdfo: { type: 'deductions', code: 301, codeName: 'Податок - ПДФО', amount: 0 },
 		avans: { type: 'deductions', code: null, codeName: 'Аванс', amount: 0, plusMinus: null },
-		vidp: { type: 'deductions', code: 359, codeName: 'Ощ/к відпускні', amount: 0 },
+		vidp: { type: 'deductions', code: 359, codeName: 'Відпускні отримано', amount: 0 },
 		profsp: { type: 'deductions', code: 339, codeName: 'Профспілка', amount: 0 },
 		vZbir: { type: 'deductions', code: 378, codeName: 'Військовий збір', amount: 0 },
 		vnesZSU: { type: 'deductions', code: 380, codeName: 'Внески ЗСУ', amount: 0 },
@@ -145,7 +145,7 @@ function salaryCalc(userData, PDFO_VZ_PROF__GO_ZSU) {
 	// Код - ***
 	accruals.bonusGramPodjaka.amount = _floor2(userData.gram_pod)
 	// Код - ***
-	accruals.bonusTeaching.amount = userData.pidg_pers ? _floor2(userData.pidg_pers) : 0
+	accruals.bonusTeaching.amount = _floor2(userData.pidg_pers)
 	// Код - ***
 	accruals.indexation.amount = _floor2(userData.indexation)
 	// Код - ***
@@ -164,7 +164,7 @@ function salaryCalc(userData, PDFO_VZ_PROF__GO_ZSU) {
 	deductions.pdfo.amount = _floor2(0.18 * accruals.accrualsSum.amount)
 	// Код - 359
 	// deductions.vidp.amount = _floor2(accruals.vidpNarah.amount + accruals.vidpMatDop.amount) * PDFO_VZ_PROF__GO_ZSU
-	deductions.vidp.amount = _floor2(+userData.vidp_oplata)
+	deductions.vidp.amount = userData.vidp_oplata ? _floor2(+userData.vidp_oplata) : 0
 	// Код - 339
 	deductions.profsp.amount = _floor2(userData.member_prof ? 0.01 * (accruals.accrualsSum.amount - accruals.likarn5days.amount) : 0)
 	// Код - 378
@@ -253,10 +253,10 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
     <div class="info-content">
      <h2>🏖️ Відпустка</h2>
 		 <p><span>Відпускні (нараховано)</span><b>${vidpNarahAll ? _formatMoney(vidpNarahAll) : 'Немає даних'}</b></p>
-		 <p><span>Мат. допомога (нараховано)</span><b>${salaryRes.vidpMatDop.amount ? _formatMoney(salaryRes.vidpMatDop.amount) : 'Без допомоги'}</b></p>
-		 <p><span>Всього нараховано</span><b>${vidpNarahAll ? _formatMoney(vidpNarahAll + salaryRes.vidpMatDop.amount) : 'Немає даних'}</b></p>
-		 <p><span><b>Всього до видачі</b></span><b>${vidpNarahAll ? _formatMoney(PDFO_VZ_PROF__GO_ZSU * (vidpNarahAll + salaryRes.vidpMatDop.amount)) : 'Немає даних'}</b></p>
-		 <p><span><b>Було отримано</b></span><b>${_formatMoney(salaryRes.vidp.amount)}</b></p>
+		 <p><span>Матеріальна допомога</span><b>${salaryRes.vidpMatDop.amount ? _formatMoney(salaryRes.vidpMatDop.amount) : 'Без допомоги'}</b></p>
+		 <p><span>Разом нараховано</span><b>${vidpNarahAll ? _formatMoney(vidpNarahAll + salaryRes.vidpMatDop.amount) : 'Немає даних'}</b></p>
+		 <p><span><b>Разом до видачі</b></span><b>${vidpNarahAll ? _formatMoney(PDFO_VZ_PROF__GO_ZSU * (vidpNarahAll + salaryRes.vidpMatDop.amount)) : 'Немає даних'}</b></p>
+		 <p><span><b>Отримано до відпустки</b></span><b>${_formatMoney(salaryRes.vidp.amount)}</b></p>
     </div>
   `
 	} else {
@@ -580,18 +580,21 @@ prem_13.addEventListener('input', enableBlag_vnes_13)
 
 // *****************************************************************************
 
-// Включення поля для матер. допомоги
+// Включення поля для матер. допомоги та отриманих відпускних
 // =============================================================================
 
 const vidp_narah_pot = document.querySelector('#vidp_narah_pot')
 const vidp_narah_nast = document.querySelector('#vidp_narah_nast')
 const mater_dop = document.querySelector('#mater_dop')
+const vidp_oplata = document.querySelector('#vidp_oplata')
 
 function enableMaterDopOzd() {
 	if (vidp_narah_pot.value || vidp_narah_nast.value) {
 		mater_dop.removeAttribute('disabled')
+		vidp_oplata.removeAttribute('disabled')
 	} else {
 		mater_dop.setAttribute('disabled', true)
+		vidp_oplata.setAttribute('disabled', true)
 	}
 }
 
