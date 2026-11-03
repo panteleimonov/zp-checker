@@ -371,11 +371,12 @@ fieldset {
 
 .month-select {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
   border-radius: 6px;
   font-family: 'Rubik', sans-serif;
   font-size: 1rem;
   padding: 0;
+  padding-block: 1px;
   border-color: var(--timesheet-accent);
   text-align: center;
 }
