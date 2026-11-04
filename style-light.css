@@ -377,7 +377,7 @@ fieldset {
   font-size: 1rem;
   padding: 0;
   padding-block: 1px;
-  /* border-color: var(--timesheet-accent); */
+  border-color: var(--timesheet-accent);
   text-align: center;
 }
 
