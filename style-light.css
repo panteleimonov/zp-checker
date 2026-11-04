@@ -6,6 +6,7 @@
   --bg-main: #fafafa;
   --bg-main_mobile: #fefefe;
   --color-text: #222;
+  --color-text-secondary: #333;
   --color-text-active: #000;
   --header-bg: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main));
   --header-bg_mobile: linear-gradient(180deg, royalblue, dodgerblue, var(--bg-main_mobile));
@@ -290,7 +291,7 @@ label:hover {
 
 .label-name {
   font-variation-settings: 'GRAD' 100;
-  color: #333;
+  color: var(--color-text-secondary);
 }
 
 label .arrow {
@@ -369,16 +370,40 @@ fieldset {
   overflow: hidden;
 }
 
-.month-select {
+.selected-month {
   display: inline-block;
   margin-right: 0.25rem;
   border-radius: 6px;
-  font-family: 'Rubik', sans-serif;
-  font-size: 1rem;
   padding: 0;
   padding-block: 1px;
-  border-color: var(--timesheet-accent);
-  text-align: center;
+  font-family: 'Rubik', sans-serif;
+  line-height: 1;
+  font-size: 1rem;
+  /* /background-color: var(--timesheet-details-bg); */
+  /* background-color: #E2E1FF; */
+  background-color: #eee;
+  color: var(--color-text-secondary);
+  border-color: var(--timesheet-details-bg);
+  box-shadow: 0 2px .25em .25em var(--timesheet-input-shadow_focus);
+  cursor: pointer;
+}
+
+.selected-month:hover,
+.selected-month:active,
+.selected-month:focus,
+.selected-month:focus-visible {
+  outline: none;
+  color: var(--color-text-active);
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 .5em .5em var(--timesheet-input-shadow_focus);
+}
+
+.selected-month option,
+.selected-month option,
+.selected-month option,
+.selected-month option {
+  background-color: #E2E1FF;
 }
 
 .info-content {
@@ -669,15 +694,12 @@ button:active {
 }
 
 .reset-btn {
-  background-color: #444;
   background-color: #FB5255;
-  border: 1px solid #444;
   border: 1px solid #FB5255;
 }
 
 .reset-btn:hover,
 .reset-btn:active {
-  background-color: #333;
   background-color: rgb(255, 86, 56);
 }
 
@@ -1019,14 +1041,6 @@ input:focus-visible+.slider {
   .warning-info {
     margin-bottom: 6.25rem;
   }
-
-  .results-close-btn {
-    /* position: fixed; */
-    /* bottom: 1.75rem; */
-    /* box-shadow: 0 0 .5rem .5rem var(--bg-main) !important; */
-    /* box-shadow: 0 2rem 1rem 3rem var(--bg-main) !important; */
-  }
-
 
   .flex-container {
     display: block;

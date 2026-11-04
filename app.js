@@ -1,9 +1,3 @@
-const __log = (a1, a2) => {
-	console.log(a1)
-	console.log(a2)
-	console.log('- - - - - - - - - - - - - - - - - - - -')
-}
-
 function getFormValues(formId) {
 	const form = document.querySelector(formId)
 	const formData = new FormData(form)
@@ -37,6 +31,25 @@ function _formatMoney(num, currency = 'UAH') {
 	}).format(num)
 }
 
+function formatMonthYear(text) {
+	const [year, month] = text.split(' ')
+	const months = {
+		Січ: 'Січень',
+		Лют: 'Лютий',
+		Бер: 'Березень',
+		Квіт: 'Квітень',
+		Трав: 'Травень',
+		Черв: 'Червень',
+		Лип: 'Липень',
+		Серп: 'Серпень',
+		Вер: 'Вересень',
+		Жовт: 'Жовтень',
+		Лист: 'Листопад',
+		Груд: 'Грудень',
+	}
+	return `${months[month] || month} ${year}`
+}
+
 function _getCleanText(elem) {
 	return (
 		elem.textContent
@@ -58,6 +71,8 @@ function salaryCalc(userData, PDFO_VZ_PROF__GO_ZSU) {
 	const _calendarHoursesNorm = userData.calendar_hourses_norm
 	const _evnHours = userData.evn_h
 	const _nightHours = userData.night_h
+	const _selectedMonth = userData.selectedMonth
+	console.log(_selectedMonth)
 
 	const accruals = {
 		// Нарахування
@@ -190,30 +205,35 @@ function salaryCalc(userData, PDFO_VZ_PROF__GO_ZSU) {
 document.querySelector('#app-form').addEventListener('submit', (e) => {
 	e.preventDefault()
 	const formValues = getFormValues('#app-form') // Коефіціенти
+	const monthText = formValues['selected-month'] ? formatMonthYear(document.getElementById('selected-month').selectedOptions[0].text) : ''
 	const PDFO_VZ_PROF__GO_ZSU = (100 - 23 - formValues.blag_vnes_GO - formValues.blag_vnes_ZSU - (formValues.member_prof ? 1 : 0)) / 100
 	const salaryRes = salaryCalc(formValues, PDFO_VZ_PROF__GO_ZSU)
 	const fullZP = salaryRes.accrualsSum.amount - salaryRes.deductionsSum.amount
 	const avans = salaryRes.avans.amount
 
 	// Автоматичне створення звіту про прочитані з інпутів дані користувача
-	const salaryReportHTML = Object.entries(formValues)
-		.map(([id, value]) => {
-			// для чекбоксів показуємо "Так/Ні"
-			const displayValue = typeof value === 'boolean' ? (value ? 'Так' : 'Ні') : value
-			if (!displayValue) return
+	const salaryReportHTML =
+		(monthText ? `<p><span>Обраний період</span><b>${monthText}</b></p>` : '') +
+		Object.entries(formValues)
+			.map(([id, value]) => {
+				// Опрацюємо рік та місяць
+				if (id === 'selected-month') return
 
-			// const label = document.querySelector(`label[for="${id}"]`)
-			const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('.label-name')
-			let labelText = label ? label.textContent : id
-			if (id === 'evn_h') {
-				labelText = 'Вечірні години'
-			} else if (id === 'night_h') {
-				labelText = 'Нічні години'
-			}
+				// для чекбоксів показуємо "Так/Ні"
+				const displayValue = typeof value === 'boolean' ? (value ? 'Так' : 'Ні') : value
+				if (!displayValue) return
 
-			return `<p><span>${labelText}</span><b>${displayValue}</b></p>`
-		})
-		.join('')
+				// const label = document.querySelector(`label[for="${id}"]`)
+				const label = document.getElementById(`${id}`).closest('.input-wrapper').querySelector('.label-name')
+				let labelText = label ? label.textContent : id
+				if (id === 'evn_h') {
+					labelText = 'Вечірні години'
+				} else if (id === 'night_h') {
+					labelText = 'Нічні години'
+				}
+				return `<p><span>${labelText}</span><b>${displayValue}</b></p>`
+			})
+			.join('')
 
 	// Автоматичне створення звіту про результати розрахунку ЗП
 	const salaryResultsHTML = Object.entries(salaryRes)
@@ -241,7 +261,7 @@ document.querySelector('#app-form').addEventListener('submit', (e) => {
   `
 	document.querySelector('#salary-resume').innerHTML = `
     <div class="info-content">
-     <h2>✅ Підсумок</h2>
+		${monthText ? '<h2>✅ ' + monthText + '</h2>' : '<h2>✅ Підсумок</h2>'}     
 		 <p><span>${salaryRes.avans.codeName}</span><b>${avans ? (salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(avans) : _formatMoney(avans)) : 'Без авансу'}</b></p>
 		 <p><span>Зарплата (до видачi)</span><b>${avans && salaryRes.avans.plusMinus ? '+/- ' + _formatMoney(fullZP) : _formatMoney(fullZP)}</b></p>
 		 <p><span><b>Разом</b></span><b>${_formatMoney(fullZP + avans)}</b></p>
@@ -286,7 +306,6 @@ const footerDetailsCode_defaultText = footerDetailsCode.innerText
 inputs.forEach((input) => {
 	input.addEventListener('focus', () => {
 		if (document._myLastActiveInput === input) {
-			__log('document._myLastActiveInput === input')
 			return
 		}
 		document._myLastActiveInput = input
@@ -307,9 +326,7 @@ inputs.forEach((input) => {
 				}, 300) // CSS --> transition: all 300ms
 			} else {
 				// ====== Mobile mode ============================================================
-				// __log(input, 'input --> focus - start!')
 				const activeDetails = document.querySelector('.inp-details.active')
-				// console.log(activeDetails)
 				if (activeDetails && activeDetails.closest('.input-container') !== input.closest('.input-container')) {
 					setTimeout(() => {
 						activeDetails.classList.remove('active')
